@@ -1,0 +1,86 @@
+[
+  {
+    "id": "RB-01",
+    "title": "Expired upstream credential",
+    "cause_code": "expired_credential",
+    "action_code": "rotate_credential",
+    "guidance": "Repair the refresh agent, rotate the upstream credential, and reload only affected workers. Verify authenticated requests succeed and refresh resumes.",
+    "avoid": "Scaling replicas does not renew the expired credential.",
+    "diagnostic_checks": [
+      "gateway returned 502; upstream responded 401 token_expired",
+      "credential agent last successful refresh was 25 hours ago; credential TTL is 24 hours",
+      "upstream health probe without authentication returned 200"
+    ],
+    "validation": "upstream latency p95=38ms; CPU=21%; rejected auth=96%; credential refresh failures=12"
+  },
+  {
+    "id": "RB-02",
+    "title": "Connection pool exhausted",
+    "cause_code": "connection_pool_exhaustion",
+    "action_code": "restore_pool_config",
+    "guidance": "Restore the previous pool limit of 64 with a canary. Verify pool wait time and pending requests fall while database connections remain within the approved limit.",
+    "avoid": "Do not increase the database connection limit or scale the database before restoring the erroneous app setting.",
+    "diagnostic_checks": [
+      "database client: connection acquisition timeout; active=4 pending=88 max_pool=4",
+      "configuration change: max_pool 64 -> 4 at incident start",
+      "database slow query count=0; database rejected connections=0"
+    ],
+    "validation": "DB CPU=19%; query p95=18ms; pool wait p95=9000ms; max_pool=4; prechange max_pool=64"
+  },
+  {
+    "id": "RB-03",
+    "title": "Worker memory regression",
+    "cause_code": "worker_memory_regression",
+    "action_code": "rollback_worker_release",
+    "guidance": "Rollback the worker canary to 8.1, then roll back remaining affected workers. Preserve failed jobs for idempotent replay; verify memory stabilizes and restart count stops growing.",
+    "avoid": "A memory limit increase would mask the regression without bounding buffering.",
+    "diagnostic_checks": [
+      "worker container terminated: OOMKilled; exit_code=137",
+      "release 8.2 enabled unbounded in-memory result buffering; previous release 8.1 streamed results",
+      "restart loop begins only on workers running release 8.2"
+    ],
+    "validation": "memory before deploy=0.7GiB; after deploy=2.0GiB limit; CPU=29%; input job size distribution unchanged"
+  },
+  {
+    "id": "RB-04",
+    "title": "Clock skew masquerading as expired token",
+    "cause_code": "worker_clock_skew",
+    "action_code": "resync_worker_clock",
+    "guidance": "Drain the blue workers, restore time synchronization, and verify their offset before rejoining. Test the same valid token on blue and green and monitor auth failures.",
+    "avoid": "Rotating a still-valid token does not fix the clock. Do not disable expiry validation.",
+    "diagnostic_checks": [
+      "affected worker auth failure: token_expired; token issuer and signature valid",
+      "independent validator: same token succeeds; expiry is 40 minutes in the future at trusted time",
+      "only worker group blue fails; worker group green succeeds with the same credential"
+    ],
+    "validation": "blue clock offset=+3600 seconds; green clock offset=+0.2 seconds; credential refresh success=100%; trusted issuer token TTL remaining=2400 seconds"
+  },
+  {
+    "id": "RB-05",
+    "title": "Retry amplification masquerading as capacity shortage",
+    "cause_code": "retry_amplification",
+    "action_code": "disable_nested_retries",
+    "guidance": "Disable the added SDK retry layer or roll back that client change. Keep one bounded retry policy honoring Retry-After with backoff and jitter; verify attempt rate returns below quota and queue drains.",
+    "avoid": "Adding workers increases attempts and worsens throttling; unique demand did not rise.",
+    "diagnostic_checks": [
+      "downstream quota exceeded: 429; Retry-After=5",
+      "new SDK sends five immediate retries; outer request wrapper retries five times too",
+      "same request_id appears 25 times; unique user requests are stable"
+    ],
+    "validation": "unique requests/sec before=40 after=41; attempted downstream calls/sec before=42 after=1000; downstream CPU=24%; configured quota=100 calls/sec"
+  },
+  {
+    "id": "RB-06",
+    "title": "Replica lag masquerading as lost writes",
+    "cause_code": "read_replica_lag",
+    "action_code": "route_consistent_reads_to_primary",
+    "guidance": "Temporarily route read-after-write confirmation reads to the primary with capacity checks, then resolve the blocking analytics transaction under the runbook. Verify replica lag recovers before restoring routing.",
+    "avoid": "Do not replay successful writes or restore a backup: this can duplicate orders or discard committed data.",
+    "diagnostic_checks": [
+      "primary commit acknowledged for affected orders; transaction status=committed",
+      "confirmation read routed to replica; returned order_not_found; same order exists on primary",
+      "replica replay paused behind long-running analytics transaction at incident start"
+    ],
+    "validation": "primary write errors=0; primary-to-replica replay lag=240 seconds; replica CPU=32%; lag before incident=0.4 seconds"
+  }
+]

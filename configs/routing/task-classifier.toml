@@ -1,0 +1,17 @@
+strategy_version = 1
+name = "Judge selects efficient or capable"
+
+# Maps to Switchyard's embedded Python API, not a standalone-server config.
+[routing]
+type = "llm_classifier"
+mode = "capability"
+base_threshold = 0.6
+threshold_step = 0.1
+recent_window = 3
+
+[limits]
+max_output_tokens = 4000
+max_calls_per_task = 24
+task_timeout_seconds = 180
+request_timeout_seconds = 45
+max_suite_tasks = 90

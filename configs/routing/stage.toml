@@ -1,0 +1,16 @@
+strategy_version = 1
+name = "Route from tool activity, with no judge"
+
+[routing]
+type = "stage_router"
+picker = "efficient_first"
+confidence_threshold = 0.5
+recent_window = 3
+only_on_wrong_signal_escalation = true
+
+[limits]
+max_output_tokens = 1400
+max_calls_per_task = 24
+task_timeout_seconds = 180
+request_timeout_seconds = 45
+max_suite_tasks = 90

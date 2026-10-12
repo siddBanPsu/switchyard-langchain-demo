@@ -1,0 +1,25 @@
+profile_version = 1
+name = "Efficient and capable model template"
+
+[clients.nvidia]
+format = "openai_chat"
+base_url_env = "NVIDIA_BASE_URL"
+api_key_env = "NVIDIA_API_KEY"
+
+[roles.efficient]
+client = "nvidia"
+model_id = "your-efficient-model"
+temperature = 0.0
+
+[roles.capable]
+client = "nvidia"
+model_id = "your-capable-model"
+
+[roles.classifier]
+client = "nvidia"
+model_id = "your-efficient-model"
+temperature = 0.0
+
+# Example provider option. Remove this table if your judge does not support it.
+[roles.classifier.extra_body.chat_template_kwargs]
+enable_thinking = false

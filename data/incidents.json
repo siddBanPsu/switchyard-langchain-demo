@@ -1,0 +1,1694 @@
+[
+  {
+    "id": "INC-001",
+    "family": "Expired upstream credential",
+    "difficulty": "straightforward",
+    "split": "development",
+    "ticket": {
+      "id": "INC-001",
+      "service": "checkout",
+      "region": "sg",
+      "summary": "Requests fail with 502 responses after the nightly credential rotation.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-001-L1",
+        "time": "2026-10-01T10:00:00Z",
+        "service": "checkout",
+        "message": "gateway returned 502; upstream responded 401 token_expired"
+      },
+      {
+        "id": "INC-001-L2",
+        "time": "2026-10-01T10:01:00Z",
+        "service": "checkout",
+        "message": "credential agent last successful refresh was 25 hours ago; credential TTL is 24 hours"
+      },
+      {
+        "id": "INC-001-L3",
+        "time": "2026-10-01T10:02:00Z",
+        "service": "checkout",
+        "message": "upstream health probe without authentication returned 200"
+      },
+      {
+        "id": "INC-001-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "checkout",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-001-M1",
+        "service": "checkout",
+        "observation": "upstream latency p95=38ms; CPU=21%; rejected auth=96%; credential refresh failures=12"
+      }
+    ]
+  },
+  {
+    "id": "INC-002",
+    "family": "Connection pool exhausted",
+    "difficulty": "straightforward",
+    "split": "development",
+    "ticket": {
+      "id": "INC-002",
+      "service": "checkout",
+      "region": "sg",
+      "summary": "Requests time out following a configuration rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-002-L1",
+        "time": "2026-10-01T10:00:00Z",
+        "service": "checkout",
+        "message": "database client: connection acquisition timeout; active=4 pending=88 max_pool=4"
+      },
+      {
+        "id": "INC-002-L2",
+        "time": "2026-10-01T10:01:00Z",
+        "service": "checkout",
+        "message": "configuration change: max_pool 64 -> 4 at incident start"
+      },
+      {
+        "id": "INC-002-L3",
+        "time": "2026-10-01T10:02:00Z",
+        "service": "checkout",
+        "message": "database slow query count=0; database rejected connections=0"
+      },
+      {
+        "id": "INC-002-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "checkout",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-002-M1",
+        "service": "checkout",
+        "observation": "DB CPU=19%; query p95=18ms; pool wait p95=9000ms; max_pool=4; prechange max_pool=64"
+      }
+    ]
+  },
+  {
+    "id": "INC-003",
+    "family": "Worker memory regression",
+    "difficulty": "straightforward",
+    "split": "development",
+    "ticket": {
+      "id": "INC-003",
+      "service": "checkout",
+      "region": "sg",
+      "summary": "Background jobs restart repeatedly after a worker release.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-003-L1",
+        "time": "2026-10-01T10:00:00Z",
+        "service": "checkout",
+        "message": "worker container terminated: OOMKilled; exit_code=137"
+      },
+      {
+        "id": "INC-003-L2",
+        "time": "2026-10-01T10:01:00Z",
+        "service": "checkout",
+        "message": "release 8.2 enabled unbounded in-memory result buffering; previous release 8.1 streamed results"
+      },
+      {
+        "id": "INC-003-L3",
+        "time": "2026-10-01T10:02:00Z",
+        "service": "checkout",
+        "message": "restart loop begins only on workers running release 8.2"
+      },
+      {
+        "id": "INC-003-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "checkout",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-003-M1",
+        "service": "checkout",
+        "observation": "memory before deploy=0.7GiB; after deploy=2.0GiB limit; CPU=29%; input job size distribution unchanged"
+      }
+    ]
+  },
+  {
+    "id": "INC-004",
+    "family": "Clock skew masquerading as expired token",
+    "difficulty": "multi-source",
+    "split": "development",
+    "ticket": {
+      "id": "INC-004",
+      "service": "checkout",
+      "region": "sg",
+      "summary": "Some requests return token_expired and intermittent 502 errors. A credential rotation was completed recently.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-004-L1",
+        "time": "2026-10-01T10:00:00Z",
+        "service": "checkout",
+        "message": "affected worker auth failure: token_expired; token issuer and signature valid"
+      },
+      {
+        "id": "INC-004-L2",
+        "time": "2026-10-01T10:01:00Z",
+        "service": "checkout",
+        "message": "independent validator: same token succeeds; expiry is 40 minutes in the future at trusted time"
+      },
+      {
+        "id": "INC-004-L3",
+        "time": "2026-10-01T10:02:00Z",
+        "service": "checkout",
+        "message": "only worker group blue fails; worker group green succeeds with the same credential"
+      },
+      {
+        "id": "INC-004-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "checkout",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-004-M1",
+        "service": "checkout",
+        "observation": "blue clock offset=+3600 seconds; green clock offset=+0.2 seconds; credential refresh success=100%; trusted issuer token TTL remaining=2400 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-005",
+    "family": "Retry amplification masquerading as capacity shortage",
+    "difficulty": "multi-source",
+    "split": "development",
+    "ticket": {
+      "id": "INC-005",
+      "service": "checkout",
+      "region": "sg",
+      "summary": "Queue depth and 429 errors rise during an apparent request surge after a client rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-005-L1",
+        "time": "2026-10-01T10:00:00Z",
+        "service": "checkout",
+        "message": "downstream quota exceeded: 429; Retry-After=5"
+      },
+      {
+        "id": "INC-005-L2",
+        "time": "2026-10-01T10:01:00Z",
+        "service": "checkout",
+        "message": "new SDK sends five immediate retries; outer request wrapper retries five times too"
+      },
+      {
+        "id": "INC-005-L3",
+        "time": "2026-10-01T10:02:00Z",
+        "service": "checkout",
+        "message": "same request_id appears 25 times; unique user requests are stable"
+      },
+      {
+        "id": "INC-005-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "checkout",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-005-M1",
+        "service": "checkout",
+        "observation": "unique requests/sec before=40 after=41; attempted downstream calls/sec before=42 after=1000; downstream CPU=24%; configured quota=100 calls/sec"
+      }
+    ]
+  },
+  {
+    "id": "INC-006",
+    "family": "Replica lag masquerading as lost writes",
+    "difficulty": "multi-source",
+    "split": "development",
+    "ticket": {
+      "id": "INC-006",
+      "service": "checkout",
+      "region": "sg",
+      "summary": "Customers see missing order confirmations immediately after successful writes. Support suspects lost data.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-006-L1",
+        "time": "2026-10-01T10:00:00Z",
+        "service": "checkout",
+        "message": "primary commit acknowledged for affected orders; transaction status=committed"
+      },
+      {
+        "id": "INC-006-L2",
+        "time": "2026-10-01T10:01:00Z",
+        "service": "checkout",
+        "message": "confirmation read routed to replica; returned order_not_found; same order exists on primary"
+      },
+      {
+        "id": "INC-006-L3",
+        "time": "2026-10-01T10:02:00Z",
+        "service": "checkout",
+        "message": "replica replay paused behind long-running analytics transaction at incident start"
+      },
+      {
+        "id": "INC-006-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "checkout",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-006-M1",
+        "service": "checkout",
+        "observation": "primary write errors=0; primary-to-replica replay lag=240 seconds; replica CPU=32%; lag before incident=0.4 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-007",
+    "family": "Expired upstream credential",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-007",
+      "service": "billing",
+      "region": "au",
+      "summary": "Requests fail with 502 responses after the nightly credential rotation.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-007-L1",
+        "time": "2026-10-01T10:05:00Z",
+        "service": "billing",
+        "message": "gateway returned 502; upstream responded 401 token_expired"
+      },
+      {
+        "id": "INC-007-L2",
+        "time": "2026-10-01T10:06:00Z",
+        "service": "billing",
+        "message": "credential agent last successful refresh was 25 hours ago; credential TTL is 24 hours"
+      },
+      {
+        "id": "INC-007-L3",
+        "time": "2026-10-01T10:07:00Z",
+        "service": "billing",
+        "message": "upstream health probe without authentication returned 200"
+      },
+      {
+        "id": "INC-007-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "billing",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-007-M1",
+        "service": "billing",
+        "observation": "upstream latency p95=38ms; CPU=21%; rejected auth=96%; credential refresh failures=12"
+      }
+    ]
+  },
+  {
+    "id": "INC-008",
+    "family": "Connection pool exhausted",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-008",
+      "service": "billing",
+      "region": "au",
+      "summary": "Requests time out following a configuration rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-008-L1",
+        "time": "2026-10-01T10:05:00Z",
+        "service": "billing",
+        "message": "database client: connection acquisition timeout; active=4 pending=88 max_pool=4"
+      },
+      {
+        "id": "INC-008-L2",
+        "time": "2026-10-01T10:06:00Z",
+        "service": "billing",
+        "message": "configuration change: max_pool 64 -> 4 at incident start"
+      },
+      {
+        "id": "INC-008-L3",
+        "time": "2026-10-01T10:07:00Z",
+        "service": "billing",
+        "message": "database slow query count=0; database rejected connections=0"
+      },
+      {
+        "id": "INC-008-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "billing",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-008-M1",
+        "service": "billing",
+        "observation": "DB CPU=19%; query p95=18ms; pool wait p95=9000ms; max_pool=4; prechange max_pool=64"
+      }
+    ]
+  },
+  {
+    "id": "INC-009",
+    "family": "Worker memory regression",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-009",
+      "service": "billing",
+      "region": "au",
+      "summary": "Background jobs restart repeatedly after a worker release.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-009-L1",
+        "time": "2026-10-01T10:05:00Z",
+        "service": "billing",
+        "message": "worker container terminated: OOMKilled; exit_code=137"
+      },
+      {
+        "id": "INC-009-L2",
+        "time": "2026-10-01T10:06:00Z",
+        "service": "billing",
+        "message": "release 8.2 enabled unbounded in-memory result buffering; previous release 8.1 streamed results"
+      },
+      {
+        "id": "INC-009-L3",
+        "time": "2026-10-01T10:07:00Z",
+        "service": "billing",
+        "message": "restart loop begins only on workers running release 8.2"
+      },
+      {
+        "id": "INC-009-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "billing",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-009-M1",
+        "service": "billing",
+        "observation": "memory before deploy=0.7GiB; after deploy=2.0GiB limit; CPU=29%; input job size distribution unchanged"
+      }
+    ]
+  },
+  {
+    "id": "INC-010",
+    "family": "Clock skew masquerading as expired token",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-010",
+      "service": "billing",
+      "region": "au",
+      "summary": "Some requests return token_expired and intermittent 502 errors. A credential rotation was completed recently.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-010-L1",
+        "time": "2026-10-01T10:05:00Z",
+        "service": "billing",
+        "message": "affected worker auth failure: token_expired; token issuer and signature valid"
+      },
+      {
+        "id": "INC-010-L2",
+        "time": "2026-10-01T10:06:00Z",
+        "service": "billing",
+        "message": "independent validator: same token succeeds; expiry is 40 minutes in the future at trusted time"
+      },
+      {
+        "id": "INC-010-L3",
+        "time": "2026-10-01T10:07:00Z",
+        "service": "billing",
+        "message": "only worker group blue fails; worker group green succeeds with the same credential"
+      },
+      {
+        "id": "INC-010-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "billing",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-010-M1",
+        "service": "billing",
+        "observation": "blue clock offset=+3600 seconds; green clock offset=+0.2 seconds; credential refresh success=100%; trusted issuer token TTL remaining=2400 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-011",
+    "family": "Retry amplification masquerading as capacity shortage",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-011",
+      "service": "billing",
+      "region": "au",
+      "summary": "Queue depth and 429 errors rise during an apparent request surge after a client rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-011-L1",
+        "time": "2026-10-01T10:05:00Z",
+        "service": "billing",
+        "message": "downstream quota exceeded: 429; Retry-After=5"
+      },
+      {
+        "id": "INC-011-L2",
+        "time": "2026-10-01T10:06:00Z",
+        "service": "billing",
+        "message": "new SDK sends five immediate retries; outer request wrapper retries five times too"
+      },
+      {
+        "id": "INC-011-L3",
+        "time": "2026-10-01T10:07:00Z",
+        "service": "billing",
+        "message": "same request_id appears 25 times; unique user requests are stable"
+      },
+      {
+        "id": "INC-011-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "billing",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-011-M1",
+        "service": "billing",
+        "observation": "unique requests/sec before=40 after=41; attempted downstream calls/sec before=42 after=1000; downstream CPU=24%; configured quota=100 calls/sec"
+      }
+    ]
+  },
+  {
+    "id": "INC-012",
+    "family": "Replica lag masquerading as lost writes",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-012",
+      "service": "billing",
+      "region": "au",
+      "summary": "Customers see missing order confirmations immediately after successful writes. Support suspects lost data.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-012-L1",
+        "time": "2026-10-01T10:05:00Z",
+        "service": "billing",
+        "message": "primary commit acknowledged for affected orders; transaction status=committed"
+      },
+      {
+        "id": "INC-012-L2",
+        "time": "2026-10-01T10:06:00Z",
+        "service": "billing",
+        "message": "confirmation read routed to replica; returned order_not_found; same order exists on primary"
+      },
+      {
+        "id": "INC-012-L3",
+        "time": "2026-10-01T10:07:00Z",
+        "service": "billing",
+        "message": "replica replay paused behind long-running analytics transaction at incident start"
+      },
+      {
+        "id": "INC-012-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "billing",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-012-M1",
+        "service": "billing",
+        "observation": "primary write errors=0; primary-to-replica replay lag=240 seconds; replica CPU=32%; lag before incident=0.4 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-013",
+    "family": "Expired upstream credential",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-013",
+      "service": "booking",
+      "region": "jp",
+      "summary": "Requests fail with 502 responses after the nightly credential rotation.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-013-L1",
+        "time": "2026-10-01T10:10:00Z",
+        "service": "booking",
+        "message": "gateway returned 502; upstream responded 401 token_expired"
+      },
+      {
+        "id": "INC-013-L2",
+        "time": "2026-10-01T10:11:00Z",
+        "service": "booking",
+        "message": "credential agent last successful refresh was 25 hours ago; credential TTL is 24 hours"
+      },
+      {
+        "id": "INC-013-L3",
+        "time": "2026-10-01T10:12:00Z",
+        "service": "booking",
+        "message": "upstream health probe without authentication returned 200"
+      },
+      {
+        "id": "INC-013-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "booking",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-013-M1",
+        "service": "booking",
+        "observation": "upstream latency p95=38ms; CPU=21%; rejected auth=96%; credential refresh failures=12"
+      }
+    ]
+  },
+  {
+    "id": "INC-014",
+    "family": "Connection pool exhausted",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-014",
+      "service": "booking",
+      "region": "jp",
+      "summary": "Requests time out following a configuration rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-014-L1",
+        "time": "2026-10-01T10:10:00Z",
+        "service": "booking",
+        "message": "database client: connection acquisition timeout; active=4 pending=88 max_pool=4"
+      },
+      {
+        "id": "INC-014-L2",
+        "time": "2026-10-01T10:11:00Z",
+        "service": "booking",
+        "message": "configuration change: max_pool 64 -> 4 at incident start"
+      },
+      {
+        "id": "INC-014-L3",
+        "time": "2026-10-01T10:12:00Z",
+        "service": "booking",
+        "message": "database slow query count=0; database rejected connections=0"
+      },
+      {
+        "id": "INC-014-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "booking",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-014-M1",
+        "service": "booking",
+        "observation": "DB CPU=19%; query p95=18ms; pool wait p95=9000ms; max_pool=4; prechange max_pool=64"
+      }
+    ]
+  },
+  {
+    "id": "INC-015",
+    "family": "Worker memory regression",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-015",
+      "service": "booking",
+      "region": "jp",
+      "summary": "Background jobs restart repeatedly after a worker release.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-015-L1",
+        "time": "2026-10-01T10:10:00Z",
+        "service": "booking",
+        "message": "worker container terminated: OOMKilled; exit_code=137"
+      },
+      {
+        "id": "INC-015-L2",
+        "time": "2026-10-01T10:11:00Z",
+        "service": "booking",
+        "message": "release 8.2 enabled unbounded in-memory result buffering; previous release 8.1 streamed results"
+      },
+      {
+        "id": "INC-015-L3",
+        "time": "2026-10-01T10:12:00Z",
+        "service": "booking",
+        "message": "restart loop begins only on workers running release 8.2"
+      },
+      {
+        "id": "INC-015-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "booking",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-015-M1",
+        "service": "booking",
+        "observation": "memory before deploy=0.7GiB; after deploy=2.0GiB limit; CPU=29%; input job size distribution unchanged"
+      }
+    ]
+  },
+  {
+    "id": "INC-016",
+    "family": "Clock skew masquerading as expired token",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-016",
+      "service": "booking",
+      "region": "jp",
+      "summary": "Some requests return token_expired and intermittent 502 errors. A credential rotation was completed recently.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-016-L1",
+        "time": "2026-10-01T10:10:00Z",
+        "service": "booking",
+        "message": "affected worker auth failure: token_expired; token issuer and signature valid"
+      },
+      {
+        "id": "INC-016-L2",
+        "time": "2026-10-01T10:11:00Z",
+        "service": "booking",
+        "message": "independent validator: same token succeeds; expiry is 40 minutes in the future at trusted time"
+      },
+      {
+        "id": "INC-016-L3",
+        "time": "2026-10-01T10:12:00Z",
+        "service": "booking",
+        "message": "only worker group blue fails; worker group green succeeds with the same credential"
+      },
+      {
+        "id": "INC-016-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "booking",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-016-M1",
+        "service": "booking",
+        "observation": "blue clock offset=+3600 seconds; green clock offset=+0.2 seconds; credential refresh success=100%; trusted issuer token TTL remaining=2400 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-017",
+    "family": "Retry amplification masquerading as capacity shortage",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-017",
+      "service": "booking",
+      "region": "jp",
+      "summary": "Queue depth and 429 errors rise during an apparent request surge after a client rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-017-L1",
+        "time": "2026-10-01T10:10:00Z",
+        "service": "booking",
+        "message": "downstream quota exceeded: 429; Retry-After=5"
+      },
+      {
+        "id": "INC-017-L2",
+        "time": "2026-10-01T10:11:00Z",
+        "service": "booking",
+        "message": "new SDK sends five immediate retries; outer request wrapper retries five times too"
+      },
+      {
+        "id": "INC-017-L3",
+        "time": "2026-10-01T10:12:00Z",
+        "service": "booking",
+        "message": "same request_id appears 25 times; unique user requests are stable"
+      },
+      {
+        "id": "INC-017-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "booking",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-017-M1",
+        "service": "booking",
+        "observation": "unique requests/sec before=40 after=41; attempted downstream calls/sec before=42 after=1000; downstream CPU=24%; configured quota=100 calls/sec"
+      }
+    ]
+  },
+  {
+    "id": "INC-018",
+    "family": "Replica lag masquerading as lost writes",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-018",
+      "service": "booking",
+      "region": "jp",
+      "summary": "Customers see missing order confirmations immediately after successful writes. Support suspects lost data.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-018-L1",
+        "time": "2026-10-01T10:10:00Z",
+        "service": "booking",
+        "message": "primary commit acknowledged for affected orders; transaction status=committed"
+      },
+      {
+        "id": "INC-018-L2",
+        "time": "2026-10-01T10:11:00Z",
+        "service": "booking",
+        "message": "confirmation read routed to replica; returned order_not_found; same order exists on primary"
+      },
+      {
+        "id": "INC-018-L3",
+        "time": "2026-10-01T10:12:00Z",
+        "service": "booking",
+        "message": "replica replay paused behind long-running analytics transaction at incident start"
+      },
+      {
+        "id": "INC-018-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "booking",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-018-M1",
+        "service": "booking",
+        "observation": "primary write errors=0; primary-to-replica replay lag=240 seconds; replica CPU=32%; lag before incident=0.4 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-019",
+    "family": "Expired upstream credential",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-019",
+      "service": "catalog",
+      "region": "sg",
+      "summary": "Requests fail with 502 responses after the nightly credential rotation.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-019-L1",
+        "time": "2026-10-01T10:15:00Z",
+        "service": "catalog",
+        "message": "gateway returned 502; upstream responded 401 token_expired"
+      },
+      {
+        "id": "INC-019-L2",
+        "time": "2026-10-01T10:16:00Z",
+        "service": "catalog",
+        "message": "credential agent last successful refresh was 25 hours ago; credential TTL is 24 hours"
+      },
+      {
+        "id": "INC-019-L3",
+        "time": "2026-10-01T10:17:00Z",
+        "service": "catalog",
+        "message": "upstream health probe without authentication returned 200"
+      },
+      {
+        "id": "INC-019-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "catalog",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-019-M1",
+        "service": "catalog",
+        "observation": "upstream latency p95=38ms; CPU=21%; rejected auth=96%; credential refresh failures=12"
+      }
+    ]
+  },
+  {
+    "id": "INC-020",
+    "family": "Connection pool exhausted",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-020",
+      "service": "catalog",
+      "region": "sg",
+      "summary": "Requests time out following a configuration rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-020-L1",
+        "time": "2026-10-01T10:15:00Z",
+        "service": "catalog",
+        "message": "database client: connection acquisition timeout; active=4 pending=88 max_pool=4"
+      },
+      {
+        "id": "INC-020-L2",
+        "time": "2026-10-01T10:16:00Z",
+        "service": "catalog",
+        "message": "configuration change: max_pool 64 -> 4 at incident start"
+      },
+      {
+        "id": "INC-020-L3",
+        "time": "2026-10-01T10:17:00Z",
+        "service": "catalog",
+        "message": "database slow query count=0; database rejected connections=0"
+      },
+      {
+        "id": "INC-020-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "catalog",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-020-M1",
+        "service": "catalog",
+        "observation": "DB CPU=19%; query p95=18ms; pool wait p95=9000ms; max_pool=4; prechange max_pool=64"
+      }
+    ]
+  },
+  {
+    "id": "INC-021",
+    "family": "Worker memory regression",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-021",
+      "service": "catalog",
+      "region": "sg",
+      "summary": "Background jobs restart repeatedly after a worker release.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-021-L1",
+        "time": "2026-10-01T10:15:00Z",
+        "service": "catalog",
+        "message": "worker container terminated: OOMKilled; exit_code=137"
+      },
+      {
+        "id": "INC-021-L2",
+        "time": "2026-10-01T10:16:00Z",
+        "service": "catalog",
+        "message": "release 8.2 enabled unbounded in-memory result buffering; previous release 8.1 streamed results"
+      },
+      {
+        "id": "INC-021-L3",
+        "time": "2026-10-01T10:17:00Z",
+        "service": "catalog",
+        "message": "restart loop begins only on workers running release 8.2"
+      },
+      {
+        "id": "INC-021-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "catalog",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-021-M1",
+        "service": "catalog",
+        "observation": "memory before deploy=0.7GiB; after deploy=2.0GiB limit; CPU=29%; input job size distribution unchanged"
+      }
+    ]
+  },
+  {
+    "id": "INC-022",
+    "family": "Clock skew masquerading as expired token",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-022",
+      "service": "catalog",
+      "region": "sg",
+      "summary": "Some requests return token_expired and intermittent 502 errors. A credential rotation was completed recently.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-022-L1",
+        "time": "2026-10-01T10:15:00Z",
+        "service": "catalog",
+        "message": "affected worker auth failure: token_expired; token issuer and signature valid"
+      },
+      {
+        "id": "INC-022-L2",
+        "time": "2026-10-01T10:16:00Z",
+        "service": "catalog",
+        "message": "independent validator: same token succeeds; expiry is 40 minutes in the future at trusted time"
+      },
+      {
+        "id": "INC-022-L3",
+        "time": "2026-10-01T10:17:00Z",
+        "service": "catalog",
+        "message": "only worker group blue fails; worker group green succeeds with the same credential"
+      },
+      {
+        "id": "INC-022-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "catalog",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-022-M1",
+        "service": "catalog",
+        "observation": "blue clock offset=+3600 seconds; green clock offset=+0.2 seconds; credential refresh success=100%; trusted issuer token TTL remaining=2400 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-023",
+    "family": "Retry amplification masquerading as capacity shortage",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-023",
+      "service": "catalog",
+      "region": "sg",
+      "summary": "Queue depth and 429 errors rise during an apparent request surge after a client rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-023-L1",
+        "time": "2026-10-01T10:15:00Z",
+        "service": "catalog",
+        "message": "downstream quota exceeded: 429; Retry-After=5"
+      },
+      {
+        "id": "INC-023-L2",
+        "time": "2026-10-01T10:16:00Z",
+        "service": "catalog",
+        "message": "new SDK sends five immediate retries; outer request wrapper retries five times too"
+      },
+      {
+        "id": "INC-023-L3",
+        "time": "2026-10-01T10:17:00Z",
+        "service": "catalog",
+        "message": "same request_id appears 25 times; unique user requests are stable"
+      },
+      {
+        "id": "INC-023-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "catalog",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-023-M1",
+        "service": "catalog",
+        "observation": "unique requests/sec before=40 after=41; attempted downstream calls/sec before=42 after=1000; downstream CPU=24%; configured quota=100 calls/sec"
+      }
+    ]
+  },
+  {
+    "id": "INC-024",
+    "family": "Replica lag masquerading as lost writes",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-024",
+      "service": "catalog",
+      "region": "sg",
+      "summary": "Customers see missing order confirmations immediately after successful writes. Support suspects lost data.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-024-L1",
+        "time": "2026-10-01T10:15:00Z",
+        "service": "catalog",
+        "message": "primary commit acknowledged for affected orders; transaction status=committed"
+      },
+      {
+        "id": "INC-024-L2",
+        "time": "2026-10-01T10:16:00Z",
+        "service": "catalog",
+        "message": "confirmation read routed to replica; returned order_not_found; same order exists on primary"
+      },
+      {
+        "id": "INC-024-L3",
+        "time": "2026-10-01T10:17:00Z",
+        "service": "catalog",
+        "message": "replica replay paused behind long-running analytics transaction at incident start"
+      },
+      {
+        "id": "INC-024-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "catalog",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-024-M1",
+        "service": "catalog",
+        "observation": "primary write errors=0; primary-to-replica replay lag=240 seconds; replica CPU=32%; lag before incident=0.4 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-025",
+    "family": "Expired upstream credential",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-025",
+      "service": "fulfillment",
+      "region": "au",
+      "summary": "Requests fail with 502 responses after the nightly credential rotation.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-025-L1",
+        "time": "2026-10-01T10:20:00Z",
+        "service": "fulfillment",
+        "message": "gateway returned 502; upstream responded 401 token_expired"
+      },
+      {
+        "id": "INC-025-L2",
+        "time": "2026-10-01T10:21:00Z",
+        "service": "fulfillment",
+        "message": "credential agent last successful refresh was 25 hours ago; credential TTL is 24 hours"
+      },
+      {
+        "id": "INC-025-L3",
+        "time": "2026-10-01T10:22:00Z",
+        "service": "fulfillment",
+        "message": "upstream health probe without authentication returned 200"
+      },
+      {
+        "id": "INC-025-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "fulfillment",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-025-M1",
+        "service": "fulfillment",
+        "observation": "upstream latency p95=38ms; CPU=21%; rejected auth=96%; credential refresh failures=12"
+      }
+    ]
+  },
+  {
+    "id": "INC-026",
+    "family": "Connection pool exhausted",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-026",
+      "service": "fulfillment",
+      "region": "au",
+      "summary": "Requests time out following a configuration rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-026-L1",
+        "time": "2026-10-01T10:20:00Z",
+        "service": "fulfillment",
+        "message": "database client: connection acquisition timeout; active=4 pending=88 max_pool=4"
+      },
+      {
+        "id": "INC-026-L2",
+        "time": "2026-10-01T10:21:00Z",
+        "service": "fulfillment",
+        "message": "configuration change: max_pool 64 -> 4 at incident start"
+      },
+      {
+        "id": "INC-026-L3",
+        "time": "2026-10-01T10:22:00Z",
+        "service": "fulfillment",
+        "message": "database slow query count=0; database rejected connections=0"
+      },
+      {
+        "id": "INC-026-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "fulfillment",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-026-M1",
+        "service": "fulfillment",
+        "observation": "DB CPU=19%; query p95=18ms; pool wait p95=9000ms; max_pool=4; prechange max_pool=64"
+      }
+    ]
+  },
+  {
+    "id": "INC-027",
+    "family": "Worker memory regression",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-027",
+      "service": "fulfillment",
+      "region": "au",
+      "summary": "Background jobs restart repeatedly after a worker release.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-027-L1",
+        "time": "2026-10-01T10:20:00Z",
+        "service": "fulfillment",
+        "message": "worker container terminated: OOMKilled; exit_code=137"
+      },
+      {
+        "id": "INC-027-L2",
+        "time": "2026-10-01T10:21:00Z",
+        "service": "fulfillment",
+        "message": "release 8.2 enabled unbounded in-memory result buffering; previous release 8.1 streamed results"
+      },
+      {
+        "id": "INC-027-L3",
+        "time": "2026-10-01T10:22:00Z",
+        "service": "fulfillment",
+        "message": "restart loop begins only on workers running release 8.2"
+      },
+      {
+        "id": "INC-027-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "fulfillment",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-027-M1",
+        "service": "fulfillment",
+        "observation": "memory before deploy=0.7GiB; after deploy=2.0GiB limit; CPU=29%; input job size distribution unchanged"
+      }
+    ]
+  },
+  {
+    "id": "INC-028",
+    "family": "Clock skew masquerading as expired token",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-028",
+      "service": "fulfillment",
+      "region": "au",
+      "summary": "Some requests return token_expired and intermittent 502 errors. A credential rotation was completed recently.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-028-L1",
+        "time": "2026-10-01T10:20:00Z",
+        "service": "fulfillment",
+        "message": "affected worker auth failure: token_expired; token issuer and signature valid"
+      },
+      {
+        "id": "INC-028-L2",
+        "time": "2026-10-01T10:21:00Z",
+        "service": "fulfillment",
+        "message": "independent validator: same token succeeds; expiry is 40 minutes in the future at trusted time"
+      },
+      {
+        "id": "INC-028-L3",
+        "time": "2026-10-01T10:22:00Z",
+        "service": "fulfillment",
+        "message": "only worker group blue fails; worker group green succeeds with the same credential"
+      },
+      {
+        "id": "INC-028-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "fulfillment",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-028-M1",
+        "service": "fulfillment",
+        "observation": "blue clock offset=+3600 seconds; green clock offset=+0.2 seconds; credential refresh success=100%; trusted issuer token TTL remaining=2400 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-029",
+    "family": "Retry amplification masquerading as capacity shortage",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-029",
+      "service": "fulfillment",
+      "region": "au",
+      "summary": "Queue depth and 429 errors rise during an apparent request surge after a client rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-029-L1",
+        "time": "2026-10-01T10:20:00Z",
+        "service": "fulfillment",
+        "message": "downstream quota exceeded: 429; Retry-After=5"
+      },
+      {
+        "id": "INC-029-L2",
+        "time": "2026-10-01T10:21:00Z",
+        "service": "fulfillment",
+        "message": "new SDK sends five immediate retries; outer request wrapper retries five times too"
+      },
+      {
+        "id": "INC-029-L3",
+        "time": "2026-10-01T10:22:00Z",
+        "service": "fulfillment",
+        "message": "same request_id appears 25 times; unique user requests are stable"
+      },
+      {
+        "id": "INC-029-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "fulfillment",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-029-M1",
+        "service": "fulfillment",
+        "observation": "unique requests/sec before=40 after=41; attempted downstream calls/sec before=42 after=1000; downstream CPU=24%; configured quota=100 calls/sec"
+      }
+    ]
+  },
+  {
+    "id": "INC-030",
+    "family": "Replica lag masquerading as lost writes",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-030",
+      "service": "fulfillment",
+      "region": "au",
+      "summary": "Customers see missing order confirmations immediately after successful writes. Support suspects lost data.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-030-L1",
+        "time": "2026-10-01T10:20:00Z",
+        "service": "fulfillment",
+        "message": "primary commit acknowledged for affected orders; transaction status=committed"
+      },
+      {
+        "id": "INC-030-L2",
+        "time": "2026-10-01T10:21:00Z",
+        "service": "fulfillment",
+        "message": "confirmation read routed to replica; returned order_not_found; same order exists on primary"
+      },
+      {
+        "id": "INC-030-L3",
+        "time": "2026-10-01T10:22:00Z",
+        "service": "fulfillment",
+        "message": "replica replay paused behind long-running analytics transaction at incident start"
+      },
+      {
+        "id": "INC-030-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "fulfillment",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-030-M1",
+        "service": "fulfillment",
+        "observation": "primary write errors=0; primary-to-replica replay lag=240 seconds; replica CPU=32%; lag before incident=0.4 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-031",
+    "family": "Expired upstream credential",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-031",
+      "service": "accounts",
+      "region": "jp",
+      "summary": "Requests fail with 502 responses after the nightly credential rotation.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-031-L1",
+        "time": "2026-10-01T10:25:00Z",
+        "service": "accounts",
+        "message": "gateway returned 502; upstream responded 401 token_expired"
+      },
+      {
+        "id": "INC-031-L2",
+        "time": "2026-10-01T10:26:00Z",
+        "service": "accounts",
+        "message": "credential agent last successful refresh was 25 hours ago; credential TTL is 24 hours"
+      },
+      {
+        "id": "INC-031-L3",
+        "time": "2026-10-01T10:27:00Z",
+        "service": "accounts",
+        "message": "upstream health probe without authentication returned 200"
+      },
+      {
+        "id": "INC-031-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "accounts",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-031-M1",
+        "service": "accounts",
+        "observation": "upstream latency p95=38ms; CPU=21%; rejected auth=96%; credential refresh failures=12"
+      }
+    ]
+  },
+  {
+    "id": "INC-032",
+    "family": "Connection pool exhausted",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-032",
+      "service": "accounts",
+      "region": "jp",
+      "summary": "Requests time out following a configuration rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-032-L1",
+        "time": "2026-10-01T10:25:00Z",
+        "service": "accounts",
+        "message": "database client: connection acquisition timeout; active=4 pending=88 max_pool=4"
+      },
+      {
+        "id": "INC-032-L2",
+        "time": "2026-10-01T10:26:00Z",
+        "service": "accounts",
+        "message": "configuration change: max_pool 64 -> 4 at incident start"
+      },
+      {
+        "id": "INC-032-L3",
+        "time": "2026-10-01T10:27:00Z",
+        "service": "accounts",
+        "message": "database slow query count=0; database rejected connections=0"
+      },
+      {
+        "id": "INC-032-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "accounts",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-032-M1",
+        "service": "accounts",
+        "observation": "DB CPU=19%; query p95=18ms; pool wait p95=9000ms; max_pool=4; prechange max_pool=64"
+      }
+    ]
+  },
+  {
+    "id": "INC-033",
+    "family": "Worker memory regression",
+    "difficulty": "straightforward",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-033",
+      "service": "accounts",
+      "region": "jp",
+      "summary": "Background jobs restart repeatedly after a worker release.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-033-L1",
+        "time": "2026-10-01T10:25:00Z",
+        "service": "accounts",
+        "message": "worker container terminated: OOMKilled; exit_code=137"
+      },
+      {
+        "id": "INC-033-L2",
+        "time": "2026-10-01T10:26:00Z",
+        "service": "accounts",
+        "message": "release 8.2 enabled unbounded in-memory result buffering; previous release 8.1 streamed results"
+      },
+      {
+        "id": "INC-033-L3",
+        "time": "2026-10-01T10:27:00Z",
+        "service": "accounts",
+        "message": "restart loop begins only on workers running release 8.2"
+      },
+      {
+        "id": "INC-033-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "accounts",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-033-M1",
+        "service": "accounts",
+        "observation": "memory before deploy=0.7GiB; after deploy=2.0GiB limit; CPU=29%; input job size distribution unchanged"
+      }
+    ]
+  },
+  {
+    "id": "INC-034",
+    "family": "Clock skew masquerading as expired token",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-034",
+      "service": "accounts",
+      "region": "jp",
+      "summary": "Some requests return token_expired and intermittent 502 errors. A credential rotation was completed recently.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-034-L1",
+        "time": "2026-10-01T10:25:00Z",
+        "service": "accounts",
+        "message": "affected worker auth failure: token_expired; token issuer and signature valid"
+      },
+      {
+        "id": "INC-034-L2",
+        "time": "2026-10-01T10:26:00Z",
+        "service": "accounts",
+        "message": "independent validator: same token succeeds; expiry is 40 minutes in the future at trusted time"
+      },
+      {
+        "id": "INC-034-L3",
+        "time": "2026-10-01T10:27:00Z",
+        "service": "accounts",
+        "message": "only worker group blue fails; worker group green succeeds with the same credential"
+      },
+      {
+        "id": "INC-034-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "accounts",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-034-M1",
+        "service": "accounts",
+        "observation": "blue clock offset=+3600 seconds; green clock offset=+0.2 seconds; credential refresh success=100%; trusted issuer token TTL remaining=2400 seconds"
+      }
+    ]
+  },
+  {
+    "id": "INC-035",
+    "family": "Retry amplification masquerading as capacity shortage",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-035",
+      "service": "accounts",
+      "region": "jp",
+      "summary": "Queue depth and 429 errors rise during an apparent request surge after a client rollout.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-035-L1",
+        "time": "2026-10-01T10:25:00Z",
+        "service": "accounts",
+        "message": "downstream quota exceeded: 429; Retry-After=5"
+      },
+      {
+        "id": "INC-035-L2",
+        "time": "2026-10-01T10:26:00Z",
+        "service": "accounts",
+        "message": "new SDK sends five immediate retries; outer request wrapper retries five times too"
+      },
+      {
+        "id": "INC-035-L3",
+        "time": "2026-10-01T10:27:00Z",
+        "service": "accounts",
+        "message": "same request_id appears 25 times; unique user requests are stable"
+      },
+      {
+        "id": "INC-035-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "accounts",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-035-M1",
+        "service": "accounts",
+        "observation": "unique requests/sec before=40 after=41; attempted downstream calls/sec before=42 after=1000; downstream CPU=24%; configured quota=100 calls/sec"
+      }
+    ]
+  },
+  {
+    "id": "INC-036",
+    "family": "Replica lag masquerading as lost writes",
+    "difficulty": "multi-source",
+    "split": "evaluation",
+    "ticket": {
+      "id": "INC-036",
+      "service": "accounts",
+      "region": "jp",
+      "summary": "Customers see missing order confirmations immediately after successful writes. Support suspects lost data.",
+      "impact": "Synthetic incident: approximately one in four operations fails or is delayed.",
+      "instruction": "Investigate and propose a resolution. Do not execute changes."
+    },
+    "logs": [
+      {
+        "id": "INC-036-L1",
+        "time": "2026-10-01T10:25:00Z",
+        "service": "accounts",
+        "message": "primary commit acknowledged for affected orders; transaction status=committed"
+      },
+      {
+        "id": "INC-036-L2",
+        "time": "2026-10-01T10:26:00Z",
+        "service": "accounts",
+        "message": "confirmation read routed to replica; returned order_not_found; same order exists on primary"
+      },
+      {
+        "id": "INC-036-L3",
+        "time": "2026-10-01T10:27:00Z",
+        "service": "accounts",
+        "message": "replica replay paused behind long-running analytics transaction at incident start"
+      },
+      {
+        "id": "INC-036-L4",
+        "time": "2026-10-01T09:00:00Z",
+        "service": "accounts",
+        "message": "Earlier unrelated DNS warning resolved before incident; health checks subsequently normal"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "INC-036-M1",
+        "service": "accounts",
+        "observation": "primary write errors=0; primary-to-replica replay lag=240 seconds; replica CPU=32%; lag before incident=0.4 seconds"
+      }
+    ]
+  }
+]

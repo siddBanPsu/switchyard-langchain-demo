@@ -1,0 +1,470 @@
+{
+  "INC-001": {
+    "cause_code": "expired_credential",
+    "action_code": "rotate_credential",
+    "required_evidence": [
+      "INC-001-L1",
+      "INC-001-L2",
+      "INC-001-M1"
+    ],
+    "runbook_id": "RB-01",
+    "root_cause": "The upstream credential expired because the credential refresh agent stopped refreshing it.",
+    "resolution": "Repair the refresh agent, rotate the upstream credential, and reload only affected workers. Verify authenticated requests succeed and refresh resumes.",
+    "avoid": "Scaling replicas does not renew the expired credential."
+  },
+  "INC-002": {
+    "cause_code": "connection_pool_exhaustion",
+    "action_code": "restore_pool_config",
+    "required_evidence": [
+      "INC-002-L1",
+      "INC-002-L2",
+      "INC-002-M1"
+    ],
+    "runbook_id": "RB-02",
+    "root_cause": "A configuration rollout reduced the application database connection pool from 64 to 4, producing a queue inside the application.",
+    "resolution": "Restore the previous pool limit of 64 with a canary. Verify pool wait time and pending requests fall while database connections remain within the approved limit.",
+    "avoid": "Do not increase the database connection limit or scale the database before restoring the erroneous app setting."
+  },
+  "INC-003": {
+    "cause_code": "worker_memory_regression",
+    "action_code": "rollback_worker_release",
+    "required_evidence": [
+      "INC-003-L1",
+      "INC-003-L2",
+      "INC-003-M1"
+    ],
+    "runbook_id": "RB-03",
+    "root_cause": "Release 8.2 introduced unbounded result buffering and exhausts worker memory.",
+    "resolution": "Rollback the worker canary to 8.1, then roll back remaining affected workers. Preserve failed jobs for idempotent replay; verify memory stabilizes and restart count stops growing.",
+    "avoid": "A memory limit increase would mask the regression without bounding buffering."
+  },
+  "INC-004": {
+    "cause_code": "worker_clock_skew",
+    "action_code": "resync_worker_clock",
+    "required_evidence": [
+      "INC-004-L1",
+      "INC-004-L2",
+      "INC-004-M1"
+    ],
+    "runbook_id": "RB-04",
+    "root_cause": "The blue workers are one hour ahead of trusted time and incorrectly reject valid tokens as expired.",
+    "resolution": "Drain the blue workers, restore time synchronization, and verify their offset before rejoining. Test the same valid token on blue and green and monitor auth failures.",
+    "avoid": "Rotating a still-valid token does not fix the clock. Do not disable expiry validation."
+  },
+  "INC-005": {
+    "cause_code": "retry_amplification",
+    "action_code": "disable_nested_retries",
+    "required_evidence": [
+      "INC-005-L1",
+      "INC-005-L2",
+      "INC-005-M1"
+    ],
+    "runbook_id": "RB-05",
+    "root_cause": "Nested immediate retries amplify stable user traffic beyond the downstream quota.",
+    "resolution": "Disable the added SDK retry layer or roll back that client change. Keep one bounded retry policy honoring Retry-After with backoff and jitter; verify attempt rate returns below quota and queue drains.",
+    "avoid": "Adding workers increases attempts and worsens throttling; unique demand did not rise."
+  },
+  "INC-006": {
+    "cause_code": "read_replica_lag",
+    "action_code": "route_consistent_reads_to_primary",
+    "required_evidence": [
+      "INC-006-L1",
+      "INC-006-L2",
+      "INC-006-M1"
+    ],
+    "runbook_id": "RB-06",
+    "root_cause": "The read replica is behind the primary, so immediate confirmation reads miss committed orders.",
+    "resolution": "Temporarily route read-after-write confirmation reads to the primary with capacity checks, then resolve the blocking analytics transaction under the runbook. Verify replica lag recovers before restoring routing.",
+    "avoid": "Do not replay successful writes or restore a backup: this can duplicate orders or discard committed data."
+  },
+  "INC-007": {
+    "cause_code": "expired_credential",
+    "action_code": "rotate_credential",
+    "required_evidence": [
+      "INC-007-L1",
+      "INC-007-L2",
+      "INC-007-M1"
+    ],
+    "runbook_id": "RB-01",
+    "root_cause": "The upstream credential expired because the credential refresh agent stopped refreshing it.",
+    "resolution": "Repair the refresh agent, rotate the upstream credential, and reload only affected workers. Verify authenticated requests succeed and refresh resumes.",
+    "avoid": "Scaling replicas does not renew the expired credential."
+  },
+  "INC-008": {
+    "cause_code": "connection_pool_exhaustion",
+    "action_code": "restore_pool_config",
+    "required_evidence": [
+      "INC-008-L1",
+      "INC-008-L2",
+      "INC-008-M1"
+    ],
+    "runbook_id": "RB-02",
+    "root_cause": "A configuration rollout reduced the application database connection pool from 64 to 4, producing a queue inside the application.",
+    "resolution": "Restore the previous pool limit of 64 with a canary. Verify pool wait time and pending requests fall while database connections remain within the approved limit.",
+    "avoid": "Do not increase the database connection limit or scale the database before restoring the erroneous app setting."
+  },
+  "INC-009": {
+    "cause_code": "worker_memory_regression",
+    "action_code": "rollback_worker_release",
+    "required_evidence": [
+      "INC-009-L1",
+      "INC-009-L2",
+      "INC-009-M1"
+    ],
+    "runbook_id": "RB-03",
+    "root_cause": "Release 8.2 introduced unbounded result buffering and exhausts worker memory.",
+    "resolution": "Rollback the worker canary to 8.1, then roll back remaining affected workers. Preserve failed jobs for idempotent replay; verify memory stabilizes and restart count stops growing.",
+    "avoid": "A memory limit increase would mask the regression without bounding buffering."
+  },
+  "INC-010": {
+    "cause_code": "worker_clock_skew",
+    "action_code": "resync_worker_clock",
+    "required_evidence": [
+      "INC-010-L1",
+      "INC-010-L2",
+      "INC-010-M1"
+    ],
+    "runbook_id": "RB-04",
+    "root_cause": "The blue workers are one hour ahead of trusted time and incorrectly reject valid tokens as expired.",
+    "resolution": "Drain the blue workers, restore time synchronization, and verify their offset before rejoining. Test the same valid token on blue and green and monitor auth failures.",
+    "avoid": "Rotating a still-valid token does not fix the clock. Do not disable expiry validation."
+  },
+  "INC-011": {
+    "cause_code": "retry_amplification",
+    "action_code": "disable_nested_retries",
+    "required_evidence": [
+      "INC-011-L1",
+      "INC-011-L2",
+      "INC-011-M1"
+    ],
+    "runbook_id": "RB-05",
+    "root_cause": "Nested immediate retries amplify stable user traffic beyond the downstream quota.",
+    "resolution": "Disable the added SDK retry layer or roll back that client change. Keep one bounded retry policy honoring Retry-After with backoff and jitter; verify attempt rate returns below quota and queue drains.",
+    "avoid": "Adding workers increases attempts and worsens throttling; unique demand did not rise."
+  },
+  "INC-012": {
+    "cause_code": "read_replica_lag",
+    "action_code": "route_consistent_reads_to_primary",
+    "required_evidence": [
+      "INC-012-L1",
+      "INC-012-L2",
+      "INC-012-M1"
+    ],
+    "runbook_id": "RB-06",
+    "root_cause": "The read replica is behind the primary, so immediate confirmation reads miss committed orders.",
+    "resolution": "Temporarily route read-after-write confirmation reads to the primary with capacity checks, then resolve the blocking analytics transaction under the runbook. Verify replica lag recovers before restoring routing.",
+    "avoid": "Do not replay successful writes or restore a backup: this can duplicate orders or discard committed data."
+  },
+  "INC-013": {
+    "cause_code": "expired_credential",
+    "action_code": "rotate_credential",
+    "required_evidence": [
+      "INC-013-L1",
+      "INC-013-L2",
+      "INC-013-M1"
+    ],
+    "runbook_id": "RB-01",
+    "root_cause": "The upstream credential expired because the credential refresh agent stopped refreshing it.",
+    "resolution": "Repair the refresh agent, rotate the upstream credential, and reload only affected workers. Verify authenticated requests succeed and refresh resumes.",
+    "avoid": "Scaling replicas does not renew the expired credential."
+  },
+  "INC-014": {
+    "cause_code": "connection_pool_exhaustion",
+    "action_code": "restore_pool_config",
+    "required_evidence": [
+      "INC-014-L1",
+      "INC-014-L2",
+      "INC-014-M1"
+    ],
+    "runbook_id": "RB-02",
+    "root_cause": "A configuration rollout reduced the application database connection pool from 64 to 4, producing a queue inside the application.",
+    "resolution": "Restore the previous pool limit of 64 with a canary. Verify pool wait time and pending requests fall while database connections remain within the approved limit.",
+    "avoid": "Do not increase the database connection limit or scale the database before restoring the erroneous app setting."
+  },
+  "INC-015": {
+    "cause_code": "worker_memory_regression",
+    "action_code": "rollback_worker_release",
+    "required_evidence": [
+      "INC-015-L1",
+      "INC-015-L2",
+      "INC-015-M1"
+    ],
+    "runbook_id": "RB-03",
+    "root_cause": "Release 8.2 introduced unbounded result buffering and exhausts worker memory.",
+    "resolution": "Rollback the worker canary to 8.1, then roll back remaining affected workers. Preserve failed jobs for idempotent replay; verify memory stabilizes and restart count stops growing.",
+    "avoid": "A memory limit increase would mask the regression without bounding buffering."
+  },
+  "INC-016": {
+    "cause_code": "worker_clock_skew",
+    "action_code": "resync_worker_clock",
+    "required_evidence": [
+      "INC-016-L1",
+      "INC-016-L2",
+      "INC-016-M1"
+    ],
+    "runbook_id": "RB-04",
+    "root_cause": "The blue workers are one hour ahead of trusted time and incorrectly reject valid tokens as expired.",
+    "resolution": "Drain the blue workers, restore time synchronization, and verify their offset before rejoining. Test the same valid token on blue and green and monitor auth failures.",
+    "avoid": "Rotating a still-valid token does not fix the clock. Do not disable expiry validation."
+  },
+  "INC-017": {
+    "cause_code": "retry_amplification",
+    "action_code": "disable_nested_retries",
+    "required_evidence": [
+      "INC-017-L1",
+      "INC-017-L2",
+      "INC-017-M1"
+    ],
+    "runbook_id": "RB-05",
+    "root_cause": "Nested immediate retries amplify stable user traffic beyond the downstream quota.",
+    "resolution": "Disable the added SDK retry layer or roll back that client change. Keep one bounded retry policy honoring Retry-After with backoff and jitter; verify attempt rate returns below quota and queue drains.",
+    "avoid": "Adding workers increases attempts and worsens throttling; unique demand did not rise."
+  },
+  "INC-018": {
+    "cause_code": "read_replica_lag",
+    "action_code": "route_consistent_reads_to_primary",
+    "required_evidence": [
+      "INC-018-L1",
+      "INC-018-L2",
+      "INC-018-M1"
+    ],
+    "runbook_id": "RB-06",
+    "root_cause": "The read replica is behind the primary, so immediate confirmation reads miss committed orders.",
+    "resolution": "Temporarily route read-after-write confirmation reads to the primary with capacity checks, then resolve the blocking analytics transaction under the runbook. Verify replica lag recovers before restoring routing.",
+    "avoid": "Do not replay successful writes or restore a backup: this can duplicate orders or discard committed data."
+  },
+  "INC-019": {
+    "cause_code": "expired_credential",
+    "action_code": "rotate_credential",
+    "required_evidence": [
+      "INC-019-L1",
+      "INC-019-L2",
+      "INC-019-M1"
+    ],
+    "runbook_id": "RB-01",
+    "root_cause": "The upstream credential expired because the credential refresh agent stopped refreshing it.",
+    "resolution": "Repair the refresh agent, rotate the upstream credential, and reload only affected workers. Verify authenticated requests succeed and refresh resumes.",
+    "avoid": "Scaling replicas does not renew the expired credential."
+  },
+  "INC-020": {
+    "cause_code": "connection_pool_exhaustion",
+    "action_code": "restore_pool_config",
+    "required_evidence": [
+      "INC-020-L1",
+      "INC-020-L2",
+      "INC-020-M1"
+    ],
+    "runbook_id": "RB-02",
+    "root_cause": "A configuration rollout reduced the application database connection pool from 64 to 4, producing a queue inside the application.",
+    "resolution": "Restore the previous pool limit of 64 with a canary. Verify pool wait time and pending requests fall while database connections remain within the approved limit.",
+    "avoid": "Do not increase the database connection limit or scale the database before restoring the erroneous app setting."
+  },
+  "INC-021": {
+    "cause_code": "worker_memory_regression",
+    "action_code": "rollback_worker_release",
+    "required_evidence": [
+      "INC-021-L1",
+      "INC-021-L2",
+      "INC-021-M1"
+    ],
+    "runbook_id": "RB-03",
+    "root_cause": "Release 8.2 introduced unbounded result buffering and exhausts worker memory.",
+    "resolution": "Rollback the worker canary to 8.1, then roll back remaining affected workers. Preserve failed jobs for idempotent replay; verify memory stabilizes and restart count stops growing.",
+    "avoid": "A memory limit increase would mask the regression without bounding buffering."
+  },
+  "INC-022": {
+    "cause_code": "worker_clock_skew",
+    "action_code": "resync_worker_clock",
+    "required_evidence": [
+      "INC-022-L1",
+      "INC-022-L2",
+      "INC-022-M1"
+    ],
+    "runbook_id": "RB-04",
+    "root_cause": "The blue workers are one hour ahead of trusted time and incorrectly reject valid tokens as expired.",
+    "resolution": "Drain the blue workers, restore time synchronization, and verify their offset before rejoining. Test the same valid token on blue and green and monitor auth failures.",
+    "avoid": "Rotating a still-valid token does not fix the clock. Do not disable expiry validation."
+  },
+  "INC-023": {
+    "cause_code": "retry_amplification",
+    "action_code": "disable_nested_retries",
+    "required_evidence": [
+      "INC-023-L1",
+      "INC-023-L2",
+      "INC-023-M1"
+    ],
+    "runbook_id": "RB-05",
+    "root_cause": "Nested immediate retries amplify stable user traffic beyond the downstream quota.",
+    "resolution": "Disable the added SDK retry layer or roll back that client change. Keep one bounded retry policy honoring Retry-After with backoff and jitter; verify attempt rate returns below quota and queue drains.",
+    "avoid": "Adding workers increases attempts and worsens throttling; unique demand did not rise."
+  },
+  "INC-024": {
+    "cause_code": "read_replica_lag",
+    "action_code": "route_consistent_reads_to_primary",
+    "required_evidence": [
+      "INC-024-L1",
+      "INC-024-L2",
+      "INC-024-M1"
+    ],
+    "runbook_id": "RB-06",
+    "root_cause": "The read replica is behind the primary, so immediate confirmation reads miss committed orders.",
+    "resolution": "Temporarily route read-after-write confirmation reads to the primary with capacity checks, then resolve the blocking analytics transaction under the runbook. Verify replica lag recovers before restoring routing.",
+    "avoid": "Do not replay successful writes or restore a backup: this can duplicate orders or discard committed data."
+  },
+  "INC-025": {
+    "cause_code": "expired_credential",
+    "action_code": "rotate_credential",
+    "required_evidence": [
+      "INC-025-L1",
+      "INC-025-L2",
+      "INC-025-M1"
+    ],
+    "runbook_id": "RB-01",
+    "root_cause": "The upstream credential expired because the credential refresh agent stopped refreshing it.",
+    "resolution": "Repair the refresh agent, rotate the upstream credential, and reload only affected workers. Verify authenticated requests succeed and refresh resumes.",
+    "avoid": "Scaling replicas does not renew the expired credential."
+  },
+  "INC-026": {
+    "cause_code": "connection_pool_exhaustion",
+    "action_code": "restore_pool_config",
+    "required_evidence": [
+      "INC-026-L1",
+      "INC-026-L2",
+      "INC-026-M1"
+    ],
+    "runbook_id": "RB-02",
+    "root_cause": "A configuration rollout reduced the application database connection pool from 64 to 4, producing a queue inside the application.",
+    "resolution": "Restore the previous pool limit of 64 with a canary. Verify pool wait time and pending requests fall while database connections remain within the approved limit.",
+    "avoid": "Do not increase the database connection limit or scale the database before restoring the erroneous app setting."
+  },
+  "INC-027": {
+    "cause_code": "worker_memory_regression",
+    "action_code": "rollback_worker_release",
+    "required_evidence": [
+      "INC-027-L1",
+      "INC-027-L2",
+      "INC-027-M1"
+    ],
+    "runbook_id": "RB-03",
+    "root_cause": "Release 8.2 introduced unbounded result buffering and exhausts worker memory.",
+    "resolution": "Rollback the worker canary to 8.1, then roll back remaining affected workers. Preserve failed jobs for idempotent replay; verify memory stabilizes and restart count stops growing.",
+    "avoid": "A memory limit increase would mask the regression without bounding buffering."
+  },
+  "INC-028": {
+    "cause_code": "worker_clock_skew",
+    "action_code": "resync_worker_clock",
+    "required_evidence": [
+      "INC-028-L1",
+      "INC-028-L2",
+      "INC-028-M1"
+    ],
+    "runbook_id": "RB-04",
+    "root_cause": "The blue workers are one hour ahead of trusted time and incorrectly reject valid tokens as expired.",
+    "resolution": "Drain the blue workers, restore time synchronization, and verify their offset before rejoining. Test the same valid token on blue and green and monitor auth failures.",
+    "avoid": "Rotating a still-valid token does not fix the clock. Do not disable expiry validation."
+  },
+  "INC-029": {
+    "cause_code": "retry_amplification",
+    "action_code": "disable_nested_retries",
+    "required_evidence": [
+      "INC-029-L1",
+      "INC-029-L2",
+      "INC-029-M1"
+    ],
+    "runbook_id": "RB-05",
+    "root_cause": "Nested immediate retries amplify stable user traffic beyond the downstream quota.",
+    "resolution": "Disable the added SDK retry layer or roll back that client change. Keep one bounded retry policy honoring Retry-After with backoff and jitter; verify attempt rate returns below quota and queue drains.",
+    "avoid": "Adding workers increases attempts and worsens throttling; unique demand did not rise."
+  },
+  "INC-030": {
+    "cause_code": "read_replica_lag",
+    "action_code": "route_consistent_reads_to_primary",
+    "required_evidence": [
+      "INC-030-L1",
+      "INC-030-L2",
+      "INC-030-M1"
+    ],
+    "runbook_id": "RB-06",
+    "root_cause": "The read replica is behind the primary, so immediate confirmation reads miss committed orders.",
+    "resolution": "Temporarily route read-after-write confirmation reads to the primary with capacity checks, then resolve the blocking analytics transaction under the runbook. Verify replica lag recovers before restoring routing.",
+    "avoid": "Do not replay successful writes or restore a backup: this can duplicate orders or discard committed data."
+  },
+  "INC-031": {
+    "cause_code": "expired_credential",
+    "action_code": "rotate_credential",
+    "required_evidence": [
+      "INC-031-L1",
+      "INC-031-L2",
+      "INC-031-M1"
+    ],
+    "runbook_id": "RB-01",
+    "root_cause": "The upstream credential expired because the credential refresh agent stopped refreshing it.",
+    "resolution": "Repair the refresh agent, rotate the upstream credential, and reload only affected workers. Verify authenticated requests succeed and refresh resumes.",
+    "avoid": "Scaling replicas does not renew the expired credential."
+  },
+  "INC-032": {
+    "cause_code": "connection_pool_exhaustion",
+    "action_code": "restore_pool_config",
+    "required_evidence": [
+      "INC-032-L1",
+      "INC-032-L2",
+      "INC-032-M1"
+    ],
+    "runbook_id": "RB-02",
+    "root_cause": "A configuration rollout reduced the application database connection pool from 64 to 4, producing a queue inside the application.",
+    "resolution": "Restore the previous pool limit of 64 with a canary. Verify pool wait time and pending requests fall while database connections remain within the approved limit.",
+    "avoid": "Do not increase the database connection limit or scale the database before restoring the erroneous app setting."
+  },
+  "INC-033": {
+    "cause_code": "worker_memory_regression",
+    "action_code": "rollback_worker_release",
+    "required_evidence": [
+      "INC-033-L1",
+      "INC-033-L2",
+      "INC-033-M1"
+    ],
+    "runbook_id": "RB-03",
+    "root_cause": "Release 8.2 introduced unbounded result buffering and exhausts worker memory.",
+    "resolution": "Rollback the worker canary to 8.1, then roll back remaining affected workers. Preserve failed jobs for idempotent replay; verify memory stabilizes and restart count stops growing.",
+    "avoid": "A memory limit increase would mask the regression without bounding buffering."
+  },
+  "INC-034": {
+    "cause_code": "worker_clock_skew",
+    "action_code": "resync_worker_clock",
+    "required_evidence": [
+      "INC-034-L1",
+      "INC-034-L2",
+      "INC-034-M1"
+    ],
+    "runbook_id": "RB-04",
+    "root_cause": "The blue workers are one hour ahead of trusted time and incorrectly reject valid tokens as expired.",
+    "resolution": "Drain the blue workers, restore time synchronization, and verify their offset before rejoining. Test the same valid token on blue and green and monitor auth failures.",
+    "avoid": "Rotating a still-valid token does not fix the clock. Do not disable expiry validation."
+  },
+  "INC-035": {
+    "cause_code": "retry_amplification",
+    "action_code": "disable_nested_retries",
+    "required_evidence": [
+      "INC-035-L1",
+      "INC-035-L2",
+      "INC-035-M1"
+    ],
+    "runbook_id": "RB-05",
+    "root_cause": "Nested immediate retries amplify stable user traffic beyond the downstream quota.",
+    "resolution": "Disable the added SDK retry layer or roll back that client change. Keep one bounded retry policy honoring Retry-After with backoff and jitter; verify attempt rate returns below quota and queue drains.",
+    "avoid": "Adding workers increases attempts and worsens throttling; unique demand did not rise."
+  },
+  "INC-036": {
+    "cause_code": "read_replica_lag",
+    "action_code": "route_consistent_reads_to_primary",
+    "required_evidence": [
+      "INC-036-L1",
+      "INC-036-L2",
+      "INC-036-M1"
+    ],
+    "runbook_id": "RB-06",
+    "root_cause": "The read replica is behind the primary, so immediate confirmation reads miss committed orders.",
+    "resolution": "Temporarily route read-after-write confirmation reads to the primary with capacity checks, then resolve the blocking analytics transaction under the runbook. Verify replica lag recovers before restoring routing.",
+    "avoid": "Do not replay successful writes or restore a backup: this can duplicate orders or discard committed data."
+  }
+}
