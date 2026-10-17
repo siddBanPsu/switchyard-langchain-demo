@@ -2,7 +2,7 @@
 
 The selected demo is **Checkout support: Lightning + GPT Sol 6.1**.
 
-[Open the workshop guide](workshops/switchyard-routing/README.md) · [Open the recorded walkthrough](workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/preview.html)
+[Open the Lightning + GPT notebook](workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/demo.ipynb) · [Open the workshop guide](workshops/switchyard-routing/README.md) · [Open the recorded walkthrough](workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/preview.html)
 
 Clone/download the repository and open the HTML locally; GitHub displays its source. Replay requires no API key or Python environment.
 

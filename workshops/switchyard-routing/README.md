@@ -4,7 +4,7 @@ Start with [Checkout support: Lightning + GPT Sol 6.1](examples/checkout-support
 
 | Named example | Open | Role |
 |---|---|---|
-| Checkout support — Lightning + GPT Sol 6.1 | [Walkthrough](examples/checkout-support/lightning-gpt-sol/preview.html) · [Findings](examples/checkout-support/lightning-gpt-sol/README.md) | Selected workshop presentation |
+| Checkout support — Lightning + GPT Sol 6.1 | [Notebook](examples/checkout-support/lightning-gpt-sol/demo.ipynb) · [Walkthrough](examples/checkout-support/lightning-gpt-sol/preview.html) · [Findings](examples/checkout-support/lightning-gpt-sol/README.md) | Selected workshop presentation |
 | Checkout support — Lightning + Super VL | [Walkthrough](examples/checkout-support/lightning-super-vl/preview.html) · [Findings](examples/checkout-support/lightning-super-vl/README.md) | All-NVIDIA comparison |
 | Checkout support — Super VL + GPT Sol 6.1 | [Findings](examples/checkout-support/super-vl-gpt-sol/README.md) | Shows Super VL alone is enough for this fixture |
 | Synthetic incident | [Notebook](examples/synthetic-incident/demo.ipynb) · [Preview](examples/synthetic-incident/preview.html) | Original fallback; defaults to offline rehearsal |
@@ -37,6 +37,8 @@ Open the selected HTML directly for offline presentation. Keep the repository to
 For notebook rehearsal, after installing `requirements.txt` from this folder:
 
 ```sh
+python -m jupyterlab examples/checkout-support/lightning-gpt-sol/demo.ipynb
+# Original synthetic fallback:
 python -m jupyterlab examples/synthetic-incident/demo.ipynb
 # Or the recorded real-data alternative:
 python -m jupyterlab examples/ubuntu-support-handover/demo.ipynb

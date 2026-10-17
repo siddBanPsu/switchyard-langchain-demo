@@ -1,6 +1,6 @@
 {
   "date": "2026-10-17",
-  "selected_demo": "examples/checkout-support/lightning-gpt-sol/preview.html",
+  "selected_demo": "examples/checkout-support/lightning-gpt-sol/demo.ipynb",
   "scope": "Self-contained workshop: selected visual example, two visual comparisons, synthetic fallback, Ubuntu handover alternative and their supporting evidence.",
   "changes": [
     "Named examples under examples/; shared implementation modules under shared/.",
@@ -11,17 +11,17 @@
   ],
   "validation": {
     "packaged_tests": 52,
-    "replay": "All three named notebooks executed offline from their own folders; both checkout HTML replay data/image/raw links verified; both analysis generators rebuilt successfully."
+    "replay": "Four offline notebooks covered by CI, including the selected Lightning/GPT notebook. Selected notebook replay verified without API calls."
   },
   "files_sha256": {
     ".github/workflows/workshop.yml": "0e4cb1d2bcbc540baa2388bd823bfedab93fe7b84068036a0c0f71c0ce6852af",
     ".gitignore": "4cf59b7b46ee99eefc4524e47615a7e356225003ea6728c85adcdbb209c9f277",
-    "README.md": "059f39a7ff3b781d174b9afdb10cb91cf112df77ffa14dc33fcbe07ac3bf556e",
-    "scripts/replay_notebooks.py": "babe58c07e1e19b0a6e82a2eb5e6577fcbf6c54f656b86453a5ec845413346eb",
-    "scripts/verify_publication.py": "e88b2676d9b4846d1c801688dd1f7f167fa26929bf3b3678f6ac96883ba6fe43",
+    "README.md": "bb596323c58849db23a6eab32f6dd9e75c2bf07c8be1122ad710830b9ea8c476",
+    "scripts/replay_notebooks.py": "2f554836e10905c07889b647b0dadf97c4013d9cdeda388b9122df2d439af9e5",
+    "scripts/verify_publication.py": "fccd0fd56250f9ce52d2d463f96c93d947becb07545d7c64bfabd05cbaa02951",
     "workshops/switchyard-routing/.env.example": "5068e847d1926829c51ec76ff8a53acdfe779b03401f806503c8a337e4aa92af",
     "workshops/switchyard-routing/ATTRIBUTION.md": "e1d39bd6c5ca18d76eb63b8d86dbd61575961bc1e9f40ed92a360da3698872fb",
-    "workshops/switchyard-routing/README.md": "410c59d1ff3b88166abf8a21a5d3f6c61edc92abc168fddb4f4d9ddb16615640",
+    "workshops/switchyard-routing/README.md": "f836446e876077fefd9d6c1ccdf5e12a6c9354da9400e2164601a9b32c352fe8",
     "workshops/switchyard-routing/configs/README.md": "eb875d82d00c578bd3ef5c2eb9ba0e34cf33858c7c1211a5d9d3d17a32d2ca6f",
     "workshops/switchyard-routing/configs/model-profiles/nemotron-lightning-gpt-sol.toml": "443ac4bb139fc994505005ae69ad74c95ce9aa5eef16d01bb4c73ef414f667c9",
     "workshops/switchyard-routing/configs/model-profiles/nemotron-lightning-ultra.toml": "c7179d055a5910328542e73846126aa5ac506ced244ad1238567515af367135a",
@@ -90,8 +90,9 @@
     "workshops/switchyard-routing/examples/checkout-support/case.json": "9173b150733c9eec443a49e7c230039ac83d6ecee5b6b74f371a7a36cc9b7184",
     "workshops/switchyard-routing/examples/checkout-support/checkout.png": "dfa6d9b3f21e050c1dc8a43ef14bdfba3a9927ed0a560789f68add38d3fd4861",
     "workshops/switchyard-routing/examples/checkout-support/demo.py": "ee3e76b212ac8099112027e74159350bd21718ab726d7e03d3c1535f3ec062ff",
-    "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/README.md": "49014c6c5a6ba87fba4573054c540b6943308dc9b578ccb26d59b24cf6699c5a",
-    "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/analyze.py": "cd56490d04f9864a02c570b7a6b35e5efda65a88aa3c80fa4b7462f7d3854cab",
+    "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/README.md": "dbd9421f3d18d695efff27fceb72de1939a0d6151125557d67769fd2c0e4c775",
+    "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/analyze.py": "3ccf38bb840543d59b498bee0ee70ebae1c1d2a09a95df88ea44bfa0703620d5",
+    "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/demo.ipynb": "5ad23f3ad2d87d261d761d5624e8ce5e599387b10d7bc3ac73d63dd432aef1dd",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/models.toml": "a18e490255ebbb921ae9387a17fbbb52e1d7a2593d11fea6f32d058f84455029",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/openrouter-prices-2026-10-17.json": "3c94db7e4698d22d031fc3ad09d924f01eb454dafd360d5a97987bd9c96942d9",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/preview.html": "a356b53a3f551b8917ba0f2ab1573a86f53353b2cfdcee8592a22018c94182c4",
@@ -157,5 +158,6 @@
     "workshops/switchyard-routing/tests/test_demo.py": "293aa0f71e00e7838349d100fcf58dd694f77dce5c73f19bf5fd003504bf127a",
     "workshops/switchyard-routing/tests/test_ubuntu_handover.py": "d69821ad0e666f2770c7bb35a4956e6e8ba0701b1637510a3618ad8c26b1016d",
     "workshops/switchyard-routing/tests/test_visual_support.py": "570a040c8e1e1f001cb82b50036183eda921026d1cb1d5464046b3576f481765"
-  }
+  },
+  "html_fallback": "examples/checkout-support/lightning-gpt-sol/preview.html"
 }

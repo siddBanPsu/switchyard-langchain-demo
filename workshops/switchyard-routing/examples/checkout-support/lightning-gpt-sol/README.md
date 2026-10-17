@@ -2,7 +2,7 @@
 
 Fresh matched comparison on 17 October 2026: GPT-only and routed completed **3/3** each. Routing used **85.7% less estimated model spend** with reported caching, and **72.3% less** when all input is repriced at the ordinary input rate. Lightning-only completed 0/3 because it cannot accept the screenshot.
 
-[Open the recorded walkthrough](preview.html). No inference is needed for replay. The original all-NVIDIA walkthrough and synthetic backup are retained.
+[Open the workshop notebook](demo.ipynb) or [recorded walkthrough](preview.html). No inference is needed for replay. The original all-NVIDIA walkthrough and synthetic backup are retained.
 
 | Approach | Accepted | Mean USD/workflow | Cost/accepted, including failures | Median seconds |
 |---|---:|---:|---:|---:|

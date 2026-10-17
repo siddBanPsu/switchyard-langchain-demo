@@ -37,7 +37,7 @@ with (HERE/'summary.csv').open('w') as f:
 print(json.dumps(dict(summary=summary,trials=trials,saving=saving,uncached_saving=uncached_saving),indent=2))
 lines=['# Lightning + GPT Sol 6.1: the same visual checkout example','',
     f'Fresh matched comparison on 17 October 2026: GPT-only and routed completed **3/3** each. Routing used **{saving:.1%} less estimated model spend** with reported caching, and **{uncached_saving:.1%} less** when all input is repriced at the ordinary input rate. Lightning-only completed 0/3 because it cannot accept the screenshot.','',
-    '[Open the recorded walkthrough](preview.html). No inference is needed for replay. The original all-NVIDIA walkthrough and synthetic backup are retained.','',
+    '[Open the workshop notebook](demo.ipynb) or [recorded walkthrough](preview.html). No inference is needed for replay. The original all-NVIDIA walkthrough and synthetic backup are retained.','',
     '| Approach | Accepted | Mean USD/workflow | Cost/accepted, including failures | Median seconds |',
     '|---|---:|---:|---:|---:|']
 for s in summary:
