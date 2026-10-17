@@ -1,0 +1,46 @@
+{
+  "archive/visual-support/super-gpt/run.py": {
+    "c38a818a832ea44f6db2bcb6a006fb40d7e52cc8c2c59f6c98ee257b7968cc29": "evidence/measured-sources/c38a818a832ea44f6db2bcb6a006fb40d7e52cc8c2c59f6c98ee257b7968cc29.py"
+  },
+  "archive/visual-support/workflow.py": {
+    "bc5bce9bba0b98ef9e81796743e86ddc3d878040a82a10e94f551f0b9eaabb4b": "evidence/measured-sources/bc5bce9bba0b98ef9e81796743e86ddc3d878040a82a10e94f551f0b9eaabb4b.py",
+    "9f167f64232c624d5c249ca88965adf31c8d44fde1986c12ab4fd675e34c5463": "evidence/measured-sources/9f167f64232c624d5c249ca88965adf31c8d44fde1986c12ab4fd675e34c5463.py"
+  },
+  "archive/visual-support/demo.py": {
+    "d1b7d2f36b38d3e9243ef5a0bf3b186d0bfbf17b22fa97555733ba9d1a91518c": "evidence/measured-sources/d1b7d2f36b38d3e9243ef5a0bf3b186d0bfbf17b22fa97555733ba9d1a91518c.py",
+    "b025f22ed0cc2929d7cbcc95c7f3d9069bf93cd9dff4dc92b0bdc5b76dac6372": "evidence/measured-sources/b025f22ed0cc2929d7cbcc95c7f3d9069bf93cd9dff4dc92b0bdc5b76dac6372.py"
+  },
+  "archive/visual-support/super-gpt/models.toml": {
+    "ffcd3cd1fc3cadc36a7db022e3f3e0ee50517af24e163a6240d2008302baacd1": "evidence/measured-sources/ffcd3cd1fc3cadc36a7db022e3f3e0ee50517af24e163a6240d2008302baacd1.toml"
+  },
+  "archive/visual-support/super-gpt/prices.json": {
+    "2519be026d93e99d2455663e1b3ed5e14b2afcd0aa7b3cab81628867c8b82c88": "evidence/measured-sources/2519be026d93e99d2455663e1b3ed5e14b2afcd0aa7b3cab81628867c8b82c88.json"
+  },
+  "archive/visual-support/super-gpt/openrouter-prices-2026-10-17.json": {
+    "6c2887142750e2e8fb2f5fd24f121b42787305ce139c4162cacf9bae5213f1f3": "evidence/measured-sources/6c2887142750e2e8fb2f5fd24f121b42787305ce139c4162cacf9bae5213f1f3.json"
+  },
+  "archive/visual-support/case.json": {
+    "9173b150733c9eec443a49e7c230039ac83d6ecee5b6b74f371a7a36cc9b7184": "evidence/measured-sources/9173b150733c9eec443a49e7c230039ac83d6ecee5b6b74f371a7a36cc9b7184.json"
+  },
+  "archive/visual-support/checkout.png": {
+    "dfa6d9b3f21e050c1dc8a43ef14bdfba3a9927ed0a560789f68add38d3fd4861": "evidence/measured-sources/dfa6d9b3f21e050c1dc8a43ef14bdfba3a9927ed0a560789f68add38d3fd4861.png"
+  },
+  "archive/visual-support/prices.json": {
+    "9edbb307e7be76870fd093b6b1ca7e166121185e4604bc288615472a4d4cb134": "evidence/measured-sources/9edbb307e7be76870fd093b6b1ca7e166121185e4604bc288615472a4d4cb134.json"
+  },
+  "archive/visual-support/openrouter-prices-2026-10-17.json": {
+    "a1bfd40136613c2db8f3e7fff6a4016232296db616ae7859120722c91b35096c": "evidence/measured-sources/a1bfd40136613c2db8f3e7fff6a4016232296db616ae7859120722c91b35096c.json"
+  },
+  "archive/visual-support/gpt-sol/models.toml": {
+    "a18e490255ebbb921ae9387a17fbbb52e1d7a2593d11fea6f32d058f84455029": "evidence/measured-sources/a18e490255ebbb921ae9387a17fbbb52e1d7a2593d11fea6f32d058f84455029.toml"
+  },
+  "archive/visual-support/gpt-sol/prices.json": {
+    "a27735e4f8bf6fe8eea4d2daf4fcf91f8142d1dce370cf6cd091a3948c659187": "evidence/measured-sources/a27735e4f8bf6fe8eea4d2daf4fcf91f8142d1dce370cf6cd091a3948c659187.json"
+  },
+  "archive/visual-support/gpt-sol/openrouter-prices-2026-10-17.json": {
+    "3c94db7e4698d22d031fc3ad09d924f01eb454dafd360d5a97987bd9c96942d9": "evidence/measured-sources/3c94db7e4698d22d031fc3ad09d924f01eb454dafd360d5a97987bd9c96942d9.json"
+  },
+  "archive/visual-support/models.toml": {
+    "66e7bb5304009cd35846205cc14afe2c08ae868d20f781702f70b41919cacfcd": "evidence/measured-sources/66e7bb5304009cd35846205cc14afe2c08ae868d20f781702f70b41919cacfcd.toml"
+  }
+}

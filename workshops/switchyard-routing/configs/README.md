@@ -22,7 +22,7 @@ The Intelligence Index's average $0.30 per task is not a fee for this handover t
 Nano and capable-model prices remain separate entries with their previous scenario values.
 
 ```sh
-.venv/bin/python ubuntu_handover_demo.py \
+.venv/bin/python shared/ubuntu_handover_demo.py \
   --profile configs/model-profiles/nemotron-super-vl-gpt-sol.toml \
   --repeats 3 --phase super-vl-comparison --allow-paid-calls
 ```

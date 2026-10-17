@@ -1,22 +1,41 @@
-# Switchyard workshop examples
+# Switchyard workshop
 
-Start with the [self-contained workshop package](workshops/switchyard-routing/README.md).
+The selected demo is **Checkout support: Lightning + GPT Sol 6.1**.
 
-**Selected demo:** [Lightning + GPT Sol 6.1 checkout support](workshops/switchyard-routing/archive/visual-support/gpt-sol/preview.html). Download/clone the repository and open the HTML locally for recorded replay. GitHub's file viewer shows HTML source.
+[Open the workshop guide](workshops/switchyard-routing/README.md) · [Open the recorded walkthrough](workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/preview.html)
 
-The package includes the original synthetic fallback, a real Ubuntu support-handover alternative, model comparisons, source evidence, price snapshots, notebooks, pinned dependencies and tests. Replay requires no API key. Live runs require your own compatible gateway and explicit paid-call opt-in.
+Clone/download the repository and open the HTML locally; GitHub displays its source. Replay requires no API key or Python environment.
+
+```text
+workshops/switchyard-routing/
+  examples/
+    checkout-support/
+      lightning-gpt-sol/          selected workshop example
+      lightning-super-vl/         all-NVIDIA comparison
+      super-vl-gpt-sol/           alternative comparison
+    synthetic-incident/          original fallback
+    ubuntu-support-handover/      real conversation alternative
+  shared/                        common Python modules
+  configs/                       model and pricing settings
+  data/                          source fixtures and attribution
+  recordings/                    pinned comparison evidence
+  evidence/                      immutable measured-source snapshots
+  tests/                         offline and mock-endpoint checks
+scripts/                         publication checks
+```
+
+From the workshop folder, install pinned dependencies with Python 3.12:
 
 ```sh
-git clone https://github.com/siddBanPsu/switchyard-langchain-demo.git
-cd switchyard-langchain-demo/workshops/switchyard-routing
+cd workshops/switchyard-routing
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m pytest tests -q
+python -m pytest -q
 ```
 
-For a browser-only presentation, no Python installation is needed. From the repository root, `python3 -m http.server 8000 --bind 127.0.0.1` also serves the walkthrough and evidence links locally.
+Live inference requires your own compatible gateway and explicit paid-call opt-in. Copy the workshop's `.env.example` to `.env`; keys and private endpoint values are excluded from Git. Configured model IDs are gateway aliases and may need adjustment for your provider.
 
-No credentials or private gateway URL are supplied. Use the workshop's `.env.example` as a template; keep your `.env` local. Configured model IDs are gateway aliases and may need adjustment for your provider. Reference token prices are historical estimates, not billing guarantees.
+The local-only `local-research/` directory retains previous experiments and the original synthetic backup. It is ignored by Git and is not required by any workshop example. Generated live results go to ignored `runs/` folders; committed `recordings/` hold the pinned evidence.
 
 [Data attribution](workshops/switchyard-routing/ATTRIBUTION.md) · [Publication verification](scripts/verify_publication.py)

@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-path=Path(__file__).resolve().parents[1]/'archive/visual-support/demo.py'
+path=Path(__file__).resolve().parents[1]/'examples/checkout-support/demo.py'
 spec=importlib.util.spec_from_file_location('visual_support_demo',path)
 demo=importlib.util.module_from_spec(spec);sys.modules[spec.name]=demo;spec.loader.exec_module(demo)
 
@@ -42,7 +42,7 @@ def test_text_only_image_request_is_blocked_before_network(monkeypatch):
 
 
 def test_openrouter_price_scale_and_cache_accounting():
-    rates=json.loads((demo.HERE/'prices.json').read_text())['rates']
+    rates=json.loads((demo.DEFAULT_PROFILE/'prices.json').read_text())['rates']
     assert rates[demo.SUPER]['input_per_million']==pytest.approx(.15)
     assert rates[demo.SUPER]['output_per_million']==pytest.approx(.50)
     assert rates[demo.SUPER]['cached_input_per_million']==pytest.approx(.02)

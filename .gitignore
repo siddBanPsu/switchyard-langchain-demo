@@ -15,3 +15,6 @@ __pycache__/
 *.local.toml
 # Curated recordings are committed; newly generated calls stay local.
 **/runs/**
+
+# Private original research workspace and credentials
+local-research/

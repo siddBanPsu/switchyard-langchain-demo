@@ -7,3 +7,5 @@ The Ubuntu examples use the [Ubuntu Chat Logs Corpus](https://www.convokit.corne
 OpenRouter model metadata and price snapshots are retained as dated reference evidence, with source URLs in each snapshot. Inference used a separately configured gateway; estimates do not represent its invoices.
 
 Published notebooks have outputs cleared and paid calls/tracing disabled by default. Raw comparison recordings retain model responses, usage and prompts; private endpoint values and local workspace paths have been redacted where present. Recorded source hashes refer to the original measured source versions; packaged source changes and redactions are documented in `publication-manifest.json`. Historical and unfavorable checkout trials are retained separately from the final comparisons and are not pooled.
+
+The repository was reorganized after measurement. `evidence/source-map.json` resolves the original recording paths and hashes to immutable measured-source files. Runnable implementations now live under `shared/` and `examples/`; use their documented commands. Local original backups and research are excluded from Git.

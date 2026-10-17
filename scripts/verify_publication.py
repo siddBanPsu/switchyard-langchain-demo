@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib
 import json
 import re
+import subprocess
 
 ROOT=Path(__file__).resolve().parents[1]
 PACKAGE=ROOT/'workshops/switchyard-routing'
@@ -11,8 +12,10 @@ PATTERNS=[re.compile(rb'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
     re.compile(rb'\bsk-(?:proj-|ant-)?[A-Za-z0-9_\-]{24,}'),
     re.compile(rb'\bAKIA[0-9A-Z]{16}\b')]
 errors=[];count=0
-for p in ROOT.rglob('*'):
-    if not p.is_file() or any(x in p.parts for x in ['.git','.venv','__pycache__','.pytest_cache']):continue
+names=subprocess.check_output(['git','-C',str(ROOT),'ls-files','--cached','--others','--exclude-standard','-z']).decode().split('\0')
+for name in sorted(set(filter(None,names))):
+    p=ROOT/name
+    if not p.is_file():continue
     rel=p.relative_to(ROOT);data=p.read_bytes();count+=1
     if (p.name=='.env' or p.name.startswith('.env.')) and p.name!='.env.example':errors.append(f'Credential file: {rel}')
     if p.suffix in ['.pem','.key','.p12','.pfx']:errors.append(f'Key file: {rel}')
@@ -26,7 +29,7 @@ for p in ROOT.rglob('*'):
             source=''.join(c['source'])
             if re.search(r'^(?:ALLOW_PAID_CALLS|ENABLE_LANGSMITH)\s*=\s*True',source,re.M):errors.append(f'Online default: {rel}')
 # Keep all recorded walkthrough assets available without the research workspace.
-for name in ['archive/visual-support/gpt-sol/preview.html','archive/visual-support/checkout.png','incident_routing_demo.ipynb','incident_routing_l200_preview.html','ubuntu_handover_super_vl.ipynb']:
+for name in ['examples/checkout-support/lightning-gpt-sol/preview.html','examples/checkout-support/checkout.png','examples/synthetic-incident/demo.ipynb','examples/synthetic-incident/preview.html','examples/ubuntu-support-handover/demo.ipynb']:
     if not (PACKAGE/name).is_file():errors.append(f'Missing workshop asset: {name}')
 manifest=PACKAGE/'publication-manifest.json'
 if manifest.exists():

@@ -12,3 +12,4 @@ jobs:
       - run: python -m pip install -r workshops/switchyard-routing/requirements.txt
       - run: python -m pytest tests -q
         working-directory: workshops/switchyard-routing
+      - run: python scripts/replay_notebooks.py

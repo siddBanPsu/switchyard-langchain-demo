@@ -1,0 +1,16 @@
+profile_version = 1
+name = "Lightning text + GPT Sol 6.1 vision and validation fallback"
+
+[client]
+base_url_env = "NVIDIA_BASE_URL"
+api_key_env = "NVIDIA_API_KEY"
+
+[roles.efficient]
+model_id = "nvidia/nvidia/nemotron-3.5-lightning"
+
+[roles.capable]
+model_id = "openai/openai/gpt-6.1-sol"
+
+[routing]
+profile = "header-routing"
+header = "x-switchyard-tier"

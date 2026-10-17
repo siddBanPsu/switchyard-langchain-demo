@@ -1,0 +1,302 @@
+{
+  "id": "VISUAL-CHECKOUT-42",
+  "synthetic_data": true,
+  "title": "Checkout says failed, but the payment settled",
+  "ticket": "My checkout said payment failed. My bank shows a charge. I attached the screenshot. Should I press the payment button again? Please explain the mismatch and what support should check next.",
+  "logs": [
+    {
+      "id": "LOG-01",
+      "ts": "2026-10-17T09:12:00Z",
+      "order_id": "QF-2000",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-02",
+      "ts": "2026-10-17T09:12:01Z",
+      "order_id": "QF-2001",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-03",
+      "ts": "2026-10-17T09:12:02Z",
+      "order_id": "QF-2002",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-04",
+      "ts": "2026-10-17T09:12:03Z",
+      "order_id": "QF-2003",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-05",
+      "ts": "2026-10-17T09:12:04Z",
+      "order_id": "QF-2004",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-06",
+      "ts": "2026-10-17T09:12:05Z",
+      "order_id": "QF-2005",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-07",
+      "ts": "2026-10-17T09:12:06Z",
+      "order_id": "QF-2006",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-08",
+      "ts": "2026-10-17T09:12:07Z",
+      "order_id": "QF-2007",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-09",
+      "ts": "2026-10-17T09:12:08Z",
+      "order_id": "QF-2008",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-10",
+      "ts": "2026-10-17T09:12:09Z",
+      "order_id": "QF-2009",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-11",
+      "ts": "2026-10-17T09:12:10Z",
+      "order_id": "QF-2010",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-12",
+      "ts": "2026-10-17T09:12:11Z",
+      "order_id": "QF-2011",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-13",
+      "ts": "2026-10-17T09:12:12Z",
+      "order_id": "QF-2012",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-14",
+      "ts": "2026-10-17T09:12:13Z",
+      "order_id": "QF-2013",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-15",
+      "ts": "2026-10-17T09:12:14Z",
+      "order_id": "QF-2014",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-16",
+      "ts": "2026-10-17T09:12:15Z",
+      "order_id": "QF-2015",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-17",
+      "ts": "2026-10-17T09:12:16Z",
+      "order_id": "QF-2016",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-18",
+      "ts": "2026-10-17T09:12:17Z",
+      "order_id": "QF-2017",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-19",
+      "ts": "2026-10-17T09:12:18Z",
+      "order_id": "QF-2018",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-20",
+      "ts": "2026-10-17T09:12:19Z",
+      "order_id": "QF-2019",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-21",
+      "ts": "2026-10-17T09:12:20Z",
+      "order_id": "QF-2020",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-22",
+      "ts": "2026-10-17T09:12:21Z",
+      "order_id": "QF-2021",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-23",
+      "ts": "2026-10-17T09:12:22Z",
+      "order_id": "QF-2022",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-24",
+      "ts": "2026-10-17T09:12:23Z",
+      "order_id": "QF-2023",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-25",
+      "ts": "2026-10-17T09:12:24Z",
+      "order_id": "QF-2024",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-26",
+      "ts": "2026-10-17T09:12:25Z",
+      "order_id": "QF-2025",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-27",
+      "ts": "2026-10-17T09:12:26Z",
+      "order_id": "QF-2026",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-28",
+      "ts": "2026-10-17T09:12:27Z",
+      "order_id": "QF-2027",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-29",
+      "ts": "2026-10-17T09:12:28Z",
+      "order_id": "QF-2028",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-30",
+      "ts": "2026-10-17T09:12:29Z",
+      "order_id": "QF-2029",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-31",
+      "ts": "2026-10-17T09:12:30Z",
+      "order_id": "QF-2030",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "LOG-32",
+      "ts": "2026-10-17T09:12:31Z",
+      "order_id": "QF-2031",
+      "event": "order.status.read",
+      "status": 200
+    },
+    {
+      "id": "PAY-INIT",
+      "ts": "2026-10-17T09:12:40Z",
+      "order_id": "QF-1042",
+      "event": "payment.create",
+      "attempt_id": "att-42",
+      "idempotency_key": "checkout-QF-1042-v1"
+    },
+    {
+      "id": "PAY-CAPTURE",
+      "ts": "2026-10-17T09:12:41Z",
+      "order_id": "QF-1042",
+      "event": "payment.capture.succeeded",
+      "capture_id": "cap-42",
+      "amount_cents": 11870,
+      "currency": "SGD"
+    },
+    {
+      "id": "PAY-REPLAY",
+      "ts": "2026-10-17T09:12:42Z",
+      "order_id": "QF-1042",
+      "event": "webhook.redelivered",
+      "capture_id": "cap-42",
+      "same_financial_object": true
+    },
+    {
+      "id": "ORDER-PAID",
+      "ts": "2026-10-17T09:12:43Z",
+      "order_id": "QF-1042",
+      "event": "order.status.updated",
+      "state": "paid"
+    },
+    {
+      "id": "CONFIRM-504",
+      "ts": "2026-10-17T09:12:44Z",
+      "order_id": "QF-1042",
+      "event": "frontend.confirmation.fetch",
+      "status": 504,
+      "retry_ui_shown": true
+    }
+  ],
+  "payment": {
+    "order_id": "QF-1042",
+    "settled_captures": [
+      {
+        "id": "cap-42",
+        "amount_cents": 11870,
+        "currency": "SGD"
+      }
+    ],
+    "order_state": "paid",
+    "new_charge_executed": false
+  },
+  "runbook": {
+    "id": "RB-PAY-07",
+    "title": "Successful capture with failed confirmation screen",
+    "guidance": "Check the authoritative capture and order state before allowing another payment. Count unique capture IDs; webhook redelivery is not a new charge. If one capture exists and the order is paid, do not initiate another payment or claim a refund is required. The confirmation error explains the display mismatch, but does not establish every underlying network cause. Ask support to refresh/reconcile the order status against the capture and inspect the confirmation endpoint. A proposed check is not an executed fix. Never promise a bank or refund completion time.",
+    "action_code": "reconcile_order_status"
+  },
+  "expected": {
+    "order_id": "QF-1042",
+    "amount_cents": 11870,
+    "ui_status": "failed",
+    "ui_claim_no_charge": true,
+    "button_label": "Pay again",
+    "backend_status": "paid",
+    "settled_capture_count": 1,
+    "do_not_pay_again": true,
+    "action": "reconcile_order_status",
+    "runbook_id": "RB-PAY-07"
+  }
+}

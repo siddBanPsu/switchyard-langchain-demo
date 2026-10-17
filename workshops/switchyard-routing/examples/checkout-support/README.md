@@ -1,0 +1,11 @@
+# Checkout support
+
+Shared synthetic incident: the checkout screen says payment failed, while the backend shows one captured payment and a paid order.
+
+- [Lightning + GPT Sol 6.1](lightning-gpt-sol/README.md): selected workshop example; [recorded walkthrough](lightning-gpt-sol/preview.html).
+- [Lightning + Super VL](lightning-super-vl/README.md): all-NVIDIA comparison; [recorded walkthrough](lightning-super-vl/preview.html).
+- [Super VL + GPT Sol 6.1](super-vl-gpt-sol/README.md): both models handle the image; Super alone was cheaper with the same observed acceptance.
+
+`workflow.py` runs the fixed three-stage comparison. `demo.py` provides native Switchyard dispatch and validation. `case.json` and `checkout.png` are shared evidence. Each named variant has its own TOML, prices and recorded findings. Historical agent prototypes remain in `versions/`; they are not the workshop entry point.
+
+[Workshop guide](../../README.md)
