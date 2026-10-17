@@ -104,7 +104,7 @@ class Engine:
             for name,model in [('strong',self.strong),('weak',self.light)]}
         self.profile=HeaderRoutingConfig(strong=targets['strong'],weak=targets['weak'],header=self.config['routing']['header']).build()
 
-    async def call(self,messages,*,tools=None,kind='agent',max_tokens=1600,validation_failed=False):
+    async def call(self,messages,*,tools=None,kind='agent',max_tokens=1600,validation_failed=False,selected_tier=None,response_format=None):
         body=dict(model='auto',messages=messages,temperature=0,max_tokens=max_tokens,stream=False)
         if tools:
             body['tools']=tools
@@ -112,7 +112,9 @@ class Engine:
                 body['tool_choice']={'type':'function','function':{'name':tools[0]['function']['name']}}
                 body['parallel_tool_calls']=False
             else:body['tool_choice']='required'
-        selected=tier_for(self.arm,body,validation_failed)
+        if response_format is not None:body['response_format']=response_format
+        selected=selected_tier or tier_for(self.arm,body,validation_failed)
+        if selected not in ('weak','strong'):raise ValueError('Unknown tier')
         model=self.strong if selected=='strong' else self.light
         if model.startswith('openai/'):
             body.pop('temperature')

@@ -61,8 +61,8 @@ async def json_stage(engine,system,user,kind,validate,max_tokens=700):
     raise ValueError('StageValidationFailed:'+kind)
 
 
-async def run(arm,profile_dir=None):
-    engine=demo.Engine(arm,profile_dir=profile_dir);case=demo.load_case();events=[];seen=set();report=None;error=None;stages=[]
+async def run(arm,profile_dir=None,engine_factory=demo.Engine,backend_prompt=BACKEND_PROMPT):
+    engine=engine_factory(arm,profile_dir=profile_dir);case=demo.load_case();events=[];seen=set();report=None;error=None;stages=[]
     start=time.perf_counter()
     try:
         context=dict(logs={'id':'LOGS-1','records':case['logs']},payment={'id':'PAYMENT-STATE',**case['payment']})
@@ -70,7 +70,7 @@ async def run(arm,profile_dir=None):
         seen.update(['LOGS-1','PAYMENT-STATE']);seen.update(e['id'] for e in case['logs'])
         expected=backend_expected(case)
         print(' ',arm,'→ analyze backend text',flush=True)
-        backend,attempts=await json_stage(engine,BACKEND_PROMPT,dict(role='user',content=json.dumps(context)),
+        backend,attempts=await json_stage(engine,backend_prompt,dict(role='user',content=json.dumps(context)),
             'backend_text',lambda value:[k for k,v in expected.items() if value.get(k)!=v])
         stages.append(dict(stage='backend_text',attempts=attempts))
         print(' ',arm,'→ inspect actual screenshot',flush=True)
@@ -92,7 +92,7 @@ async def run(arm,profile_dir=None):
     complete=bool(engine.calls) and all(c['cost_usd'] is not None for c in engine.calls)
     return dict(arm=arm,report=report,passed=score['passed'] and error is None,checks=score['checks'],
         customer_reply=demo.render_reply(report) if report and score['passed'] else None,
-        error_type=error,stages=stages,calls=engine.calls,blocked_requests=engine.blocked,tool_events=events,
+        error_type=error,stages=stages,judge_decisions=getattr(engine,"decisions",[]),calls=engine.calls,blocked_requests=engine.blocked,tool_events=events,
         elapsed_seconds=time.perf_counter()-start,cost_complete=complete,
         cost_usd=sum(c['cost_usd'] for c in engine.calls) if complete else None)
 

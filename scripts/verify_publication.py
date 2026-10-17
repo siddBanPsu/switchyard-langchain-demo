@@ -29,7 +29,7 @@ for name in sorted(set(filter(None,names))):
             source=''.join(c['source'])
             if re.search(r'^(?:ALLOW_PAID_CALLS|ENABLE_LANGSMITH)\s*=\s*True',source,re.M):errors.append(f'Online default: {rel}')
 # Keep all recorded walkthrough assets available without the research workspace.
-for name in ['examples/checkout-support/lightning-gpt-sol/demo.ipynb','examples/checkout-support/lightning-gpt-sol/preview.html','examples/checkout-support/checkout.png','examples/synthetic-incident/demo.ipynb','examples/synthetic-incident/preview.html','examples/ubuntu-support-handover/demo.ipynb']:
+for name in ['examples/checkout-support/lightning-gpt-sol-judge/demo.ipynb','examples/checkout-support/lightning-gpt-sol/demo.ipynb','examples/checkout-support/lightning-gpt-sol/preview.html','examples/checkout-support/checkout.png','examples/synthetic-incident/demo.ipynb','examples/synthetic-incident/preview.html','examples/ubuntu-support-handover/demo.ipynb']:
     if not (PACKAGE/name).is_file():errors.append(f'Missing workshop asset: {name}')
 manifest=PACKAGE/'publication-manifest.json'
 if manifest.exists():

@@ -1,0 +1,4 @@
+arm,approach,accepted,attempts,mean_usd_no_cache,per_accepted_usd_no_cache,median_seconds,judge_calls,executor_calls,mean_usd_reported_cache
+super_only,GPT Sol 6.1 only,3,3,0.01041933333333333,0.01041933333333333,10.344279667013325,0,9,0.006002833333333333
+lightning_only,Lightning only,0,3,0.00020739,,1.169814124936238,0,3,0.00020739
+routed,Lightning judge + routed executors,3,3,0.003246266666666667,0.003246266666666667,8.105430042021908,9,9,0.0012607666666666667
