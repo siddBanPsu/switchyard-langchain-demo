@@ -1,4 +1,4 @@
 arm,approach,accepted,attempts,mean_usd_no_cache,per_accepted_usd_no_cache,median_seconds,judge_calls,executor_calls,mean_usd_reported_cache
-super_only,Super VL only,1,1,0.00078235,0.00078235,3.558245791005902,0,3,0.00078235
-lightning_only,Lightning only,0,1,0.00020739,,1.1898340829648077,0,1,0.00020739
-routed,Lightning judge + routed executors,0,1,0.0004905,,3.1164962080074474,2,1,0.0004905
+super_only,Super VL only,1,1,0.00078385,0.00078385,4.829439750057645,0,3,0.00078385
+lightning_only,Lightning only,0,1,0.00020739,,1.160236791940406,0,1,0.00020739
+routed,Lightning judge + routed executors,1,1,0.00084578,0.00084578,7.368302625021897,3,3,0.00084578

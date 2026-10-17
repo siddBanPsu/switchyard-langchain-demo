@@ -5,7 +5,7 @@
 | Named example | Open | Role |
 |---|---|---|
 | Lightning judge + Lightning/GPT Sol executors | [Notebook](examples/checkout-support/lightning-gpt-sol-judge/demo.ipynb) · [Results](examples/checkout-support/lightning-gpt-sol-judge/README.md) | Selected workshop presentation |
-| Lightning judge + Lightning/Super VL executors | [Notebook](examples/checkout-support/lightning-super-vl-judge/demo.ipynb) · [Results](examples/checkout-support/lightning-super-vl-judge/README.md) | One attempt per approach; routed attempt failed |
+| Lightning judge + Lightning/Super VL executors | [Notebook](examples/checkout-support/lightning-super-vl-judge/demo.ipynb) · [Results](examples/checkout-support/lightning-super-vl-judge/README.md) | Stronger prompt; routed passed, 7.9% higher estimated cost |
 | Lightning + GPT Sol, earlier rules | [Notebook](examples/checkout-support/lightning-gpt-sol/demo.ipynb) · [HTML](examples/checkout-support/lightning-gpt-sol/preview.html) | Working rule-based backup; different routing method |
 | Lightning + Super VL | [HTML](examples/checkout-support/lightning-super-vl/preview.html) · [Results](examples/checkout-support/lightning-super-vl/README.md) | All-NVIDIA comparison |
 | Super VL + GPT Sol | [Results](examples/checkout-support/super-vl-gpt-sol/README.md) | Super alone handled this fixture |
@@ -20,16 +20,16 @@ Exactly one attempt per approach for each pair. All judge calls are included; th
 |---|---:|---:|---|
 | GPT Sol only | 1/1 | $0.010306 | Complete |
 | Lightning judge + Lightning/GPT executors | 1/1 | $0.003366 | **67.3% lower estimated model cost** |
-| Super VL only | 1/1 | $0.000782 | Complete |
-| Lightning judge + Lightning/Super executors | 0/1 | $0.000491, partial | Judge chose Lightning for the image; blocked |
+| Super VL only, new prompt comparison | 1/1 | $0.000784 | Complete |
+| Lightning judge + Lightning/Super executors, stronger prompt | 1/1 | $0.000846 | **7.9% higher estimated model cost** |
 
-Lightning-only completed 0/1 in each pair because it cannot consume the image. The Super-routed partial cost does not establish savings. No extra live model runs were made to replace that failure. A single attempt does not establish general reliability. Earlier multi-repeat comparisons are retained separately in `recordings/` and the findings pages.
+Lightning-only completed 0/1 in each pair because it cannot consume the image. The first Super-routed attempt failed when Lightning chose itself for the image; that recording remains available. After strengthening the shared prompt to check evidence access before task difficulty, exactly one new Super comparison completed routing successfully, but cost 7.9% more than Super alone. The GPT figures above remain from its earlier prompt; GPT was not rerun after this change. These single attempts do not establish general reliability. Earlier comparisons are retained separately in `recordings/` and the findings pages.
 
 ## Presentation
 
-Use the GPT-judge notebook as the selected workshop example. It shows Lightning's forecast and explanation before each executor call, and the single recorded routing path. The Super-judge notebook shows the observed model-choice failure and displays the blocked request without crashing.
+Use the GPT-judge notebook as the selected workshop example. It shows Lightning's forecast and explanation before each executor call, and the single recorded routing path. The Super-judge notebook now replays the successful stronger-prompt comparison and links the earlier blocked model-choice failure. It demonstrates delegation, with higher cost than Super alone.
 
-The judge sees task text, model capabilities and attachment metadata, not pixels or fixture answers. The selected executor receives the original payload. Python validators evaluate task output; there is no application rule that automatically assigns image requests to the capable model. The Super failure demonstrates that a model judge can choose incorrectly.
+The judge sees task text, model capabilities and attachment metadata, not pixels or fixture answers. The selected executor receives the original payload. Python validators evaluate task output; there is no application rule that automatically assigns image requests to the capable model. The strengthened prompt explicitly treats inaccessible image evidence as unsupported before judging difficulty. The earlier Super failure demonstrates that a model judge can choose incorrectly; the new successful attempt does not guarantee future choices.
 
 This remains LLM routing within a fixed three-stage synthetic workflow, not autonomous planning. The report proposes avoiding another payment and reconciling the paid order; no payment, refund or repair is executed.
 

@@ -9,12 +9,13 @@
     "Notebook bootstrap resolves shared modules from each example folder; outputs cleared, paid calls and tracing disabled.",
     "Private credentials remain in an ignored .env; local originals and unchanged synthetic backup moved to ignored local-research/.",
     "Lightning now judges executor capability through Switchyard llm_task_classifier; old rule-based example retained. User live notebook state is preserved locally and is not published.",
-    "Added Lightning/Super judge notebook and refreshed Lightning/GPT exactly once per approach. Both runners reject repetitions other than 1. Local live controls preserved; published notebooks start offline."
+    "Added Lightning/Super judge notebook and refreshed Lightning/GPT exactly once per approach. Both runners reject repetitions other than 1. Local live controls preserved; published notebooks start offline.",
+    "Strengthened shared Lightning judge prompt to check evidence access first. One new Super comparison passed routing; prior failed recording retained. Existing GPT recording unchanged."
   ],
   "validation": {
     "packaged_tests": 59,
     "replay": "Both judge notebooks replayed offline with one attempt per approach; CI covers six offline notebooks.",
-    "judge_comparison": "Fresh one-attempt comparisons only: GPT-only 1/1 and GPT-routed 1/1, 67.3% no-cache-effects reduction including judges. Super-only 1/1; Super-routed 0/1, incorrect judge choice blocked image dispatch. No reruns or savings claim for partial Super workflow."
+    "judge_comparison": "Original GPT comparison: GPT-only 1/1 and GPT-routed 1/1, 67.3% no-cache-effects reduction including judges. After stronger prompt, one new Super comparison: Super-only 1/1 and Super-routed 1/1, 7.9% higher estimated cost including judges. Earlier failed Super recording retained. No GPT rerun after prompt change."
   },
   "files_sha256": {
     ".github/workflows/workshop.yml": "0e4cb1d2bcbc540baa2388bd823bfedab93fe7b84068036a0c0f71c0ce6852af",
@@ -24,7 +25,7 @@
     "scripts/verify_publication.py": "c7cdaac909181b766364574c86f700f22b9f12b817de028f2d9452c4d476b5c0",
     "workshops/switchyard-routing/.env.example": "5068e847d1926829c51ec76ff8a53acdfe779b03401f806503c8a337e4aa92af",
     "workshops/switchyard-routing/ATTRIBUTION.md": "e1d39bd6c5ca18d76eb63b8d86dbd61575961bc1e9f40ed92a360da3698872fb",
-    "workshops/switchyard-routing/README.md": "08294abfb2256cbb08dc16541871fe095693d41c2542398bf6a5804914c2fc38",
+    "workshops/switchyard-routing/README.md": "89043291f3944d4d74da02f72f7ca9c3216c79be1a0f9df5896a717d04c9968f",
     "workshops/switchyard-routing/configs/README.md": "eb875d82d00c578bd3ef5c2eb9ba0e34cf33858c7c1211a5d9d3d17a32d2ca6f",
     "workshops/switchyard-routing/configs/model-profiles/nemotron-lightning-gpt-sol.toml": "443ac4bb139fc994505005ae69ad74c95ce9aa5eef16d01bb4c73ef414f667c9",
     "workshops/switchyard-routing/configs/model-profiles/nemotron-lightning-ultra.toml": "c7179d055a5910328542e73846126aa5ac506ced244ad1238567515af367135a",
@@ -99,7 +100,7 @@
     "workshops/switchyard-routing/evidence/measured-sources/dfa6d9b3f21e050c1dc8a43ef14bdfba3a9927ed0a560789f68add38d3fd4861.png": "dfa6d9b3f21e050c1dc8a43ef14bdfba3a9927ed0a560789f68add38d3fd4861",
     "workshops/switchyard-routing/evidence/measured-sources/dff4e146be1f9ac23e3acbe61dc35431c9ec4561ff167d11862fe55d5f5badc0.py": "dff4e146be1f9ac23e3acbe61dc35431c9ec4561ff167d11862fe55d5f5badc0",
     "workshops/switchyard-routing/evidence/measured-sources/ffcd3cd1fc3cadc36a7db022e3f3e0ee50517af24e163a6240d2008302baacd1.toml": "ffcd3cd1fc3cadc36a7db022e3f3e0ee50517af24e163a6240d2008302baacd1",
-    "workshops/switchyard-routing/evidence/source-map.json": "a82fd07213def15fa1e69dd11a60d7b6ee24f8369188a8af262956a26a698889",
+    "workshops/switchyard-routing/evidence/source-map.json": "2c8bdcc3239882ec4db258c62d6cf2f4edb472302df5167c3dd654caed2f3b9e",
     "workshops/switchyard-routing/examples/README.md": "a43c0345a25c3f33f3abcd9cde4506958e9fd40d7a7a9c7913f3f85e187828bf",
     "workshops/switchyard-routing/examples/checkout-support/README.md": "affc7f68bbfc2f99aeb6732fc90a3736227a21bbbe87f91fe4b3e8d20b957e0a",
     "workshops/switchyard-routing/examples/checkout-support/case.json": "9173b150733c9eec443a49e7c230039ac83d6ecee5b6b74f371a7a36cc9b7184",
@@ -108,7 +109,7 @@
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/README.md": "d7c047545e7e5c1b3fdad199331ce5d067c2816345592c9bc69e7f9004fc4c3d",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/analyze.py": "69bf4caffed58f06fb9affa5de855525ef5473f6f0fec37c0bb73f0b21f7b7fc",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/demo.ipynb": "90b70d56ecb5acb1262db187c3c48b2293c009af74565e957cdf1d022d1d4619",
-    "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/judge.py": "be13dd4b1ccb396dd1fcea44e5edf79bf9e02a2a6657db963d517b9b922a2396",
+    "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/judge.py": "b09028ee3395d466ff9a86852a405ab1ebcdc7ce54a9be4f56b26f51b9d37201",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/models.toml": "22a51c0970c23b58245202cffb0ce67626c11b2d25734028879e00cc0e6415bc",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/openrouter-prices-2026-10-17.json": "3c94db7e4698d22d031fc3ad09d924f01eb454dafd360d5a97987bd9c96942d9",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/prices.json": "a27735e4f8bf6fe8eea4d2daf4fcf91f8142d1dce370cf6cd091a3948c659187",
@@ -124,14 +125,14 @@
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/review.json": "d5b0d1335f71f37cddd19c0f4bb771e5a1669ed33e80955a2ed14d7d5ef88e2d",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/summary.csv": "13b585fa7c41897d77a8b009a3f17d6c6c9892a8f329f680e696431f5306d748",
     "workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol/vision-probe.json": "27cadccf0ac572ba0159b840a178f9cf2a68a6876f062068e498d69f57fdc5c4",
-    "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/README.md": "ad3962145ccb7eda97d6118f59db0b9ce2ce6b39e4a8c0d63f5a90dc4c9c8340",
+    "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/README.md": "ba45fbf6a2c5cb3538f4d844cfa97fc7807976f99d8f4b98080ab89649b66d93",
     "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/analyze.py": "0653bb7b75af019c66783aaf4c75958af87166ac2f6d317ade24653aea0d5dbd",
-    "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/demo.ipynb": "94286c204cc811805a735a20aecee19b15a597cc3facdc33a25f7d63f65b6440",
+    "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/demo.ipynb": "de2fccdbfc2129b25ff2393a086edce63b79c66f7d5aebf681d49e6f9910bfc5",
     "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/models.toml": "cbd8b2350777be43ff241a141868c8d75fb9238fd5cc39f6059e2bd4687b46ae",
     "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/openrouter-prices-2026-10-17.json": "a1bfd40136613c2db8f3e7fff6a4016232296db616ae7859120722c91b35096c",
     "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/prices.json": "9edbb307e7be76870fd093b6b1ca7e166121185e4604bc288615472a4d4cb134",
     "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/run.py": "1a7c9eb3cabe9021c3c0b9fb8fdd91b3127a01ff8f1d403075cd73046d1d88a6",
-    "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/summary.csv": "86cab7a463f85a0e0c45980fba6f908159073929af4a304b531744664f17ca1d",
+    "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/summary.csv": "e4672e697b6c8d67553541d329b22acee39e167049357f208d4652f890b144a7",
     "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl/README.md": "710e322e56400ab9749c1e1e35a8aa357bd5fea40f3d191cf3b508dde56e5357",
     "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl/models.toml": "66e7bb5304009cd35846205cc14afe2c08ae868d20f781702f70b41919cacfcd",
     "workshops/switchyard-routing/examples/checkout-support/lightning-super-vl/openrouter-prices-2026-10-17.json": "a1bfd40136613c2db8f3e7fff6a4016232296db616ae7859120722c91b35096c",
@@ -195,7 +196,9 @@
     "workshops/switchyard-routing/tests/test_demo.py": "293aa0f71e00e7838349d100fcf58dd694f77dce5c73f19bf5fd003504bf127a",
     "workshops/switchyard-routing/tests/test_lightning_judge.py": "0d08069b69f75a6988cc90d629307950c924bdd4a1fee44d7c7b51c91dc1b8ad",
     "workshops/switchyard-routing/tests/test_ubuntu_handover.py": "d69821ad0e666f2770c7bb35a4956e6e8ba0701b1637510a3618ad8c26b1016d",
-    "workshops/switchyard-routing/tests/test_visual_support.py": "570a040c8e1e1f001cb82b50036183eda921026d1cb1d5464046b3576f481765"
+    "workshops/switchyard-routing/tests/test_visual_support.py": "570a040c8e1e1f001cb82b50036183eda921026d1cb1d5464046b3576f481765",
+    "workshops/switchyard-routing/evidence/measured-sources/b09028ee3395d466ff9a86852a405ab1ebcdc7ce54a9be4f56b26f51b9d37201.py": "b09028ee3395d466ff9a86852a405ab1ebcdc7ce54a9be4f56b26f51b9d37201",
+    "workshops/switchyard-routing/recordings/checkout-support/lightning-super-vl-judge-single-2026-10-17-20261017T090853642257Z.json": "818aac86a3c267a0596e4e500bc55970be067b8f48a5c92e227ff47f80aab27e"
   },
   "rule_based_comparison": "examples/checkout-support/lightning-gpt-sol/preview.html"
 }

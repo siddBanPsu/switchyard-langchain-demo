@@ -1,74 +1,56 @@
-# Checkout support: Lightning as judge and efficient executor
+# Checkout support: Lightning judge + Super VL
 
-**Lightning now decides the model through Switchyard’s built-in `llm_task_classifier`.** It forecasts success on the next stage; Switchyard selects Lightning at `p_solve >= 0.75`, otherwise the capable model. The same fixed three-stage task is retained.
+**The strengthened prompt completed the routed workflow in one new comparison. Estimated cost was 7.9% higher than Super VL alone, including all judge calls.**
 
-**Routing did not complete all attempts. Do not present partial-workflow spending as a successful savings result.**
+[Workshop notebook](demo.ipynb) replays this new recording without API calls. Exactly one attempt per approach was run after the prompt change; no extra repeats were made.
 
-[Workshop notebook](demo.ipynb). Recorded comparison: **1 attempt per approach**. No API calls in replay. The earlier [rule-based version](../lightning-super-vl/preview.html) remains separate.
+## What changed
 
-| Approach | Accepted | Mean USD/workflow, no cache effects | USD/accepted including failures | Median seconds | Judge / executor calls |
-|---|---:|---:|---:|---:|---:|
-| Super VL only | 1/1 | $0.000782 | $0.000782 | 3.56 | 0 / 3 |
-| Lightning only | 0/1 | $0.000207 | No accepted results | 1.19 | 0 / 1 |
-| Lightning judge + routed executors | 0/1 | $0.000491 | No accepted results | 3.12 | 2 / 1 |
+The shared [Lightning judge prompt](../lightning-gpt-sol-judge/judge.py) now checks access to required evidence before reasoning difficulty. When image reading is required without a sufficient text transcription, it instructs Lightning to return `LIM-1`, `unsupported`, and `p_solve = 0`. Metadata and hashes are explicitly not substitutes for the image contents. Tasks with sufficient text and no required visual verification remain eligible for Lightning.
 
-## Who does what
+Lightning still makes the routing judgment; there is no application override that assigns images to Super VL. Switchyard applies the unchanged 0.75 threshold. The existing modality guard blocks an invalid selection rather than rerouting it. Both future GPT and Super comparisons use this shared prompt; the existing GPT recording was not rerun or relabelled as using the new prompt.
 
-- Lightning judge sees the actual task text, declared model capabilities, attachment metadata and any rejection feedback. It does not see image pixels or fixture answers. The attachment metadata is not OCR.
-- The built-in Switchyard task classifier applies the threshold to the returned forecast and invokes the selected executor adapter.
-- That executor receives the original request. Images are sent unchanged through native Switchyard dispatch, bypassing the installed LangChain adapter’s text-only content mapper.
-- Python validators still check labelled-fixture outputs. They are evaluators, not routing judges. A retry is judged again by Lightning; application code does not force a different model after rejection.
-- A wrong choice of text-only Lightning for an image is blocked and counted as a failed task. Invalid classifier output follows Switchyard’s capable fallback; it is not a successful judge decision.
-- All judge and executor requests share one cost ledger, including failed calls. No paid model judge is used by either single-model baseline.
+## New single-run results
+
+| Approach | Accepted | Estimated USD/workflow, cache effects excluded | Seconds | Judge / executor calls |
+|---|---:|---:|---:|---:|
+| Super VL only | 1/1 | $0.00078385 | 4.83 | 0 / 3 |
+| Lightning only | 0/1 | $0.00020739 (partial) | 1.16 | 0 / 1 |
+| Lightning judge + routed executors | 1/1 | $0.00084578 | 7.37 | 3 / 3 |
+
+The cheaper Super-only baseline completed the task. Routing added three judge calls, so this comparison demonstrates correct delegation but no cost saving. Lightning-only stopped before image inference and its partial spend is not a completed-solution cost.
 
 ## Actual judge decisions
 
-| Repeat | Stage | Forecast p_solve | Target | Crux |
-|---|---|---:|---|---|
-| 1 | backend_text | 0.99 | Lightning | Identify the single log record with event payment.capture.succeeded and the single log record with event frontend.confirmation.fetch, then extract their id fields. |
-| 1 | vision | 0.95 | Lightning | Extracting order_id, amount_cents, ui_status, ui_claim_no_charge, button_label, and error_reference from a synthetic checkout screenshot. |
+| Stage | Forecast p_solve | Selected executor | Explanation |
+|---|---:|---|---|
+| backend_text | 0.99 | Lightning | Extract 7 fields from the single order QF-1042 across logs.records and payment.settled_captures. |
+| vision | 0.00 | Super VL | Required image evidence unavailable; Lightning cannot read pixels or OCR the screenshot. |
+| reconcile_text | 0.96 | Lightning | Reconcile backend capture state against UI failure screenshot; count captures, compare statuses. |
 
-## Recorded routing failures
+## Earlier failure retained
 
-Routed attempt 1 stopped with LibsyError.
-- vision: nvidia/nvidia/nemotron-3.5-lightning: Image input unsupported per provider model metadata; no API request sent.
-The blocked request is a model-choice failure, not an observed image inference failure. This run was not repeated. No savings claim is made for the partial workflow.
+The [earlier recording](../../../recordings/checkout-support/lightning-super-vl-judge-single-2026-10-17-20261017T083301823486Z.json) used the original prompt: Super-only passed 1/1; routed failed 0/1 because Lightning predicted 0.95 for screenshot reading and selected itself. The application blocked that image request before inference. Its partial routed estimate was $0.00049050. That run remains separate from the new successful attempt; the results are not pooled.
 
-## Pricing and scope
+## Scope and pricing
 
-The primary estimate reprices every observed input/output token at the saved rates in prices.json, including judge tokens. Capable model: Super VL. Cache discounts and write premiums are removed from both sides. These are reference estimates, not invoices or a new cold-cache run.
+This is LLM routing within a fixed three-stage synthetic workflow, not autonomous planning. The judge sees task text and attachment metadata, not image pixels or fixture answers. The chosen executor receives the original payload. Python fixture validators evaluate outputs and permit the unchanged two-attempt limit per stage. All three successful routed stages completed without a validation retry. Customer replies are rendered from validated data; no payment, refund or repair is performed.
 
-<details><summary>Technical detail: reported cache-adjusted estimates</summary>
+Primary estimates apply the saved ordinary input/output prices in [prices.json](prices.json) to all observed judge and executor tokens, excluding cache discounts and write premiums. They are pinned reference estimates, not invoices. In this comparison the cache-adjusted and ordinary estimates are equal. One synthetic case and one attempt per approach cannot establish general reliability, calibrated probabilities or future savings.
 
-| Approach | Mean estimated USD/workflow |
-|---|---:|
-| Super VL only | $0.000782 |
-| Lightning only | $0.000207 |
-| Lightning judge + routed executors | $0.000491 |
+[New recording](../../../recordings/checkout-support/lightning-super-vl-judge-single-2026-10-17-20261017T090853642257Z.json) · [Summary](summary.csv) · [Model profile](models.toml) · [Shared workflow](../workflow.py)
 
-These secondary estimates apply the saved cache read/write rates to reported gateway usage. Cache state carries across repeats and earlier experiments; use the no-cache-effects estimate for the workshop headline.
-
-</details>
-
-A single synthetic fixture with a small number of attempts does not establish general judge calibration, reliability or future savings. This is LLM-based routing within a fixed workflow, not autonomous agent planning. App-rendered customer replies use validated cents and perform no payment, refund or repair.
-
-## Earlier attempts retained
-
-The earlier GPT judge development comparisons exposed overconfidence and source-ID confusion; those recordings remain separate. The current contract explicitly identifies logs.records[].id equally for every baseline. This single-run comparison is not a reliability benchmark, and no extra model repetitions were made for it.
-
-[Final raw recording](../../../recordings/checkout-support/lightning-super-vl-judge-single-2026-10-17-20261017T083301823486Z.json) · [Summary](summary.csv) · [Model profile](models.toml) · [Judge implementation](../lightning-gpt-sol-judge/judge.py) · [Shared workflow](../workflow.py).
-
-From the workshop folder, to run a fresh paid comparison:
+To run a fresh paid comparison from the workshop folder:
 
 ```sh
 python examples/checkout-support/lightning-super-vl-judge/run.py --repeats 1 --allow-paid-calls
 ```
 
-
 ## Development spend
 
 | Recording | Attempts | Estimated USD with reported caches |
 |---|---:|---:|
-| lightning-super-vl-judge-single-2026-10-17-20261017T083301823486Z.json | 3 | $0.001480 |
+| lightning-super-vl-judge-single-2026-10-17-20261017T083301823486Z.json | 3 | $0.00148024 |
+| lightning-super-vl-judge-single-2026-10-17-20261017T090853642257Z.json | 3 | $0.00183702 |
 
-Development comparisons are retained separately, not pooled into the final savings headline.
+Development runs are retained separately; they are not pooled into a savings headline.

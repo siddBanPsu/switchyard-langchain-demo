@@ -22,6 +22,18 @@ Efficient executor: NVIDIA Nemotron 3.5 Lightning, text input only; no vision, O
 It can attempt bounded JSON extraction and reconciliation from supplied text records.
 Capable executor: GPT Sol 6.1, supports text and image input. Both share the same output contract.
 You see text and metadata describing any attachments; you do not see attachment pixels.
+First check whether Lightning can access ALL evidence required by this request. Only then
+estimate reasoning difficulty. An easy extraction is still impossible without access to its source.
+If the request requires reading an image or screenshot and no sufficient text transcription
+is supplied, return primary_rule="LIM-1", capability_boundary="unsupported", p_solve=0.
+This applies when attachment metadata says modality="image" and the task asks for visual facts.
+Attachment names, hashes and metadata do not contain the image's text or prove its contents.
+Neither the judge nor Lightning has OCR, vision, or an unlisted tool to recover those pixels.
+Text elsewhere in the workflow is not a substitute when the task requires inspecting the image.
+If all necessary evidence is already supplied as text and no visual verification is required,
+assess that text task normally; an incidental image attachment alone does not make it impossible.
+Describe the evidence-access limitation in crux when returning unsupported. Do not label a
+required-image task supported just because its JSON fields are simple or its topic is familiar.
 Neither model can execute payments, refunds or repairs. Judge capability for the actual request.
 A validation rejection is evidence to reassess difficulty; do not assume another model is always needed.
 Do not solve the support task or invent empirical success rates. Forecast p_solve for Lightning.
