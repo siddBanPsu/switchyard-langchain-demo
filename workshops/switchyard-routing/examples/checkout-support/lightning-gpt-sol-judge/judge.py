@@ -32,6 +32,10 @@ that Lightning cannot access; none/unmatched if no rule fits. p_solve must be a 
 Your output is a forecast; Switchyard applies the routing threshold.'''
 
 
+def judge_prompt_for(config):
+    return JUDGE_PROMPT.replace("GPT Sol 6.1",config["roles"]["capable"].get("display_name","GPT Sol 6.1"))
+
+
 def judge_view(messages,kind,validation_failed):
     visible=[]
     for message in messages:
@@ -58,6 +62,7 @@ class JudgeEngine(demo.Engine):
     def __init__(self,arm,profile_dir=None):
         super().__init__(arm,profile_dir or HERE)
         self.decisions=[]
+        self.judge_prompt=judge_prompt_for(self.config)
         self.judge_transport=demo.Engine('lightning_only',profile_dir or HERE)
         self.judge_transport.calls=self.calls  # One ledger: judge + executor, including errors.
         self.judge_transport.deadline=self.deadline
@@ -97,7 +102,7 @@ class JudgeEngine(demo.Engine):
         options=self.config['classifier']
         algorithm=libsy.algorithms.llm_task_classifier(libsy.LlmTarget('judge',JudgeClient()),
             libsy.LlmTarget('efficient',ExecutorClient('weak')),libsy.LlmTarget('capable',ExecutorClient('strong')),
-            config=libsy.TaskClassifierConfig(options['threshold'],max_output_tokens=options['max_output_tokens'],prompt=JUDGE_PROMPT))
+            config=libsy.TaskClassifierConfig(options['threshold'],max_output_tokens=options['max_output_tokens'],prompt=self.judge_prompt))
         view=judge_view(messages,kind,validation_failed)
         record['visible_input']=view
         request=SwitchyardRequestMapper.to_switchyard([HumanMessage(content=json.dumps(view))],

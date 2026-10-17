@@ -1,16 +1,17 @@
 # Switchyard workshop
 
-The selected demo is **Checkout support: Lightning as judge + Lightning/GPT Sol executors**.
+The selected demo is **Checkout support: Lightning as judge + Lightning/GPT Sol executors**. A [Lightning judge + Super VL notebook](workshops/switchyard-routing/examples/checkout-support/lightning-super-vl-judge/demo.ipynb) is also available.
 
 [Open the main notebook](workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/demo.ipynb) · [Workshop guide](workshops/switchyard-routing/README.md) · [Judge-inclusive results](workshops/switchyard-routing/examples/checkout-support/lightning-gpt-sol-judge/README.md)
 
-Lightning forecasts whether it can handle each stage. Switchyard's built-in LLM task classifier selects Lightning or GPT Sol 6.1 from that forecast. The recorded final comparison includes every judge call and estimates **68.8% lower model cost**, excluding cache effects, with 3/3 accepted reports in both routed and GPT-only approaches.
+Lightning forecasts whether it can handle each stage; Switchyard selects the executor. The latest test made **one attempt per approach for each model pair**, with no extra model repeats. Lightning/GPT routing completed 1/1 and estimated **67.3% lower model cost**, including judge calls and excluding cache effects. Lightning/Super routing failed its one attempt because the judge sent an image to text-only Lightning; Super-only completed 1/1. Partial spending is not a savings result.
 
 ```text
 workshops/switchyard-routing/
   examples/
     checkout-support/
       lightning-gpt-sol-judge/    selected: Lightning decides the executor
+      lightning-super-vl-judge/   single-run all-NVIDIA LLM judge comparison
       lightning-gpt-sol/          earlier rule-based version, retained
       lightning-super-vl/         all-NVIDIA comparison
       super-vl-gpt-sol/           alternative comparison

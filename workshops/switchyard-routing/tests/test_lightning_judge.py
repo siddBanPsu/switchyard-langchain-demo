@@ -38,3 +38,24 @@ def test_model_forecast_controls_actual_switchyard_target(monkeypatch,image,p_so
         assert len(engine.calls)==2 and engine.calls[0]['role']=='judge' and engine.calls[1]['role']=='executor'
         assert sum(c['cost_usd'] for c in engine.calls)==pytest.approx(.002)
     asyncio.run(check())
+
+
+def test_super_variant_declares_actual_capable_model(monkeypatch):
+    monkeypatch.setenv('NVIDIA_API_KEY','test-key');monkeypatch.setenv('NVIDIA_BASE_URL','https://example.invalid/v1')
+    engine=judge.JudgeEngine('routed',folder.parent/'lightning-super-vl-judge')
+    assert engine.strong=='nvidia/nvidia/nemotron-3.5-super-vl'
+    assert 'NVIDIA Nemotron 3.5 Super VL' in engine.judge_prompt
+    assert 'GPT Sol' not in engine.judge_prompt
+    assert engine.light==engine.config['roles']['judge']['model_id']
+
+
+@pytest.mark.parametrize('variant',['lightning-gpt-sol-judge','lightning-super-vl-judge'])
+def test_single_run_entrypoints_reject_repetitions(variant):
+    path=folder.parent/variant/'run.py'
+    spec=importlib.util.spec_from_file_location('single_run_'+variant.replace('-','_'),path)
+    module=importlib.util.module_from_spec(spec)
+    sys.path.insert(0,str(path.parent))
+    spec.loader.exec_module(module)
+    # Failure occurs before constructing an engine or looking up credentials.
+    with pytest.raises(ValueError,match='exactly one'):
+        asyncio.run(module.compare(repeats=2))

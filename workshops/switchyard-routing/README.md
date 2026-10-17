@@ -5,35 +5,33 @@
 | Named example | Open | Role |
 |---|---|---|
 | Lightning judge + Lightning/GPT Sol executors | [Notebook](examples/checkout-support/lightning-gpt-sol-judge/demo.ipynb) · [Results](examples/checkout-support/lightning-gpt-sol-judge/README.md) | Selected workshop presentation |
+| Lightning judge + Lightning/Super VL executors | [Notebook](examples/checkout-support/lightning-super-vl-judge/demo.ipynb) · [Results](examples/checkout-support/lightning-super-vl-judge/README.md) | One attempt per approach; routed attempt failed |
 | Lightning + GPT Sol, earlier rules | [Notebook](examples/checkout-support/lightning-gpt-sol/demo.ipynb) · [HTML](examples/checkout-support/lightning-gpt-sol/preview.html) | Working rule-based backup; different routing method |
 | Lightning + Super VL | [HTML](examples/checkout-support/lightning-super-vl/preview.html) · [Results](examples/checkout-support/lightning-super-vl/README.md) | All-NVIDIA comparison |
 | Super VL + GPT Sol | [Results](examples/checkout-support/super-vl-gpt-sol/README.md) | Super alone handled this fixture |
 | Synthetic incident | [Notebook](examples/synthetic-incident/demo.ipynb) · [HTML](examples/synthetic-incident/preview.html) | Original fallback |
 | Ubuntu support handover | [Notebook](examples/ubuntu-support-handover/demo.ipynb) · [Results](examples/ubuntu-support-handover/README.md) | Real conversation alternative |
 
-## Lightning-judge results
+## Latest single-run results
 
-Same final extraction contract for all fresh baselines. Ordinary input/output prices applied to observed tokens; cache discounts and write premiums excluded. **All judge calls included.**
+Exactly one attempt per approach for each pair. All judge calls are included; the main estimates exclude cache discounts and write premiums. These are pinned reference prices applied to observed tokens, not invoices or a cold-cache rerun.
 
-| Approach | Accepted | Mean estimated USD/workflow | Median seconds | Judge / executor calls, all 3 repeats |
-|---|---:|---:|---:|---:|
-| GPT Sol only | 3/3 | $0.010419 | 10.34 | 0 / 9 |
-| Lightning only | 0/3 | $0.000207, partial | 1.17 | 0 / 3 |
-| Lightning judge + routed executors | 3/3 | $0.003246 | 8.11 | 9 / 9 |
+| Model pair / approach | Accepted | Estimated USD/task | Outcome |
+|---|---:|---:|---|
+| GPT Sol only | 1/1 | $0.010306 | Complete |
+| Lightning judge + Lightning/GPT executors | 1/1 | $0.003366 | **67.3% lower estimated model cost** |
+| Super VL only | 1/1 | $0.000782 | Complete |
+| Lightning judge + Lightning/Super executors | 0/1 | $0.000491, partial | Judge chose Lightning for the image; blocked |
 
-**68.8% lower estimated model cost** than GPT everywhere, excluding cache effects. Prices are the pinned reference snapshot, not invoices or current quotes. This repricing is not a cold-cache inference run. Lightning-only cannot read the image and is blocked before dispatch; its partial cost is not a completed solution.
+Lightning-only completed 0/1 in each pair because it cannot consume the image. The Super-routed partial cost does not establish savings. No extra live model runs were made to replace that failure. A single attempt does not establish general reliability. Earlier multi-repeat comparisons are retained separately in `recordings/` and the findings pages.
 
-## Five-minute presentation
+## Presentation
 
-1. Show the customer screenshot: “Payment failed, but my card was charged. Should I pay again?”
-2. Explain the backend evidence: one SGD 118.70 capture, paid order, duplicate webhook and HTTP 504 confirmation request.
-3. Show Lightning's actual forecasts: 0.99 for backend text, 0.00 for image reading, and 0.95 for reconciliation. Switchyard's task classifier applies the configured threshold of 0.75 to select the executor.
-4. Show the route and ledger: Lightning judge → Lightning text; Lightning judge → GPT image; Lightning judge → Lightning reconciliation. The nine judge calls across three repeats are included in costs.
-5. Show acceptance and the 68.8% estimate. Explain the proposed outcome: do not pay again; reconcile displayed status with the existing payment. No payment, refund or repair is performed.
+Use the GPT-judge notebook as the selected workshop example. It shows Lightning's forecast and explanation before each executor call, and the single recorded routing path. The Super-judge notebook shows the observed model-choice failure and displays the blocked request without crashing.
 
-The judge sees task text, capability descriptions, attachment metadata and retry feedback, not image pixels or fixture answers. The executor receives the original payload. Python validators evaluate the result; they are not the routing judge. A retry is judged again. No application rule selects GPT merely because an image or validation rejection is present.
+The judge sees task text, model capabilities and attachment metadata, not pixels or fixture answers. The selected executor receives the original payload. Python validators evaluate task output; there is no application rule that automatically assigns image requests to the capable model. The Super failure demonstrates that a model judge can choose incorrectly.
 
-This is LLM routing inside a fixed three-stage workflow, not autonomous planning or a general quality benchmark. Earlier tests exposed overconfidence after source-ID errors; the final contract disambiguates log record IDs from payment object IDs identically for every baseline. [All earlier attempts are retained](examples/checkout-support/lightning-gpt-sol-judge/README.md).
+This remains LLM routing within a fixed three-stage synthetic workflow, not autonomous planning. The report proposes avoiding another payment and reconciling the paid order; no payment, refund or repair is executed.
 
 ## Run
 
@@ -46,8 +44,10 @@ python -m jupyterlab examples/checkout-support/lightning-gpt-sol-judge/demo.ipyn
 Run all cells with `DEMO_MODE = "recorded"` and `ALLOW_PAID_CALLS = False`. For fresh paid calls using your own compatible gateway in `.env`:
 
 ```sh
-python examples/checkout-support/lightning-gpt-sol-judge/run.py --allow-paid-calls
+python examples/checkout-support/lightning-gpt-sol-judge/run.py --repeats 1 --allow-paid-calls
 ```
+
+Both runners reject repeat counts other than 1. For the all-NVIDIA pair, use `examples/checkout-support/lightning-super-vl-judge/run.py --repeats 1 --allow-paid-calls`.
 
 Fresh results go to ignored `runs/checkout-support/`, preserving pinned `recordings/`. Shared implementations are under `shared/` and `examples/`; [the source map](evidence/source-map.json) resolves historical recorded hashes to measured-source snapshots.
 

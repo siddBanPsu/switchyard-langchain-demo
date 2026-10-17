@@ -46,10 +46,12 @@
   "examples/checkout-support/lightning-gpt-sol-judge/run.py": {
     "db6bf36062433a4fe9abacc9d0f3cd2e3aaa04baeebe561776e01ba4dd2809d5": "evidence/measured-sources/db6bf36062433a4fe9abacc9d0f3cd2e3aaa04baeebe561776e01ba4dd2809d5.py",
     "dff4e146be1f9ac23e3acbe61dc35431c9ec4561ff167d11862fe55d5f5badc0": "evidence/measured-sources/dff4e146be1f9ac23e3acbe61dc35431c9ec4561ff167d11862fe55d5f5badc0.py",
-    "03692722b9aeadc2457f4f27961033c670b138925a3c05f403e775bd5cbe4156": "evidence/measured-sources/03692722b9aeadc2457f4f27961033c670b138925a3c05f403e775bd5cbe4156.py"
+    "03692722b9aeadc2457f4f27961033c670b138925a3c05f403e775bd5cbe4156": "evidence/measured-sources/03692722b9aeadc2457f4f27961033c670b138925a3c05f403e775bd5cbe4156.py",
+    "7d7fb8df85e1cdcd5f2bb3f8e83eb6d20e7b82e08e8e40e4b37b545e3690d82a": "evidence/measured-sources/7d7fb8df85e1cdcd5f2bb3f8e83eb6d20e7b82e08e8e40e4b37b545e3690d82a.py"
   },
   "examples/checkout-support/lightning-gpt-sol-judge/judge.py": {
-    "8be34d4541e95db57743f3fea99b175f93fa7c9724c97cb19b97f2da79447c0c": "evidence/measured-sources/8be34d4541e95db57743f3fea99b175f93fa7c9724c97cb19b97f2da79447c0c.py"
+    "8be34d4541e95db57743f3fea99b175f93fa7c9724c97cb19b97f2da79447c0c": "evidence/measured-sources/8be34d4541e95db57743f3fea99b175f93fa7c9724c97cb19b97f2da79447c0c.py",
+    "be13dd4b1ccb396dd1fcea44e5edf79bf9e02a2a6657db963d517b9b922a2396": "evidence/measured-sources/be13dd4b1ccb396dd1fcea44e5edf79bf9e02a2a6657db963d517b9b922a2396.py"
   },
   "examples/checkout-support/workflow.py": {
     "5a124f6155270032f7ac9dbf0f1e64a6664e340bbf717c73998f8b36c35660d4": "evidence/measured-sources/5a124f6155270032f7ac9dbf0f1e64a6664e340bbf717c73998f8b36c35660d4.py",
@@ -72,5 +74,17 @@
   },
   "examples/checkout-support/checkout.png": {
     "dfa6d9b3f21e050c1dc8a43ef14bdfba3a9927ed0a560789f68add38d3fd4861": "evidence/measured-sources/dfa6d9b3f21e050c1dc8a43ef14bdfba3a9927ed0a560789f68add38d3fd4861.png"
+  },
+  "examples/checkout-support/lightning-super-vl-judge/run.py": {
+    "1a7c9eb3cabe9021c3c0b9fb8fdd91b3127a01ff8f1d403075cd73046d1d88a6": "evidence/measured-sources/1a7c9eb3cabe9021c3c0b9fb8fdd91b3127a01ff8f1d403075cd73046d1d88a6.py"
+  },
+  "examples/checkout-support/lightning-super-vl-judge/models.toml": {
+    "cbd8b2350777be43ff241a141868c8d75fb9238fd5cc39f6059e2bd4687b46ae": "evidence/measured-sources/cbd8b2350777be43ff241a141868c8d75fb9238fd5cc39f6059e2bd4687b46ae.toml"
+  },
+  "examples/checkout-support/lightning-super-vl-judge/prices.json": {
+    "9edbb307e7be76870fd093b6b1ca7e166121185e4604bc288615472a4d4cb134": "evidence/measured-sources/9edbb307e7be76870fd093b6b1ca7e166121185e4604bc288615472a4d4cb134.json"
+  },
+  "examples/checkout-support/lightning-super-vl-judge/openrouter-prices-2026-10-17.json": {
+    "a1bfd40136613c2db8f3e7fff6a4016232296db616ae7859120722c91b35096c": "evidence/measured-sources/a1bfd40136613c2db8f3e7fff6a4016232296db616ae7859120722c91b35096c.json"
   }
 }
