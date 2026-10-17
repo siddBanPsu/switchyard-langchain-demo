@@ -1,0 +1,359 @@
+{
+  "id": "EXEC",
+  "conversation_id": "77.2",
+  "title": "Launcher reports Permission denied",
+  "summary": "why am I getting this?  exec: 121: ./nexuiz-linux-x86_64-sdl: Permission denied",
+  "evidence": {
+    "opening": [
+      {
+        "id": "EXEC-01",
+        "source_utterance_id": 2822,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:12:00",
+        "text": "why am I getting this?  exec: 121: ./nexuiz-linux-x86_64-sdl: Permission denied"
+      },
+      {
+        "id": "EXEC-02",
+        "source_utterance_id": 2823,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:12:00",
+        "text": "permissions"
+      },
+      {
+        "id": "EXEC-03",
+        "source_utterance_id": 2824,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:13:00",
+        "text": "nope its +x"
+      },
+      {
+        "id": "EXEC-04",
+        "source_utterance_id": 2825,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:13:00",
+        "text": "are you sure you're owner/group is set right?"
+      },
+      {
+        "id": "EXEC-05",
+        "source_utterance_id": 2826,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:13:00",
+        "text": "chown'd?"
+      },
+      {
+        "id": "EXEC-06",
+        "source_utterance_id": 2827,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:13:00",
+        "text": "?"
+      },
+      {
+        "id": "EXEC-07",
+        "source_utterance_id": 2828,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:14:00",
+        "text": "what command chown ... ?"
+      },
+      {
+        "id": "EXEC-08",
+        "source_utterance_id": 2829,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:15:00",
+        "text": "if you're not the owner of the file you might not be able to chmod it properly, or have the permissions to execute"
+      },
+      {
+        "id": "EXEC-09",
+        "source_utterance_id": 2830,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:15:00",
+        "text": "so what command do i use to tell"
+      },
+      {
+        "id": "EXEC-10",
+        "source_utterance_id": 2831,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:15:00",
+        "text": "ls -la and make sure it's your username in the 3rd column"
+      },
+      {
+        "id": "EXEC-11",
+        "source_utterance_id": 2832,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:16:00",
+        "text": "ls -la"
+      },
+      {
+        "id": "EXEC-12",
+        "source_utterance_id": 2833,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:16:00",
+        "text": "-rwxrwxrwx  1 scorch scorch    2104 2009-10-01 01:53 nexuiz-linux-sdl.sh"
+      },
+      {
+        "id": "EXEC-13",
+        "source_utterance_id": 2834,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:16:00",
+        "text": "hmmm yea tha tshould be fine"
+      },
+      {
+        "id": "EXEC-14",
+        "source_utterance_id": 2835,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:16:00",
+        "text": "paste the error one more time, I lose it in the scroll"
+      },
+      {
+        "id": "EXEC-15",
+        "source_utterance_id": 2836,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:17:00",
+        "text": "exec: 121: ./nexuiz-linux-x86_64-sdl: Permission denied"
+      },
+      {
+        "id": "EXEC-16",
+        "source_utterance_id": 2837,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:17:00",
+        "text": "have you tried running it under sudo?"
+      },
+      {
+        "id": "EXEC-17",
+        "source_utterance_id": 2838,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:18:00",
+        "text": "yes same thing"
+      },
+      {
+        "id": "EXEC-18",
+        "source_utterance_id": 2839,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:18:00",
+        "text": "hrmmm"
+      }
+    ],
+    "attempts": [
+      {
+        "id": "EXEC-19",
+        "source_utterance_id": 2840,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:18:00",
+        "text": "yeah, its top working with unity"
+      },
+      {
+        "id": "EXEC-20",
+        "source_utterance_id": 2841,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:21:00",
+        "text": "maybe try going up a directory (cd ..) and ensuring that permissions are right"
+      },
+      {
+        "id": "EXEC-21",
+        "source_utterance_id": 2842,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:22:00",
+        "text": "permissions might be messed up on some other elements required to run"
+      },
+      {
+        "id": "EXEC-22",
+        "source_utterance_id": 2843,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:23:00",
+        "text": "everything is fine"
+      },
+      {
+        "id": "EXEC-23",
+        "source_utterance_id": 2844,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:28:00",
+        "text": "amy other ideas?  why would this break after unity install?"
+      },
+      {
+        "id": "EXEC-24",
+        "source_utterance_id": 2845,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:29:00",
+        "text": "is it running from you local hard drive?"
+      },
+      {
+        "id": "EXEC-25",
+        "source_utterance_id": 2846,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:30:00",
+        "text": "is the file you're trying to execute on an external drive or something?"
+      },
+      {
+        "id": "EXEC-26",
+        "source_utterance_id": 2847,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:31:00",
+        "text": "no"
+      },
+      {
+        "id": "EXEC-27",
+        "source_utterance_id": 2848,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:32:00",
+        "text": "is it on a seperate partition?"
+      },
+      {
+        "id": "EXEC-28",
+        "source_utterance_id": 2849,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:32:00",
+        "text": "no"
+      },
+      {
+        "id": "EXEC-29",
+        "source_utterance_id": 2850,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:33:00",
+        "text": "can you show me line 121 of the .sh file?"
+      },
+      {
+        "id": "EXEC-30",
+        "source_utterance_id": 2851,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:33:00",
+        "text": "hold up"
+      },
+      {
+        "id": "EXEC-31",
+        "source_utterance_id": 2852,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:34:00",
+        "text": "exec \"$@\""
+      },
+      {
+        "id": "EXEC-32",
+        "source_utterance_id": 2853,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:36:00",
+        "text": "exec \"$@\""
+      },
+      {
+        "id": "EXEC-33",
+        "source_utterance_id": 2854,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:37:00",
+        "text": "can you throw that .sh script in a pastebin?"
+      },
+      {
+        "id": "EXEC-34",
+        "source_utterance_id": 2855,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:37:00",
+        "text": "was hoping for a bit more info on that line lol"
+      },
+      {
+        "id": "EXEC-35",
+        "source_utterance_id": 2856,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:37:00",
+        "text": "ok hold up"
+      },
+      {
+        "id": "EXEC-36",
+        "source_utterance_id": 2857,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:39:00",
+        "text": "what highlighting style?"
+      },
+      {
+        "id": "EXEC-37",
+        "source_utterance_id": 2858,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:40:00",
+        "text": "sh or bash"
+      },
+      {
+        "id": "EXEC-38",
+        "source_utterance_id": 2859,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:40:00",
+        "text": "whatever, just need the text"
+      },
+      {
+        "id": "EXEC-39",
+        "source_utterance_id": 2860,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:40:00",
+        "text": "http://pastebin.com/XJPjHqa9"
+      }
+    ],
+    "diagnostics": [
+      {
+        "id": "EXEC-40",
+        "source_utterance_id": 2861,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:41:00",
+        "text": "can you copy the output from the command"
+      },
+      {
+        "id": "EXEC-41",
+        "source_utterance_id": 2862,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:41:00",
+        "text": "uname -a"
+      },
+      {
+        "id": "EXEC-42",
+        "source_utterance_id": 2863,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:42:00",
+        "text": "Linux scorch-GX700 2.6.38-8-generic #42-Ubuntu SMP Mon Apr 11 03:31:24 UTC 2011 x86_64 x86_64 x86_64 GNU/Linux"
+      },
+      {
+        "id": "EXEC-43",
+        "source_utterance_id": 2864,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:46:00",
+        "text": "can you tell me the output of the command"
+      },
+      {
+        "id": "EXEC-44",
+        "source_utterance_id": 2865,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:46:00",
+        "text": "pwd"
+      },
+      {
+        "id": "EXEC-45",
+        "source_utterance_id": 2866,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:46:00",
+        "text": "where you're trying to run the .sh file"
+      },
+      {
+        "id": "EXEC-46",
+        "source_utterance_id": 2867,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:47:00",
+        "text": "/home/scorch/Nexuiz-2.5.3"
+      },
+      {
+        "id": "EXEC-47",
+        "source_utterance_id": 2868,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:50:00",
+        "text": "ls -la /home/scorch/ | grep Nex"
+      },
+      {
+        "id": "EXEC-48",
+        "source_utterance_id": 2869,
+        "role": "helper",
+        "timestamp": "2011-05-07 06:50:00",
+        "text": "pls"
+      },
+      {
+        "id": "EXEC-49",
+        "source_utterance_id": 2870,
+        "role": "customer",
+        "timestamp": "2011-05-07 06:50:00",
+        "text": "drwx------ 10 scorch scorch   4096 2011-03-07 13:53 Nexuiz-2.5.3"
+      }
+    ]
+  },
+  "cutoff_index": 49,
+  "missing_evidence": "External paste, image and website contents are not included. No device or shell is connected; no further command output is available."
+}

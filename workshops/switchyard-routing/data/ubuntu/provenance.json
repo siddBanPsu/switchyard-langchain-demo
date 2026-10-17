@@ -1,0 +1,21 @@
+{
+  "dataset": "Ubuntu Chat Logs Corpus",
+  "authors": "Rupak Sarkar, Neha Srikanth, Taylor Hudson, Rachel Rudinger, Claire Bonial, Philip Resnik (2025); ConvoKit format by Axel Bax",
+  "paper": "https://arxiv.org/abs/2503.12370",
+  "documentation": "https://www.convokit.cornell.edu/documentation/chatlogs.html",
+  "download": "https://zissou.infosci.cornell.edu/convokit/datasets/ubuntu-chat-logs/ubuntu-chat-logs.zip",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "retrieved": "2026-10-15",
+  "archive_sha256": "03fe5f7a8e8f3d8a7c4cca083a7fc85433ca163d0ba8672469eab37e9139e9a2",
+  "source_sha256": "52bf5c4a791c5d33b8278ef14f0792cdced09619492f87966bd439b7d0843039",
+  "adaptation": "Main: first 27 utterances grouped into symptoms, failed_attempts, diagnostic_followup. Later alternate-reader test and confirmation held out. Speaker field relabelled; original message text and source rows retained, including historical unsafe suggestions. No paste contents retrieved or fabricated. Tools and rubric are authored demo additions.",
+  "main_conversation": "32.70",
+  "warmup_conversation": "17.980",
+  "source_files": {
+    "source/conversation-32.70.jsonl": "a84b5aa04f0399d3163e3b2de621cc46a195a83b4bbd6d0723fd379f111fe042",
+    "source/conversation-17.980.jsonl": "52bf5c4a791c5d33b8278ef14f0792cdced09619492f87966bd439b7d0843039",
+    "source/conversation-32.70-metadata.json": "8850c08effbe9875ff759f013da4f3bcb059bbdb49ff51a524ebf2f094b93af4",
+    "source/conversation-metadata.json": "bd263a66c17a10addde5b166f036b113316d87cba0b8ee1318561173e3a8b9f1"
+  }
+}

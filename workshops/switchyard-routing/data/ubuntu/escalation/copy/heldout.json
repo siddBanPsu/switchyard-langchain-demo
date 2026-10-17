@@ -1,0 +1,75 @@
+{
+  "conversation_id": "83.1",
+  "rows": [
+    {
+      "id": 4628,
+      "speaker": "ikonia",
+      "conversation_id": "83.1",
+      "reply_to": 4627,
+      "timestamp": "2018-11-25 21:02:00",
+      "text": "are you %100 sure you're not moving them by mistake ?",
+      "meta": {
+        "time_elapsed": 22.0,
+        "gpt_explanation": "The user 'ikonia' is asking 'Getattrovskaya' if they are accidentally moving files instead of copying them when using Nautilus, which is the default file manager for the GNOME desktop environment in Ubuntu. This question implies that the issue might be caused by user error, such as clicking and dragging files in a way that moves them rather than copies them. In graphical user interfaces like Nautilus, the behavior of dragging files can differ based on whether certain keys (like Ctrl or Shift) are pressed.",
+        "conversational_friction": 3.0,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4629,
+      "speaker": "ikonia",
+      "conversation_id": "83.1",
+      "reply_to": 4628,
+      "timestamp": "2018-11-25 21:02:00",
+      "text": "and you're copying them into /mnt",
+      "meta": {
+        "time_elapsed": 22.0,
+        "gpt_explanation": "In this turn, ikonia is clarifying with Getattrovskaya that when they try to copy files, they are indeed attempting to copy them into the /mnt directory. '/mnt' is a standard directory in Unix-like operating systems where file systems are temporarily mounted. The question is likely to ensure that Getattrovskaya is copying files to the correct directory on the mounted USB drive and not somewhere else, which might be causing the confusion about file writing permissions.",
+        "conversational_friction": 3.0,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4630,
+      "speaker": "Getattrovskaya",
+      "conversation_id": "83.1",
+      "reply_to": 4629,
+      "timestamp": "2018-11-25 21:04:00",
+      "text": "I just tried the terminal way to copy, and it worked",
+      "meta": {
+        "time_elapsed": 24.0,
+        "gpt_explanation": "The user 'Getattrovskaya' is explaining that they attempted to copy files using the terminal instead of a graphical user interface (GUI) tool like Nautilus, and the copying was successful. This suggests that the issue was related to using the GUI tool rather than a permission problem with the USB drive when accessed through the terminal.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4631,
+      "speaker": "Getattrovskaya",
+      "conversation_id": "83.1",
+      "reply_to": 4630,
+      "timestamp": "2018-11-25 21:04:00",
+      "text": "I hope I can make use of the copied files-folders, too",
+      "meta": {
+        "time_elapsed": 24.0,
+        "gpt_explanation": "The user, Getattrovskaya, expresses hope that the files and folders they have copied using the terminal will be usable. This comes after successfully managing to copy files through the command line, resolving their previous issues of not being able to copy files using the graphical file manager (Nautilus). The concern here might be whether the copied data is intact and can be accessed or used as intended.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4632,
+      "speaker": "Getattrovskaya",
+      "conversation_id": "83.1",
+      "reply_to": 4631,
+      "timestamp": "2018-11-25 21:06:00",
+      "text": "thank you very much, it seems to be fixed as of now",
+      "meta": {
+        "time_elapsed": 26.0,
+        "gpt_explanation": "In this turn, Getattrovskaya is expressing gratitude to ikonia and indicating that the issue they were experiencing with the USB drive's read-only status has been resolved. Earlier, Getattrovskaya was unable to copy files using the graphical interface tool Nautilus, but switching to terminal commands for copying allowed them to write to the USB drive successfully.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    }
+  ]
+}

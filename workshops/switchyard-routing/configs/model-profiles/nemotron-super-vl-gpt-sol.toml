@@ -1,0 +1,28 @@
+profile_version = 1
+name = "Nemotron 3.5 Super VL executor and judge + GPT Sol 6.1"
+
+[clients.nvidia]
+format = "openai_chat"
+base_url_env = "NVIDIA_BASE_URL"
+api_key_env = "NVIDIA_API_KEY"
+
+[roles.efficient]
+display_name = "Nemotron 3.5 Super VL"
+client = "nvidia"
+model_id = "nvidia/nvidia/nemotron-3.5-super-vl"
+temperature = 0.0
+
+[roles.capable]
+display_name = "GPT Sol 6.1"
+client = "nvidia"
+model_id = "openai/openai/gpt-6.1-sol"
+
+# The judge is a separate call, priced at the same model's rate.
+[roles.classifier]
+display_name = "Nemotron 3.5 Super VL"
+client = "nvidia"
+model_id = "nvidia/nvidia/nemotron-3.5-super-vl"
+temperature = 0.0
+
+[roles.classifier.extra_body.chat_template_kwargs]
+enable_thinking = false

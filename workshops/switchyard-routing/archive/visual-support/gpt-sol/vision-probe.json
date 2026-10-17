@@ -1,0 +1,44 @@
+{
+  "calls": [
+    {
+      "kind": "vision",
+      "model": "openai/openai/gpt-6.1-sol",
+      "tier": "strong",
+      "has_image": true,
+      "policy": "super_only",
+      "decision_reason": "image",
+      "request_sha256": "9c324cb1b79954ebac6724fcd55e94f38f4cf1a801fa0ef3280a8dec3dc76a49",
+      "status": "ok",
+      "cost_usd": 0.0030785,
+      "usage": {
+        "input_tokens": 1048,
+        "output_tokens": 46,
+        "input_token_details": {
+          "cache_read": 0,
+          "cache_creation": 1045
+        }
+      },
+      "raw_usage": {
+        "completion_tokens": 46,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "prompt_tokens": 1048,
+        "prompt_tokens_details": {
+          "cache_creation_tokens": 1045,
+          "cache_write_tokens": 1045,
+          "cached_tokens": 0
+        },
+        "total_tokens": 1094
+      },
+      "provider_reported_model": "openai/openai/gpt-6.1-sol",
+      "finish_reason": "stop",
+      "message": {
+        "content": "{\"order_id\":\"QF-1042\",\"amount_cents\":11870,\"ui_status\":\"failed\",\"ui_claim_no_charge\":true,\"button_label\":\"Pay again\",\"error_reference\":\"UI-504\"}",
+        "role": "assistant"
+      },
+      "seconds": 4.096364125027321
+    }
+  ],
+  "blocked_requests": []
+}

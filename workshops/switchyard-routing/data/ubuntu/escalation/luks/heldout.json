@@ -1,0 +1,145 @@
+{
+  "conversation_id": "72.2",
+  "rows": [
+    {
+      "id": 2096,
+      "speaker": "ioria",
+      "conversation_id": "72.2",
+      "reply_to": 2095,
+      "timestamp": "2016-10-18 17:31:00",
+      "text": "  sudo chown  blake:blake \"/media/blake/Blake's Flash Dr/\"",
+      "meta": {
+        "time_elapsed": 25.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2097,
+      "speaker": "wtfman",
+      "conversation_id": "72.2",
+      "reply_to": 2096,
+      "timestamp": "2016-10-18 17:32:00",
+      "text": "worked!",
+      "meta": {
+        "time_elapsed": 26.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2098,
+      "speaker": "wtfman",
+      "conversation_id": "72.2",
+      "reply_to": 2097,
+      "timestamp": "2016-10-18 17:32:00",
+      "text": "wtf caused that, ioria?",
+      "meta": {
+        "time_elapsed": 26.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2099,
+      "speaker": "wtfman",
+      "conversation_id": "72.2",
+      "reply_to": 2098,
+      "timestamp": "2016-10-18 17:32:00",
+      "text": "i'm still confused what the issue was",
+      "meta": {
+        "time_elapsed": 26.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2100,
+      "speaker": "wtfman",
+      "conversation_id": "72.2",
+      "reply_to": 2099,
+      "timestamp": "2016-10-18 17:32:00",
+      "text": "so, i used the name username (blake) on both my desktop and laptop",
+      "meta": {
+        "time_elapsed": 26.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2101,
+      "speaker": "wtfman",
+      "conversation_id": "72.2",
+      "reply_to": 2100,
+      "timestamp": "2016-10-18 17:32:00",
+      "text": "and i formatted the drive as blake on my desktop",
+      "meta": {
+        "time_elapsed": 26.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2102,
+      "speaker": "ioria",
+      "conversation_id": "72.2",
+      "reply_to": 2101,
+      "timestamp": "2016-10-18 17:33:00",
+      "text": "  no clue really, but good job !",
+      "meta": {
+        "time_elapsed": 27.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2103,
+      "speaker": "wtfman",
+      "conversation_id": "72.2",
+      "reply_to": 2102,
+      "timestamp": "2016-10-18 17:34:00",
+      "text": "thanks for the help. so was root the owner of the flash drive? and if so, how?",
+      "meta": {
+        "time_elapsed": 28.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2104,
+      "speaker": "ioria",
+      "conversation_id": "72.2",
+      "reply_to": 2103,
+      "timestamp": "2016-10-18 17:34:00",
+      "text": "  999 is a system user",
+      "meta": {
+        "time_elapsed": 28.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 2105,
+      "speaker": "ioria",
+      "conversation_id": "72.2",
+      "reply_to": 2104,
+      "timestamp": "2016-10-18 17:36:00",
+      "text": "  if you want you can read tihis  https://help.ubuntu.com/community/EncryptedFilesystemsOnRemovableStorage",
+      "meta": {
+        "time_elapsed": 30.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    }
+  ]
+}

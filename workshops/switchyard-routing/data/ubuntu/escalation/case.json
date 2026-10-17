@@ -1,0 +1,1378 @@
+{
+  "id": "UBUNTU-ESCALATION-REVIEW",
+  "title": "Three permission errors, three evidence problems",
+  "summary": "Review three independent historical support incidents. Determine what is established, what remains unknown, and the smallest justified next action. Do not execute changes or infer missing paste contents.",
+  "cases": [
+    {
+      "id": "EXEC",
+      "conversation_id": "77.2",
+      "title": "Launcher reports Permission denied",
+      "summary": "why am I getting this?  exec: 121: ./nexuiz-linux-x86_64-sdl: Permission denied",
+      "evidence": {
+        "opening": [
+          {
+            "id": "EXEC-01",
+            "source_utterance_id": 2822,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:12:00",
+            "text": "why am I getting this?  exec: 121: ./nexuiz-linux-x86_64-sdl: Permission denied"
+          },
+          {
+            "id": "EXEC-02",
+            "source_utterance_id": 2823,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:12:00",
+            "text": "permissions"
+          },
+          {
+            "id": "EXEC-03",
+            "source_utterance_id": 2824,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:13:00",
+            "text": "nope its +x"
+          },
+          {
+            "id": "EXEC-04",
+            "source_utterance_id": 2825,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:13:00",
+            "text": "are you sure you're owner/group is set right?"
+          },
+          {
+            "id": "EXEC-05",
+            "source_utterance_id": 2826,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:13:00",
+            "text": "chown'd?"
+          },
+          {
+            "id": "EXEC-06",
+            "source_utterance_id": 2827,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:13:00",
+            "text": "?"
+          },
+          {
+            "id": "EXEC-07",
+            "source_utterance_id": 2828,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:14:00",
+            "text": "what command chown ... ?"
+          },
+          {
+            "id": "EXEC-08",
+            "source_utterance_id": 2829,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:15:00",
+            "text": "if you're not the owner of the file you might not be able to chmod it properly, or have the permissions to execute"
+          },
+          {
+            "id": "EXEC-09",
+            "source_utterance_id": 2830,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:15:00",
+            "text": "so what command do i use to tell"
+          },
+          {
+            "id": "EXEC-10",
+            "source_utterance_id": 2831,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:15:00",
+            "text": "ls -la and make sure it's your username in the 3rd column"
+          },
+          {
+            "id": "EXEC-11",
+            "source_utterance_id": 2832,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:16:00",
+            "text": "ls -la"
+          },
+          {
+            "id": "EXEC-12",
+            "source_utterance_id": 2833,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:16:00",
+            "text": "-rwxrwxrwx  1 scorch scorch    2104 2009-10-01 01:53 nexuiz-linux-sdl.sh"
+          },
+          {
+            "id": "EXEC-13",
+            "source_utterance_id": 2834,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:16:00",
+            "text": "hmmm yea tha tshould be fine"
+          },
+          {
+            "id": "EXEC-14",
+            "source_utterance_id": 2835,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:16:00",
+            "text": "paste the error one more time, I lose it in the scroll"
+          },
+          {
+            "id": "EXEC-15",
+            "source_utterance_id": 2836,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:17:00",
+            "text": "exec: 121: ./nexuiz-linux-x86_64-sdl: Permission denied"
+          },
+          {
+            "id": "EXEC-16",
+            "source_utterance_id": 2837,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:17:00",
+            "text": "have you tried running it under sudo?"
+          },
+          {
+            "id": "EXEC-17",
+            "source_utterance_id": 2838,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:18:00",
+            "text": "yes same thing"
+          },
+          {
+            "id": "EXEC-18",
+            "source_utterance_id": 2839,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:18:00",
+            "text": "hrmmm"
+          }
+        ],
+        "attempts": [
+          {
+            "id": "EXEC-19",
+            "source_utterance_id": 2840,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:18:00",
+            "text": "yeah, its top working with unity"
+          },
+          {
+            "id": "EXEC-20",
+            "source_utterance_id": 2841,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:21:00",
+            "text": "maybe try going up a directory (cd ..) and ensuring that permissions are right"
+          },
+          {
+            "id": "EXEC-21",
+            "source_utterance_id": 2842,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:22:00",
+            "text": "permissions might be messed up on some other elements required to run"
+          },
+          {
+            "id": "EXEC-22",
+            "source_utterance_id": 2843,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:23:00",
+            "text": "everything is fine"
+          },
+          {
+            "id": "EXEC-23",
+            "source_utterance_id": 2844,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:28:00",
+            "text": "amy other ideas?  why would this break after unity install?"
+          },
+          {
+            "id": "EXEC-24",
+            "source_utterance_id": 2845,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:29:00",
+            "text": "is it running from you local hard drive?"
+          },
+          {
+            "id": "EXEC-25",
+            "source_utterance_id": 2846,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:30:00",
+            "text": "is the file you're trying to execute on an external drive or something?"
+          },
+          {
+            "id": "EXEC-26",
+            "source_utterance_id": 2847,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:31:00",
+            "text": "no"
+          },
+          {
+            "id": "EXEC-27",
+            "source_utterance_id": 2848,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:32:00",
+            "text": "is it on a seperate partition?"
+          },
+          {
+            "id": "EXEC-28",
+            "source_utterance_id": 2849,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:32:00",
+            "text": "no"
+          },
+          {
+            "id": "EXEC-29",
+            "source_utterance_id": 2850,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:33:00",
+            "text": "can you show me line 121 of the .sh file?"
+          },
+          {
+            "id": "EXEC-30",
+            "source_utterance_id": 2851,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:33:00",
+            "text": "hold up"
+          },
+          {
+            "id": "EXEC-31",
+            "source_utterance_id": 2852,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:34:00",
+            "text": "exec \"$@\""
+          },
+          {
+            "id": "EXEC-32",
+            "source_utterance_id": 2853,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:36:00",
+            "text": "exec \"$@\""
+          },
+          {
+            "id": "EXEC-33",
+            "source_utterance_id": 2854,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:37:00",
+            "text": "can you throw that .sh script in a pastebin?"
+          },
+          {
+            "id": "EXEC-34",
+            "source_utterance_id": 2855,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:37:00",
+            "text": "was hoping for a bit more info on that line lol"
+          },
+          {
+            "id": "EXEC-35",
+            "source_utterance_id": 2856,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:37:00",
+            "text": "ok hold up"
+          },
+          {
+            "id": "EXEC-36",
+            "source_utterance_id": 2857,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:39:00",
+            "text": "what highlighting style?"
+          },
+          {
+            "id": "EXEC-37",
+            "source_utterance_id": 2858,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:40:00",
+            "text": "sh or bash"
+          },
+          {
+            "id": "EXEC-38",
+            "source_utterance_id": 2859,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:40:00",
+            "text": "whatever, just need the text"
+          },
+          {
+            "id": "EXEC-39",
+            "source_utterance_id": 2860,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:40:00",
+            "text": "http://pastebin.com/XJPjHqa9"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "EXEC-40",
+            "source_utterance_id": 2861,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:41:00",
+            "text": "can you copy the output from the command"
+          },
+          {
+            "id": "EXEC-41",
+            "source_utterance_id": 2862,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:41:00",
+            "text": "uname -a"
+          },
+          {
+            "id": "EXEC-42",
+            "source_utterance_id": 2863,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:42:00",
+            "text": "Linux scorch-GX700 2.6.38-8-generic #42-Ubuntu SMP Mon Apr 11 03:31:24 UTC 2011 x86_64 x86_64 x86_64 GNU/Linux"
+          },
+          {
+            "id": "EXEC-43",
+            "source_utterance_id": 2864,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:46:00",
+            "text": "can you tell me the output of the command"
+          },
+          {
+            "id": "EXEC-44",
+            "source_utterance_id": 2865,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:46:00",
+            "text": "pwd"
+          },
+          {
+            "id": "EXEC-45",
+            "source_utterance_id": 2866,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:46:00",
+            "text": "where you're trying to run the .sh file"
+          },
+          {
+            "id": "EXEC-46",
+            "source_utterance_id": 2867,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:47:00",
+            "text": "/home/scorch/Nexuiz-2.5.3"
+          },
+          {
+            "id": "EXEC-47",
+            "source_utterance_id": 2868,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:50:00",
+            "text": "ls -la /home/scorch/ | grep Nex"
+          },
+          {
+            "id": "EXEC-48",
+            "source_utterance_id": 2869,
+            "role": "helper",
+            "timestamp": "2011-05-07 06:50:00",
+            "text": "pls"
+          },
+          {
+            "id": "EXEC-49",
+            "source_utterance_id": 2870,
+            "role": "customer",
+            "timestamp": "2011-05-07 06:50:00",
+            "text": "drwx------ 10 scorch scorch   4096 2011-03-07 13:53 Nexuiz-2.5.3"
+          }
+        ]
+      },
+      "cutoff_index": 49,
+      "missing_evidence": "External paste, image and website contents are not included. No device or shell is connected; no further command output is available."
+    },
+    {
+      "id": "LUKS",
+      "conversation_id": "72.2",
+      "title": "Encrypted drive unlocks but folder access fails",
+      "summary": "i'm using the gnome disk editor to format a flash drive with LUKS encryption. i can unencrypt the partition fine on the machine i formatted the drive with, but on every other ubuntu machine (all running 16.04) i get \"this location could not be displayed. you do not have the permissions necessary...\" despite entering the correct passprase. what's going on?",
+      "evidence": {
+        "opening": [
+          {
+            "id": "LUKS-01",
+            "source_utterance_id": 2034,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:06:00",
+            "text": "i'm using the gnome disk editor to format a flash drive with LUKS encryption. i can unencrypt the partition fine on the machine i formatted the drive with, but on every other ubuntu machine (all running 16.04) i get \"this location could not be displayed. you do not have the permissions necessary...\" despite entering the correct passprase. what's going on?"
+          },
+          {
+            "id": "LUKS-02",
+            "source_utterance_id": 2035,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:06:00",
+            "text": "i created a LUKS partition on my laptop, unreadable on my desktop. and vice versa."
+          },
+          {
+            "id": "LUKS-03",
+            "source_utterance_id": 2036,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:07:00",
+            "text": "so it's not the machine that's the issue"
+          },
+          {
+            "id": "LUKS-04",
+            "source_utterance_id": 2037,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:07:00",
+            "text": "ecryptfs-utils cryptsetup are installed on the other machines ?"
+          },
+          {
+            "id": "LUKS-05",
+            "source_utterance_id": 2038,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:08:00",
+            "text": "ecryptfs-utils wasn't"
+          },
+          {
+            "id": "LUKS-06",
+            "source_utterance_id": 2039,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:08:00",
+            "text": "set"
+          },
+          {
+            "id": "LUKS-07",
+            "source_utterance_id": 2040,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:08:00",
+            "text": "sec*"
+          },
+          {
+            "id": "LUKS-08",
+            "source_utterance_id": 2041,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:09:00",
+            "text": "installed it, still not working"
+          },
+          {
+            "id": "LUKS-09",
+            "source_utterance_id": 2042,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:09:00",
+            "text": " try a reboot"
+          },
+          {
+            "id": "LUKS-10",
+            "source_utterance_id": 2043,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:10:00",
+            "text": "no dice"
+          },
+          {
+            "id": "LUKS-11",
+            "source_utterance_id": 2044,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:11:00",
+            "text": "just rebooted"
+          },
+          {
+            "id": "LUKS-12",
+            "source_utterance_id": 2045,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:11:00",
+            "text": " are we talking about a usb pen , right ?"
+          },
+          {
+            "id": "LUKS-13",
+            "source_utterance_id": 2046,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:12:00",
+            "text": "yep"
+          },
+          {
+            "id": "LUKS-14",
+            "source_utterance_id": 2047,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:12:00",
+            "text": "i formatted it with LUKS encryption on two different 16.04 machines. each one can decrypt it, but only if it formatted it."
+          },
+          {
+            "id": "LUKS-15",
+            "source_utterance_id": 2048,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:12:00",
+            "text": "if that makes sense"
+          },
+          {
+            "id": "LUKS-16",
+            "source_utterance_id": 2049,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:13:00",
+            "text": " and when you plug it, nautilus is giving you that message ?"
+          },
+          {
+            "id": "LUKS-17",
+            "source_utterance_id": 2050,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:13:00",
+            "text": "first it prompts for the passphrase"
+          },
+          {
+            "id": "LUKS-18",
+            "source_utterance_id": 2051,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:13:00",
+            "text": "but yeah, ioria. soon as i put the passphrase in."
+          },
+          {
+            "id": "LUKS-19",
+            "source_utterance_id": 2052,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:14:00",
+            "text": " dmesg | tail says nothing ?"
+          },
+          {
+            "id": "LUKS-20",
+            "source_utterance_id": 2053,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:15:00",
+            "text": "[   29.507375] EXT4-fs (dm-3): mounted filesystem with ordered data mode. Opts: (null)"
+          },
+          {
+            "id": "LUKS-21",
+            "source_utterance_id": 2054,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:16:00",
+            "text": "file explorer shows the \"unlocked\" icon next to the drive too"
+          },
+          {
+            "id": "LUKS-22",
+            "source_utterance_id": 2055,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:16:00",
+            "text": "but i just can't view the contents"
+          }
+        ],
+        "attempts": [
+          {
+            "id": "LUKS-23",
+            "source_utterance_id": 2056,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:16:00",
+            "text": "i googled and can't find anybody else with this problem really either."
+          },
+          {
+            "id": "LUKS-24",
+            "source_utterance_id": 2057,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:17:00",
+            "text": " i see.... what's on the flash drives ? generally, i mean"
+          },
+          {
+            "id": "LUKS-25",
+            "source_utterance_id": 2058,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:17:00",
+            "text": "pdf docs and such"
+          },
+          {
+            "id": "LUKS-26",
+            "source_utterance_id": 2059,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:17:00",
+            "text": "it's a 32GB drive, i'm only using 1GB of it"
+          },
+          {
+            "id": "LUKS-27",
+            "source_utterance_id": 2060,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:19:00",
+            "text": " ls /media/<user>/   ?"
+          },
+          {
+            "id": "LUKS-28",
+            "source_utterance_id": 2061,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:20:00",
+            "text": "huh?"
+          },
+          {
+            "id": "LUKS-29",
+            "source_utterance_id": 2062,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:20:00",
+            "text": "it's listed in there"
+          },
+          {
+            "id": "LUKS-30",
+            "source_utterance_id": 2063,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:20:00",
+            "text": " check in  /media/<user>/<device>  if mounted"
+          },
+          {
+            "id": "LUKS-31",
+            "source_utterance_id": 2064,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:20:00",
+            "text": "ya it is"
+          },
+          {
+            "id": "LUKS-32",
+            "source_utterance_id": 2065,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:20:00",
+            "text": "it's mounted in there"
+          },
+          {
+            "id": "LUKS-33",
+            "source_utterance_id": 2066,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:21:00",
+            "text": " can you cd in there ?"
+          },
+          {
+            "id": "LUKS-34",
+            "source_utterance_id": 2067,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:21:00",
+            "text": "Permission denied"
+          },
+          {
+            "id": "LUKS-35",
+            "source_utterance_id": 2068,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:21:00",
+            "text": "when i try to cd"
+          },
+          {
+            "id": "LUKS-36",
+            "source_utterance_id": 2069,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:21:00",
+            "text": "  ls -l /path/to/usb"
+          },
+          {
+            "id": "LUKS-37",
+            "source_utterance_id": 2070,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:22:00",
+            "text": "  check the owner"
+          },
+          {
+            "id": "LUKS-38",
+            "source_utterance_id": 2071,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:22:00",
+            "text": "ls: cannot open directory"
+          },
+          {
+            "id": "LUKS-39",
+            "source_utterance_id": 2072,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:22:00",
+            "text": "  ls -l /media/<user>"
+          },
+          {
+            "id": "LUKS-40",
+            "source_utterance_id": 2073,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:23:00",
+            "text": "  also   ls -ld  /media/<user>"
+          },
+          {
+            "id": "LUKS-41",
+            "source_utterance_id": 2074,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:23:00",
+            "text": "drwx------ 4 999 999 4096 Oct 18 13:01"
+          },
+          {
+            "id": "LUKS-42",
+            "source_utterance_id": 2075,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:23:00",
+            "text": "drwxr-x---+ 3 root root 4096 Oct 18 13:20"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "LUKS-43",
+            "source_utterance_id": 2076,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:23:00",
+            "text": "it's owned by root?"
+          },
+          {
+            "id": "LUKS-44",
+            "source_utterance_id": 2077,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:23:00",
+            "text": "..."
+          },
+          {
+            "id": "LUKS-45",
+            "source_utterance_id": 2078,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:24:00",
+            "text": "is it somehow owned by root?"
+          },
+          {
+            "id": "LUKS-46",
+            "source_utterance_id": 2079,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:24:00",
+            "text": "  no"
+          },
+          {
+            "id": "LUKS-47",
+            "source_utterance_id": 2080,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:25:00",
+            "text": "i just put the wrong passphrase in to test it and when i do that it doesn't even mount"
+          },
+          {
+            "id": "LUKS-48",
+            "source_utterance_id": 2081,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:25:00",
+            "text": "so i'm def using the correct passphrase"
+          },
+          {
+            "id": "LUKS-49",
+            "source_utterance_id": 2082,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:25:00",
+            "text": "  that's normal"
+          },
+          {
+            "id": "LUKS-50",
+            "source_utterance_id": 2083,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:26:00",
+            "text": "i mean, this makes LUKS 100% unusable for me. encryption is useless if it results in data loss."
+          },
+          {
+            "id": "LUKS-51",
+            "source_utterance_id": 2084,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:26:00",
+            "text": "this is horrible =["
+          },
+          {
+            "id": "LUKS-52",
+            "source_utterance_id": 2085,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:26:00",
+            "text": "  i think you have to chown the folder ..."
+          },
+          {
+            "id": "LUKS-53",
+            "source_utterance_id": 2086,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:26:00",
+            "text": "  can you paste ls -Rld /home/<user>"
+          },
+          {
+            "id": "LUKS-54",
+            "source_utterance_id": 2087,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:27:00",
+            "text": "drwxr-xr-x 22 blake blake 4096 Oct 18 13:10 /home/blake"
+          },
+          {
+            "id": "LUKS-55",
+            "source_utterance_id": 2088,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:28:00",
+            "text": "  can you paste ls -Rld /home/<user> /<device>"
+          },
+          {
+            "id": "LUKS-56",
+            "source_utterance_id": 2089,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:28:00",
+            "text": "what is /<device>"
+          },
+          {
+            "id": "LUKS-57",
+            "source_utterance_id": 2090,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:28:00",
+            "text": "oh sec"
+          },
+          {
+            "id": "LUKS-58",
+            "source_utterance_id": 2091,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:28:00",
+            "text": "wait, what do you want for /<device>"
+          },
+          {
+            "id": "LUKS-59",
+            "source_utterance_id": 2092,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:29:00",
+            "text": "drwxr-xr-x 22 blake blake 4096 Oct 18 13:10 /home/blake"
+          },
+          {
+            "id": "LUKS-60",
+            "source_utterance_id": 2093,
+            "role": "helper",
+            "timestamp": "2016-10-18 17:29:00",
+            "text": "  sorry i meant   ls -Rld /media/<user>/<device>"
+          },
+          {
+            "id": "LUKS-61",
+            "source_utterance_id": 2094,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:30:00",
+            "text": "ls -Rld /media/blake/Blake's Flash Dr/"
+          },
+          {
+            "id": "LUKS-62",
+            "source_utterance_id": 2095,
+            "role": "customer",
+            "timestamp": "2016-10-18 17:30:00",
+            "text": "drwx------ 4 999 999 4096 Oct 18 13:01 /media/blake/Blake's Flash Dr/"
+          }
+        ]
+      },
+      "cutoff_index": 62,
+      "missing_evidence": "External paste, image and website contents are not included. No device or shell is connected; no further command output is available."
+    },
+    {
+      "id": "COPY",
+      "conversation_id": "83.1",
+      "title": "GUI says read-only despite terminal write tests",
+      "summary": "hello, even though I change permissions with \"chmod -R 777\" I still get \"read-only\" error...how can I make the folder readable?",
+      "evidence": {
+        "opening": [
+          {
+            "id": "COPY-01",
+            "source_utterance_id": 4550,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:40:00",
+            "text": "hello, even though I change permissions with \"chmod -R 777\" I still get \"read-only\" error...how can I make the folder readable?"
+          },
+          {
+            "id": "COPY-02",
+            "source_utterance_id": 4551,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:41:00",
+            "text": "probably a read only file system"
+          },
+          {
+            "id": "COPY-03",
+            "source_utterance_id": 4552,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:41:00",
+            "text": "what is the file system you have mounted"
+          },
+          {
+            "id": "COPY-04",
+            "source_utterance_id": 4553,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:42:00",
+            "text": "ext4"
+          },
+          {
+            "id": "COPY-05",
+            "source_utterance_id": 4554,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:42:00",
+            "text": "unmount it, fsck it, re-mount it"
+          },
+          {
+            "id": "COPY-06",
+            "source_utterance_id": 4555,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:42:00",
+            "text": "but FAT didnt help either"
+          },
+          {
+            "id": "COPY-07",
+            "source_utterance_id": 4556,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:42:00",
+            "text": "where is it mounted ?"
+          },
+          {
+            "id": "COPY-08",
+            "source_utterance_id": 4557,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:43:00",
+            "text": "under /media/live/"
+          },
+          {
+            "id": "COPY-09",
+            "source_utterance_id": 4558,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:43:00",
+            "text": "media/live"
+          },
+          {
+            "id": "COPY-10",
+            "source_utterance_id": 4559,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:43:00",
+            "text": "will try fsck"
+          },
+          {
+            "id": "COPY-11",
+            "source_utterance_id": 4560,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:43:00",
+            "text": "is it a live media ? eg: like a cd"
+          },
+          {
+            "id": "COPY-12",
+            "source_utterance_id": 4561,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:45:00",
+            "text": "the OS runs on live cd, but the file system in question is an susb"
+          },
+          {
+            "id": "COPY-13",
+            "source_utterance_id": 4562,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:45:00",
+            "text": "usb*"
+          },
+          {
+            "id": "COPY-14",
+            "source_utterance_id": 4563,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:45:00",
+            "text": "..... that seems odd to be mounted at /media/live"
+          },
+          {
+            "id": "COPY-15",
+            "source_utterance_id": 4564,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:45:00",
+            "text": "what version of ubuntu is this ?"
+          },
+          {
+            "id": "COPY-16",
+            "source_utterance_id": 4565,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:45:00",
+            "text": "it is an old ubuntu"
+          },
+          {
+            "id": "COPY-17",
+            "source_utterance_id": 4566,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:45:00",
+            "text": "what version exactly"
+          },
+          {
+            "id": "COPY-18",
+            "source_utterance_id": 4567,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:45:00",
+            "text": "14.x"
+          },
+          {
+            "id": "COPY-19",
+            "source_utterance_id": 4568,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:45:00",
+            "text": ".x is not exactly"
+          },
+          {
+            "id": "COPY-20",
+            "source_utterance_id": 4569,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:46:00",
+            "text": "one sec"
+          },
+          {
+            "id": "COPY-21",
+            "source_utterance_id": 4570,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:46:00",
+            "text": "14.04"
+          },
+          {
+            "id": "COPY-22",
+            "source_utterance_id": 4571,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:46:00",
+            "text": "and what is the usb - is that a live image or just a flat file system"
+          },
+          {
+            "id": "COPY-23",
+            "source_utterance_id": 4572,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:47:00",
+            "text": "it is not iso"
+          },
+          {
+            "id": "COPY-24",
+            "source_utterance_id": 4573,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:47:00",
+            "text": "just fs"
+          },
+          {
+            "id": "COPY-25",
+            "source_utterance_id": 4574,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:47:00",
+            "text": "and how does it get mounted ?"
+          },
+          {
+            "id": "COPY-26",
+            "source_utterance_id": 4575,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:47:00",
+            "text": "how do you mean?"
+          },
+          {
+            "id": "COPY-27",
+            "source_utterance_id": 4576,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:48:00",
+            "text": "how does the usb get mounted, do you do it, is it automounted etc"
+          },
+          {
+            "id": "COPY-28",
+            "source_utterance_id": 4577,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:48:00",
+            "text": "it gets automounted"
+          },
+          {
+            "id": "COPY-29",
+            "source_utterance_id": 4578,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:48:00",
+            "text": "so a usb will not get mounted on /media/live by default"
+          },
+          {
+            "id": "COPY-30",
+            "source_utterance_id": 4579,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:48:00",
+            "text": "well it does"
+          },
+          {
+            "id": "COPY-31",
+            "source_utterance_id": 4580,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:48:00",
+            "text": "so why do you thin it's mounted there and why is it being mounted as a live media"
+          },
+          {
+            "id": "COPY-32",
+            "source_utterance_id": 4581,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:49:00",
+            "text": "I see the path media/live"
+          },
+          {
+            "id": "COPY-33",
+            "source_utterance_id": 4582,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:49:00",
+            "text": "what is the device file for it, eg: /dev/sda1"
+          },
+          {
+            "id": "COPY-34",
+            "source_utterance_id": 4583,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:49:00",
+            "text": "(for the usb)"
+          },
+          {
+            "id": "COPY-35",
+            "source_utterance_id": 4584,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:49:00",
+            "text": "yes, that's sda1"
+          }
+        ],
+        "attempts": [
+          {
+            "id": "COPY-36",
+            "source_utterance_id": 4585,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:50:00",
+            "text": "ok, so in a command line \"sudo mount /dev/sda1 /mnt\""
+          },
+          {
+            "id": "COPY-37",
+            "source_utterance_id": 4586,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:50:00",
+            "text": "done"
+          },
+          {
+            "id": "COPY-38",
+            "source_utterance_id": 4587,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:50:00",
+            "text": "\"sudo touch /mnt/test\""
+          },
+          {
+            "id": "COPY-39",
+            "source_utterance_id": 4588,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:50:00",
+            "text": "(on the command line)"
+          },
+          {
+            "id": "COPY-40",
+            "source_utterance_id": 4589,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:50:00",
+            "text": "done"
+          },
+          {
+            "id": "COPY-41",
+            "source_utterance_id": 4590,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:51:00",
+            "text": "no error ?"
+          },
+          {
+            "id": "COPY-42",
+            "source_utterance_id": 4591,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:51:00",
+            "text": "no"
+          },
+          {
+            "id": "COPY-43",
+            "source_utterance_id": 4592,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:51:00",
+            "text": "oh"
+          },
+          {
+            "id": "COPY-44",
+            "source_utterance_id": 4593,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:51:00",
+            "text": "then it mounted read/write sucessfully"
+          },
+          {
+            "id": "COPY-45",
+            "source_utterance_id": 4594,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:51:00",
+            "text": "a file named test was created in the formerly unwritable folder"
+          },
+          {
+            "id": "COPY-46",
+            "source_utterance_id": 4595,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:51:00",
+            "text": "you can now access it on /mnt"
+          },
+          {
+            "id": "COPY-47",
+            "source_utterance_id": 4596,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:52:00",
+            "text": "the folder is still not writable"
+          },
+          {
+            "id": "COPY-48",
+            "source_utterance_id": 4597,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:52:00",
+            "text": "in /mnt"
+          },
+          {
+            "id": "COPY-49",
+            "source_utterance_id": 4598,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:52:00",
+            "text": "I was able to access all along, but I need to write to it"
+          },
+          {
+            "id": "COPY-50",
+            "source_utterance_id": 4599,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:52:00",
+            "text": "you can't write to it from /mnt ?"
+          },
+          {
+            "id": "COPY-51",
+            "source_utterance_id": 4600,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:52:00",
+            "text": "it doesn't let write in /mnt, either"
+          },
+          {
+            "id": "COPY-52",
+            "source_utterance_id": 4601,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:53:00",
+            "text": "please show me the output from the command ls -la /mnt"
+          },
+          {
+            "id": "COPY-53",
+            "source_utterance_id": 4602,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:53:00",
+            "text": "even after I tried changing perms"
+          },
+          {
+            "id": "COPY-54",
+            "source_utterance_id": 4603,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:53:00",
+            "text": "(in a terminal)"
+          },
+          {
+            "id": "COPY-55",
+            "source_utterance_id": 4604,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:55:00",
+            "text": "https://paste.debian.net/plain/1053208"
+          },
+          {
+            "id": "COPY-56",
+            "source_utterance_id": 4605,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:55:00",
+            "text": "you're permissions are wrong"
+          },
+          {
+            "id": "COPY-57",
+            "source_utterance_id": 4606,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:55:00",
+            "text": "what is your username"
+          },
+          {
+            "id": "COPY-58",
+            "source_utterance_id": 4607,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:55:00",
+            "text": "\"live\""
+          },
+          {
+            "id": "COPY-59",
+            "source_utterance_id": 4608,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:56:00",
+            "text": "then why is the test file we created as root the user \"live\""
+          },
+          {
+            "id": "COPY-60",
+            "source_utterance_id": 4609,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:56:00",
+            "text": "I dont know. I ran the commands as you gave me"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "COPY-61",
+            "source_utterance_id": 4610,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:56:00",
+            "text": "please run the command \"touch /mnt/live-user\""
+          },
+          {
+            "id": "COPY-62",
+            "source_utterance_id": 4611,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:57:00",
+            "text": "no output (I ran it as you typed, without sudo)"
+          },
+          {
+            "id": "COPY-63",
+            "source_utterance_id": 4612,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:57:00",
+            "text": "ls -la /mnt/"
+          },
+          {
+            "id": "COPY-64",
+            "source_utterance_id": 4613,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:57:00",
+            "text": "is the file there ?"
+          },
+          {
+            "id": "COPY-65",
+            "source_utterance_id": 4614,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:58:00",
+            "text": "in the output I see both \"live-user\" and \"test\""
+          },
+          {
+            "id": "COPY-66",
+            "source_utterance_id": 4615,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:58:00",
+            "text": "so you can write to it just fine"
+          },
+          {
+            "id": "COPY-67",
+            "source_utterance_id": 4616,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:58:00",
+            "text": "and you can write to it as the user \"live\""
+          },
+          {
+            "id": "COPY-68",
+            "source_utterance_id": 4617,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:58:00",
+            "text": "I can not"
+          },
+          {
+            "id": "COPY-69",
+            "source_utterance_id": 4618,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:59:00",
+            "text": "I am trying to copy files to this usb, and still can not"
+          },
+          {
+            "id": "COPY-70",
+            "source_utterance_id": 4619,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:59:00",
+            "text": "read-only"
+          },
+          {
+            "id": "COPY-71",
+            "source_utterance_id": 4620,
+            "role": "helper",
+            "timestamp": "2018-11-25 20:59:00",
+            "text": "I've just proven you can write to the disk"
+          },
+          {
+            "id": "COPY-72",
+            "source_utterance_id": 4621,
+            "role": "customer",
+            "timestamp": "2018-11-25 20:59:00",
+            "text": "I can't. i.e. it is not allowed to create new folder in there, too"
+          },
+          {
+            "id": "COPY-73",
+            "source_utterance_id": 4622,
+            "role": "helper",
+            "timestamp": "2018-11-25 21:00:00",
+            "text": "\"mkdir /mnt/test-directory\" in a terminal please"
+          },
+          {
+            "id": "COPY-74",
+            "source_utterance_id": 4623,
+            "role": "customer",
+            "timestamp": "2018-11-25 21:00:00",
+            "text": "whereas there are two files named 'live-user' and 'test'"
+          },
+          {
+            "id": "COPY-75",
+            "source_utterance_id": 4624,
+            "role": "customer",
+            "timestamp": "2018-11-25 21:01:00",
+            "text": "that works, too..so apparently I should try copying the files from gui"
+          },
+          {
+            "id": "COPY-76",
+            "source_utterance_id": 4625,
+            "role": "customer",
+            "timestamp": "2018-11-25 21:01:00",
+            "text": "not from gui*"
+          },
+          {
+            "id": "COPY-77",
+            "source_utterance_id": 4626,
+            "role": "helper",
+            "timestamp": "2018-11-25 21:01:00",
+            "text": "what tool are you using to copy the files"
+          },
+          {
+            "id": "COPY-78",
+            "source_utterance_id": 4627,
+            "role": "customer",
+            "timestamp": "2018-11-25 21:01:00",
+            "text": "copying just from within nautilus"
+          }
+        ]
+      },
+      "cutoff_index": 78,
+      "missing_evidence": "External paste, image and website contents are not included. No device or shell is connected; no further command output is available."
+    }
+  ]
+}

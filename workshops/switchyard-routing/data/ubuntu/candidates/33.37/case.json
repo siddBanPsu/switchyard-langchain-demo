@@ -1,0 +1,206 @@
+{
+  "id": "UBUNTU-33.37",
+  "conversation_id": "33.37",
+  "title": "Installer falls into initramfs despite BIOS detecting drives",
+  "summary": "hi, I'm trying to install ubuntu 64bit desktop on an sata 6g drive. the livecd installer shows the ubuntu logo and then takes me to the initramfs shell and says that no drive is detected with the livecd data on it.",
+  "evidence": {
+    "symptoms": [
+      {
+        "id": "U01",
+        "source_utterance_id": 6518,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:12:00",
+        "text": "hi, I'm trying to install ubuntu 64bit desktop on an sata 6g drive. the livecd installer shows the ubuntu logo and then takes me to the initramfs shell and says that no drive is detected with the livecd data on it."
+      },
+      {
+        "id": "U02",
+        "source_utterance_id": 6519,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:13:00",
+        "text": "does the gparted tool show the drive?"
+      },
+      {
+        "id": "U03",
+        "source_utterance_id": 6520,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:15:00",
+        "text": "how can i check ?"
+      },
+      {
+        "id": "U04",
+        "source_utterance_id": 6521,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:15:00",
+        "text": "run the tool"
+      },
+      {
+        "id": "U05",
+        "source_utterance_id": 6522,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:16:00",
+        "text": "yes, but how?"
+      },
+      {
+        "id": "U06",
+        "source_utterance_id": 6523,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:17:00",
+        "text": "try gparted in a terminal windows"
+      },
+      {
+        "id": "U07",
+        "source_utterance_id": 6524,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:17:00",
+        "text": "window"
+      },
+      {
+        "id": "U08",
+        "source_utterance_id": 6525,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:18:00",
+        "text": "in terminal window type   gparted"
+      },
+      {
+        "id": "U09",
+        "source_utterance_id": 6526,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:18:00",
+        "text": "how..? there is nothing installed :p"
+      },
+      {
+        "id": "U10",
+        "source_utterance_id": 6527,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:19:00",
+        "text": "your in the gui dektop on the live cd right?"
+      },
+      {
+        "id": "U11",
+        "source_utterance_id": 6528,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:20:00",
+        "text": "no, as i said, it just takes me to the initramfs shell and says that no drive is detected with the livecd data on it."
+      }
+    ],
+    "failed_attempts": [
+      {
+        "id": "U12",
+        "source_utterance_id": 6529,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:20:00",
+        "text": "what version of the live cd?"
+      },
+      {
+        "id": "U13",
+        "source_utterance_id": 6530,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:20:00",
+        "text": "and are you sure the cpu is 64bit?"
+      },
+      {
+        "id": "U14",
+        "source_utterance_id": 6531,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:20:00",
+        "text": "yes"
+      },
+      {
+        "id": "U15",
+        "source_utterance_id": 6532,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:20:00",
+        "text": "   what version of the live cd?"
+      },
+      {
+        "id": "U16",
+        "source_utterance_id": 6533,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:21:00",
+        "text": "it's the amd64 desktop installer for maverick on the website"
+      },
+      {
+        "id": "U17",
+        "source_utterance_id": 6534,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:21:00",
+        "text": "whether i choose try without installing or install, it takes me to that shell."
+      },
+      {
+        "id": "U18",
+        "source_utterance_id": 6535,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:22:00",
+        "text": "how new is the laptop?"
+      },
+      {
+        "id": "U19",
+        "source_utterance_id": 6536,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:22:00",
+        "text": "and what brand?"
+      },
+      {
+        "id": "U20",
+        "source_utterance_id": 6537,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:22:00",
+        "text": "it's not a laptop"
+      }
+    ],
+    "diagnostic_followup": [
+      {
+        "id": "U21",
+        "source_utterance_id": 6538,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:23:00",
+        "text": "what type of hardware ?"
+      },
+      {
+        "id": "U22",
+        "source_utterance_id": 6539,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:23:00",
+        "text": "is it a newly build custom machine?"
+      },
+      {
+        "id": "U23",
+        "source_utterance_id": 6540,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:24:00",
+        "text": "it's an asus p7p55d-e lx motherboard and an intel i7"
+      },
+      {
+        "id": "U24",
+        "source_utterance_id": 6541,
+        "role": "helper",
+        "timestamp": "2010-12-22 05:24:00",
+        "text": "pretty new then"
+      },
+      {
+        "id": "U25",
+        "source_utterance_id": 6542,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:24:00",
+        "text": "the motherboard has 2 sata 6gb/s ports and i have the cd drive in one and the hard disk in the other"
+      },
+      {
+        "id": "U26",
+        "source_utterance_id": 6543,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:24:00",
+        "text": "and the bios detects the drives and boots from the livecd"
+      },
+      {
+        "id": "U27",
+        "source_utterance_id": 6544,
+        "role": "customer",
+        "timestamp": "2010-12-22 05:24:00",
+        "text": "but the livecd can't mount the drive that cd is in apparently"
+      }
+    ]
+  },
+  "missing_evidence": "Only the quoted transcript messages are available. Referenced web pages, images and paste contents are unavailable. No live Ubuntu system is connected.",
+  "cutoff_index": 27,
+  "source_url": "https://www.convokit.cornell.edu/documentation/chatlogs.html"
+}

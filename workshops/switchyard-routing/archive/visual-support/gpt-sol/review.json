@@ -1,0 +1,80 @@
+{
+  "raw": "runs/visual-support/lightning-gpt-sol-final-2026-10-17-20261017T025833913064Z.json",
+  "review": [
+    {
+      "arm": "super_only",
+      "repeat": 1,
+      "passed": true,
+      "review": "Structured fields, citation IDs and support summary agree with supplied evidence; rendered reply has correct SGD 118.70 and no executed-action claim.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    },
+    {
+      "arm": "lightning_only",
+      "repeat": 3,
+      "passed": false,
+      "review": "Backend extraction correct; locally blocked on advertised image modality. No screenshot inference sent.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    },
+    {
+      "arm": "lightning_only",
+      "repeat": 2,
+      "passed": false,
+      "review": "Backend extraction correct; locally blocked on advertised image modality. No screenshot inference sent.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    },
+    {
+      "arm": "routed",
+      "repeat": 1,
+      "passed": true,
+      "review": "Structured fields, citation IDs and support summary agree with supplied evidence; rendered reply has correct SGD 118.70 and no executed-action claim.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    },
+    {
+      "arm": "super_only",
+      "repeat": 2,
+      "passed": true,
+      "review": "Structured fields, citation IDs and support summary agree with supplied evidence; rendered reply has correct SGD 118.70 and no executed-action claim.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    },
+    {
+      "arm": "routed",
+      "repeat": 3,
+      "passed": true,
+      "review": "Structured fields, citation IDs and support summary agree with supplied evidence; rendered reply has correct SGD 118.70 and no executed-action claim.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    },
+    {
+      "arm": "lightning_only",
+      "repeat": 1,
+      "passed": false,
+      "review": "Backend extraction correct; locally blocked on advertised image modality. No screenshot inference sent.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    },
+    {
+      "arm": "routed",
+      "repeat": 2,
+      "passed": true,
+      "review": "Structured fields, citation IDs and support summary agree with supplied evidence; rendered reply has correct SGD 118.70 and no executed-action claim.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    },
+    {
+      "arm": "super_only",
+      "repeat": 3,
+      "passed": true,
+      "review": "Structured fields, citation IDs and support summary agree with supplied evidence; rendered reply has correct SGD 118.70 and no executed-action claim.",
+      "provider_ids_match": true,
+      "cost_complete": true
+    }
+  ],
+  "comparison_spend_usd": 0.02081865,
+  "separate_probe_spend_usd": 0.0030785,
+  "checks": "All model outputs reviewed; 75 tests passed; all backup manifest hashes verified and 12 non-documentation originals unchanged."
+}

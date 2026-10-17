@@ -1,0 +1,4 @@
+arm,approach,accepted,attempts,mean_cost_usd,cost_per_accepted,median_seconds,model_calls,super_calls,lightning_calls
+super_only,Super VL only,3,3,0.0007697166666666666,0.0007697166666666666,3.509879874996841,9,9,0
+lightning_only,Lightning only,0,3,0.00027150666666666667,,1.3734002499841154,4,0,4
+routed,Combined via Switchyard,3,3,0.0005952333333333333,0.0005952333333333333,5.163936625001952,10,4,6

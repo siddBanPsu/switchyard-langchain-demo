@@ -1,0 +1,14 @@
+{
+  "conversation_id": "17.980",
+  "resolution_utterance_ids": [
+    28,
+    29,
+    32
+  ],
+  "historical_resolution": "Use an absolute path to the script in sshrc; user confirmed /home/user/bin/script.sh worked.",
+  "required_evidence": [
+    "U04",
+    "U08"
+  ],
+  "limitations": "PATH/environment mismatch is a supported hypothesis. Exact environment and permissions were not measured. No modern Ubuntu reproduction is claimed."
+}

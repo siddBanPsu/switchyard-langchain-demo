@@ -1,18 +1,17 @@
-# Local credentials and configurations
 .env
 .env.*
 !.env.example
-*.pem
-*.key
-configs/model-profiles/*.local.toml
-# Runtime data and generated notebook exports
-runs/
-*.html
-*-run-*.ipynb
-.ipynb_checkpoints/
-# Environments and caches
 .venv/
 __pycache__/
-.pytest_cache/
 *.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.playwright-cli/
 .DS_Store
+*.pem
+*.key
+*.p12
+*.pfx
+*.local.toml
+# Curated recordings are committed; newly generated calls stay local.
+**/runs/**

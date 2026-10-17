@@ -1,0 +1,12 @@
+{
+  "conversation_id": "32.70",
+  "historical_resolution": "The customer tried another reader and reported no read-only issue.",
+  "confirmation": "Success! My other reader works, no read-only issue",
+  "confirmation_utterance_id": 4058,
+  "required_evidence": [
+    "U05",
+    "U07",
+    "U16"
+  ],
+  "limitations": "The alternate-reader test implicates the reader/adapter path; it does not establish its precise internal failure. No paste contents, live machine, or filesystem state is available."
+}

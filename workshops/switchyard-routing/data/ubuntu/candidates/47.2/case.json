@@ -1,0 +1,150 @@
+{
+  "id": "UBUNTU-47.2",
+  "conversation_id": "47.2",
+  "title": "Idle audio server consumes CPU",
+  "summary": "hello, pulse audio is taking up 34% of my cpu load while idle. (no sound playing)",
+  "evidence": {
+    "symptoms": [
+      {
+        "id": "U01",
+        "source_utterance_id": 4097,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:32:00",
+        "text": "hello, pulse audio is taking up 34% of my cpu load while idle. (no sound playing)"
+      },
+      {
+        "id": "U02",
+        "source_utterance_id": 4098,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:33:00",
+        "text": "some process may be keeping it busy for some reason"
+      },
+      {
+        "id": "U03",
+        "source_utterance_id": 4099,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:33:00",
+        "text": "thanks! how do I tell if this is the case"
+      },
+      {
+        "id": "U04",
+        "source_utterance_id": 4100,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:34:00",
+        "text": "eh, check you running processes. otherwise it could be a pulse or a alsa problem/bug"
+      },
+      {
+        "id": "U05",
+        "source_utterance_id": 4101,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:36:00",
+        "text": "interesting. totem or mplayer are not running, but it looks like pulseaudio is saying that two copies of totem are currently using sound. except it only shows the icon, and the name is \" 0x0008 0x0011 0x0001\""
+      }
+    ],
+    "failed_attempts": [
+      {
+        "id": "U06",
+        "source_utterance_id": 4102,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:37:00",
+        "text": "try: killall totem"
+      },
+      {
+        "id": "U07",
+        "source_utterance_id": 4103,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:38:00",
+        "text": "no process found. same for mplayer and gmplayer"
+      },
+      {
+        "id": "U08",
+        "source_utterance_id": 4104,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:38:00",
+        "text": "let me send you a screen shot"
+      },
+      {
+        "id": "U09",
+        "source_utterance_id": 4105,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:38:00",
+        "text": "ok"
+      },
+      {
+        "id": "U10",
+        "source_utterance_id": 4106,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:40:00",
+        "text": "http://img197.imageshack.us/img197/2120/pulse2.png"
+      },
+      {
+        "id": "U11",
+        "source_utterance_id": 4107,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:40:00",
+        "text": "let's see"
+      },
+      {
+        "id": "U12",
+        "source_utterance_id": 4108,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:41:00",
+        "text": "hmm, really strange"
+      },
+      {
+        "id": "U13",
+        "source_utterance_id": 4109,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:42:00",
+        "text": "isn't that weird?"
+      },
+      {
+        "id": "U14",
+        "source_utterance_id": 4110,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:42:00",
+        "text": "yeah. but, did you reboot?"
+      },
+      {
+        "id": "U15",
+        "source_utterance_id": 4111,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:43:00",
+        "text": "i think rebooting will fix the problem temporarily, but eventually pulse audio is gonna start hogging all the cpu again. I at least want to solve the pulseaudio bug"
+      },
+      {
+        "id": "U16",
+        "source_utterance_id": 4112,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:43:00",
+        "text": "ah, ok"
+      }
+    ],
+    "diagnostic_followup": [
+      {
+        "id": "U17",
+        "source_utterance_id": 4113,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:44:00",
+        "text": "i see.for some reason, the audio streams are not killed and pulse still tries to mix them"
+      },
+      {
+        "id": "U18",
+        "source_utterance_id": 4114,
+        "role": "helper",
+        "timestamp": "2009-11-17 04:44:00",
+        "text": "and the more audio streams the more cpu usage you have"
+      },
+      {
+        "id": "U19",
+        "source_utterance_id": 4115,
+        "role": "customer",
+        "timestamp": "2009-11-17 04:45:00",
+        "text": "hmmm. any way i can kill the audio streams?"
+      }
+    ]
+  },
+  "missing_evidence": "Only the quoted transcript messages are available. Referenced web pages, images and paste contents are unavailable. No live Ubuntu system is connected.",
+  "cutoff_index": 19,
+  "source_url": "https://www.convokit.cornell.edu/documentation/chatlogs.html"
+}

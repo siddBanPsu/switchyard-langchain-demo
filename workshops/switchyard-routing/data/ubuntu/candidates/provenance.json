@@ -1,0 +1,12 @@
+{
+  "dataset": "Ubuntu Chat Logs Corpus",
+  "authors": "Rupak Sarkar, Neha Srikanth, Taylor Hudson, Rachel Rudinger, Claire Bonial, Philip Resnik (2025); ConvoKit format by Axel Bax",
+  "paper": "https://arxiv.org/abs/2503.12370",
+  "documentation": "https://www.convokit.cornell.edu/documentation/chatlogs.html",
+  "download": "https://zissou.infosci.cornell.edu/convokit/datasets/ubuntu-chat-logs/ubuntu-chat-logs.zip",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "retrieved": "2026-10-15",
+  "archive_sha256": "03fe5f7a8e8f3d8a7c4cca083a7fc85433ca163d0ba8672469eab37e9139e9a2",
+  "adaptation": "Selected conversations split before historical solution/confirmation. Earlier messages grouped as symptoms, failed_attempts and diagnostic_followup; speaker fields relabelled; original message texts retained. Full originals only for evaluator/human audit. Tools and grading criteria are authored additions. No missing paste or image contents reconstructed."
+}

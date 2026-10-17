@@ -1,0 +1,26 @@
+profile_version = 1
+name = "Nemotron 3.5 Lightning + Nemotron 3 Ultra"
+
+# A client is an upstream endpoint. Store only the name of its key variable;
+# the real key belongs in .env and is exported before Switchyard starts.
+[clients.nvidia]
+format = "openai_chat"
+base_url_env = "NVIDIA_BASE_URL"
+api_key_env = "NVIDIA_API_KEY"
+
+# Routes refer to semantic roles, never to product names. The classifier may be
+# a third model; in this profile it deliberately reuses the efficient model.
+[roles.efficient]
+display_name = "Nemotron 3.5 Lightning"
+client = "nvidia"
+model_id = "nvidia/nvidia/nemotron-3.5-lightning"
+
+[roles.capable]
+display_name = "Nemotron 3 Ultra"
+client = "nvidia"
+model_id = "nvidia/nvidia/nemotron-3-ultra"
+
+[roles.classifier]
+display_name = "Nemotron 3.5 Lightning"
+client = "nvidia"
+model_id = "nvidia/nvidia/nemotron-3.5-lightning"

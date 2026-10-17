@@ -1,0 +1,94 @@
+{
+  "id": "UBUNTU-17.980",
+  "conversation_id": "17.980",
+  "title": "SSH hook cannot find an interactively runnable script",
+  "summary": "hey guys, which user executes the /etc/ssh/sshrc file? I have a script placed in ~~/bin (for my own user), but when I log in, I get an error that it can't find the script",
+  "evidence": {
+    "symptoms": [
+      {
+        "id": "U01",
+        "source_utterance_id": 17,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:38:00",
+        "text": "hey guys, which user executes the /etc/ssh/sshrc file? I have a script placed in ~~/bin (for my own user), but when I log in, I get an error that it can't find the script"
+      },
+      {
+        "id": "U02",
+        "source_utterance_id": 18,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:38:00",
+        "text": "so it's not looking in my bin folder"
+      },
+      {
+        "id": "U03",
+        "source_utterance_id": 19,
+        "role": "helper",
+        "timestamp": "2014-10-31 16:39:00",
+        "text": "is ~/bin in path? Is the file executable?"
+      }
+    ],
+    "failed_attempts": [
+      {
+        "id": "U04",
+        "source_utterance_id": 20,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:39:00",
+        "text": "Yes, when I log in I can execute script.sh, it finds it in my path"
+      },
+      {
+        "id": "U05",
+        "source_utterance_id": 21,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:39:00",
+        "text": "but the sshrc file can't find it so it seems"
+      },
+      {
+        "id": "U06",
+        "source_utterance_id": 22,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:40:00",
+        "text": "I'm wondering where I should put it. I suppose my bashrc does not get loaded before the execution of sshrc, right?"
+      }
+    ],
+    "diagnostic_followup": [
+      {
+        "id": "U07",
+        "source_utterance_id": 23,
+        "role": "helper",
+        "timestamp": "2014-10-31 16:41:00",
+        "text": "how did you reference this file in sshrc? using ~ or /home/user/bin as absolute path?"
+      },
+      {
+        "id": "U08",
+        "source_utterance_id": 24,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:42:00",
+        "text": "oh, somsip just \"script.sh\""
+      },
+      {
+        "id": "U09",
+        "source_utterance_id": 25,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:42:00",
+        "text": "but it also uses a config file in ~/.config/script.conf"
+      },
+      {
+        "id": "U10",
+        "source_utterance_id": 26,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:42:00",
+        "text": "I was assuming sshrc would be executes by my own user"
+      },
+      {
+        "id": "U11",
+        "source_utterance_id": 27,
+        "role": "customer",
+        "timestamp": "2014-10-31 16:43:00",
+        "text": "Do I put them in /home/root, then?"
+      }
+    ]
+  },
+  "missing_evidence": "Only the quoted transcript messages are available. Referenced web pages, images and paste contents are unavailable. No live Ubuntu system is connected.",
+  "cutoff_index": 11,
+  "source_url": "https://www.convokit.cornell.edu/documentation/chatlogs.html"
+}

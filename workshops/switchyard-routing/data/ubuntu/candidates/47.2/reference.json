@@ -1,0 +1,402 @@
+{
+  "required_evidence": [
+    "U05",
+    "U07"
+  ],
+  "confirmation": "that did it! cpu usage back down to almost nothing",
+  "confirmation_source_id": 4127,
+  "hidden_utterances": [
+    {
+      "id": 4116,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4115,
+      "timestamp": "2009-11-17 04:45:00",
+      "text": "eh, yeah. first of all, install the pulseuadio device chooser",
+      "meta": {
+        "time_elapsed": 13.0,
+        "gpt_explanation": "The user 'kostkon' is suggesting 'foul_owl' to install a tool called the 'pavucontrol' or PulseAudio Device Chooser. This tool allows you to manage audio streams and devices in a more detailed way, which can help in manually terminating unnecessary audio streams that may be causing high CPU usage by PulseAudio. It's a graphical interface that facilitates more precise control over audio settings in Ubuntu.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4117,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4116,
+      "timestamp": "2009-11-17 04:45:00",
+      "text": "you will be able to kill any stream from there",
+      "meta": {
+        "time_elapsed": 13.0,
+        "gpt_explanation": "Kostkon is suggesting that by installing the PulseAudio Device Chooser, foul_owl will have a graphical interface that allows them to manage audio streams. This means foul_owl can manually terminate ('kill') any unwanted or leftover audio streams that are causing high CPU usage, without needing to reboot the system.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4118,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4117,
+      "timestamp": "2009-11-17 04:45:00",
+      "text": "what is the package name?",
+      "meta": {
+        "time_elapsed": 13.0,
+        "gpt_explanation": "In this context, 'package name' refers to the specific name of the software package that needs to be installed on the Ubuntu operating system. A package in Ubuntu is a file that contains the software you want to install, including programs or applications. The user is asking for the exact name of the package they need to use in order to install the 'pavucontrol' or any other software that acts as a PulseAudio device chooser, which will allow them to manage and kill audio streams directly.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4119,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4118,
+      "timestamp": "2009-11-17 04:46:00",
+      "text": "sudo apt-get install padevchooser",
+      "meta": {
+        "time_elapsed": 14.0,
+        "gpt_explanation": "In this turn, 'sudo apt-get install padevchooser' is a command that the user can type into the terminal to install the 'padevchooser' package. 'sudo' stands for 'superuser do' and grants administrative privileges to the command. 'apt-get' is a package management command used to install, update, or remove software packages in Ubuntu. 'padevchooser' is a package that includes a tool to manage PulseAudio devices, which can help the user manage and kill unwanted audio streams.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4120,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4119,
+      "timestamp": "2009-11-17 04:46:00",
+      "text": "it will install pavucontrol, the app you actually need to use",
+      "meta": {
+        "time_elapsed": 14.0,
+        "gpt_explanation": "In this turn, the user kostkon is clarifying that by using the command 'sudo apt-get install padevchooser' from the previous turn, you will actually install an application called 'pavucontrol'. 'Pavucontrol' is a GUI (Graphical User Interface) tool that provides more advanced control over the PulseAudio sound system, including the ability to manage and kill audio streams. This would help foul_owl manage the audio streams that are causing high CPU usage.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4121,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4120,
+      "timestamp": "2009-11-17 04:46:00",
+      "text": "do i need to run pavucontrol as root",
+      "meta": {
+        "time_elapsed": 14.0,
+        "gpt_explanation": "The user 'foul_owl' is asking if they need to run the application 'pavucontrol' with root privileges. In Linux, running as 'root' means executing a program with administrative privileges, which allows the user to make system-wide changes. 'pavucontrol' is a volume control application for the PulseAudio sound server. Normally, pavucontrol does not need to be run as root to control audio settings for the user.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4122,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4121,
+      "timestamp": "2009-11-17 04:46:00",
+      "text": "no",
+      "meta": {
+        "time_elapsed": 14.0,
+        "gpt_explanation": "In this context, 'run as root' means to execute a program with administrative privileges on a Linux system, which often requires using the 'sudo' command. Kostkon is informing foul_owl that it is not necessary to run 'pavucontrol' with these elevated permissions, meaning it can be executed with regular user privileges.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4123,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4122,
+      "timestamp": "2009-11-17 04:47:00",
+      "text": "pulse is a session process",
+      "meta": {
+        "time_elapsed": 15.0,
+        "gpt_explanation": "In this context, 'pulse' refers to 'PulseAudio', a sound server that handles audio on Linux systems. A 'session process' means that PulseAudio runs as a process specific to a user session rather than a system-wide service. This implies that when the user logs out, the PulseAudio process will terminate, and a new instance will start upon the next login. This design can affect how sound streams are managed and might relate to why restarting (or logging out and back in) temporarily resolves the CPU usage issue.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4124,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4123,
+      "timestamp": "2009-11-17 04:47:00",
+      "text": "ok, pavucontrol is showing those two bogus audio streams",
+      "meta": {
+        "time_elapsed": 15.0,
+        "gpt_explanation": "In this turn, 'pavucontrol' refers to a graphical tool called PulseAudio Volume Control that allows users to manage audio streams on their system. 'Bogus audio streams' implies that pavucontrol is displaying audio streams that appear to be incorrect or not associated with any active audio-playing application, which is unusual. These streams may be the cause of the high CPU usage foul_owl is experiencing with PulseAudio.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4125,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4124,
+      "timestamp": "2009-11-17 04:47:00",
+      "text": "right click on them to kill them",
+      "meta": {
+        "time_elapsed": 15.0,
+        "gpt_explanation": "In this context, 'right click on them to kill them' refers to the action of using the mouse to right-click on the audio streams displayed in the 'pavucontrol' application. 'Pavucontrol' is a volume control tool (PulseAudio Volume Control) that allows you to manage audio streams in Ubuntu. By right-clicking, you should see options that allow you to terminate or stop ('kill') these unnecessary or bogus audio streams that are contributing to high CPU usage by PulseAudio.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4126,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4125,
+      "timestamp": "2009-11-17 04:48:00",
+      "text": "how's your cpu usage now?",
+      "meta": {
+        "time_elapsed": 16.0,
+        "gpt_explanation": "In this turn, kostkon is asking foul_owl if there has been an improvement in the CPU usage after following the provided instructions to kill the audio streams using pavucontrol. This question checks whether the actions taken were successful in reducing the CPU load caused by PulseAudio.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4127,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4126,
+      "timestamp": "2009-11-17 04:48:00",
+      "text": "that did it! cpu usage back down to almost nothing",
+      "meta": {
+        "time_elapsed": 16.0,
+        "gpt_explanation": "The user 'foul_owl' followed the instructions to use 'pavucontrol' to terminate the unnecessary audio streams that were causing high CPU usage by PulseAudio. As a result, the CPU usage has significantly decreased, solving the problem they were experiencing.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4128,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4127,
+      "timestamp": "2009-11-17 04:48:00",
+      "text": "thanks alot!",
+      "meta": {
+        "time_elapsed": 16.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4129,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4128,
+      "timestamp": "2009-11-17 04:48:00",
+      "text": "hope it stays that way. but try this. use your multimedia apps for a while",
+      "meta": {
+        "time_elapsed": 16.0,
+        "gpt_explanation": "Kostkon is expressing hope that the CPU usage issue will remain resolved after foul_owl has killed the unnecessary audio streams. Kostkon suggests using multimedia applications for a while to see if the issue reoccurs, indicating that they are testing if the solution holds up under typical use conditions.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4130,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4129,
+      "timestamp": "2009-11-17 04:49:00",
+      "text": "especially totem and see if you'll get zombie audio streams again",
+      "meta": {
+        "time_elapsed": 17.0,
+        "gpt_explanation": "In this context, 'zombie audio streams' likely refer to audio processes or streams that remain active even when they're not needed or expected to be running, consuming system resources unnecessarily. 'Totem' is a multimedia player for the GNOME desktop environment. Kostkon is suggesting that foul_owl use Totem to see if the problem with these unnecessary audio streams recurs, which would indicate that there might be a deeper issue with how the system handles audio processes.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4131,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4130,
+      "timestamp": "2009-11-17 04:49:00",
+      "text": "will do. if i get them, do you think its a bug in pulse or totem?",
+      "meta": {
+        "time_elapsed": 17.0,
+        "gpt_explanation": "In this context, 'pulse' refers to PulseAudio, a sound server used in Ubuntu for handling audio. 'Totem' is a multimedia player for Ubuntu. The user 'foul_owl' is asking if the issue with audio streams not being properly closed, causing high CPU usage, is due to a bug in PulseAudio itself or in the Totem player.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4132,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4131,
+      "timestamp": "2009-11-17 04:49:00",
+      "text": "yeah, it could be",
+      "meta": {
+        "time_elapsed": 17.0,
+        "gpt_explanation": "Kostkon is agreeing with foul_owl's suggestion that the issue with high CPU usage might be due to a bug in either PulseAudio (a sound server used on many Linux systems for managing audio) or Totem (a multimedia player for GNOME). Kostkon's response indicates that it is plausible the problem could be a software bug in one of these applications.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4133,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4132,
+      "timestamp": "2009-11-17 04:50:00",
+      "text": "one thing you could do, if this hapens again, is to delete your .pulse folder",
+      "meta": {
+        "time_elapsed": 18.0,
+        "gpt_explanation": "The '.pulse' folder is a hidden directory in your home folder where PulseAudio, the sound server, stores its configuration files and state. By deleting this folder, you are effectively resetting PulseAudio's settings and cache. This action can help resolve issues like recurring 'zombie' audio streams, as it forces PulseAudio to recreate its configuration files afresh. Hidden folders in Linux typically start with a dot (.), which makes them invisible by default in file managers. To see them, you often need to enable the option to show hidden files.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4134,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4133,
+      "timestamp": "2009-11-17 04:50:00",
+      "text": "if you have one in your home folder, then logout and login again",
+      "meta": {
+        "time_elapsed": 18.0,
+        "gpt_explanation": "Kostkon is suggesting that if foul_owl has a '.pulse' folder in their home directory, they should try deleting it, and then log out and back in to see if this resolves the issue with 'zombie' audio streams. This folder may contain user-specific PulseAudio configuration files that could be causing issues, and deleting it can reset these settings to default upon next login.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4135,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4134,
+      "timestamp": "2009-11-17 04:50:00",
+      "text": "what does that do",
+      "meta": {
+        "time_elapsed": 18.0,
+        "gpt_explanation": "The user foul_owl is asking for clarification on what the action of deleting the '.pulse' folder and logging out and back in will accomplish. This action is typically suggested to reset the PulseAudio configuration to its default state by removing user-specific settings that might be causing issues.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4136,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4135,
+      "timestamp": "2009-11-17 04:51:00",
+      "text": "among others, it saves in a file the state of pulse per app",
+      "meta": {
+        "time_elapsed": 19.0,
+        "gpt_explanation": "The '.pulse' folder in your home directory contains configuration and state information for PulseAudio, the sound server. By deleting it, you remove the saved states of audio applications, which can help reset PulseAudio settings and potentially resolve issues with audio streams. Logging out and back in will regenerate these configurations with default settings.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4137,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4136,
+      "timestamp": "2009-11-17 04:51:00",
+      "text": "oyu may find 2-3 files in this folder. one of this is for saving pulse's state",
+      "meta": {
+        "time_elapsed": 19.0,
+        "gpt_explanation": "In the '.pulse' folder located in the user's home directory, there may be 2-3 files. One of these files is responsible for saving the state of PulseAudio for different applications. By deleting this folder, you reset PulseAudio's state, which may help in resolving certain issues like the zombie audio streams previously discussed.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4138,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4137,
+      "timestamp": "2009-11-17 04:51:00",
+      "text": "interesting. i will try that. the pavucontrol seems to work pretty well",
+      "meta": {
+        "time_elapsed": 19.0,
+        "gpt_explanation": "Pavucontrol is a volume control tool or 'PulseAudio Volume Control' for the PulseAudio sound server. It provides the ability to manage audio streams and the volume levels of different applications. In this context, it is helping the user (foul_owl) manage and stop unnecessary audio streams, thus reducing CPU usage.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4139,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4138,
+      "timestamp": "2009-11-17 04:52:00",
+      "text": "yeah, it's a good app",
+      "meta": {
+        "time_elapsed": 20.0,
+        "gpt_explanation": "In this turn, the user 'kostkon' is affirming that 'pavucontrol' is a good application. 'pavucontrol' is a volume control tool for the PulseAudio sound server, which is used to manage audio streams and device selection in Linux systems like Ubuntu. It allows users to control audio streams and manage devices easily, which was useful for 'foul_owl' in resolving high CPU usage issues caused by PulseAudio.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4140,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4139,
+      "timestamp": "2009-11-17 04:52:00",
+      "text": "should i file a bug report to pulse?",
+      "meta": {
+        "time_elapsed": 20.0,
+        "gpt_explanation": "The user is asking whether they should report the issue with PulseAudio, where audio streams are not properly being managed and causing high CPU usage, as a bug to the developers of PulseAudio. Filing a bug report is a way to inform developers of a software issue so it can be investigated and possibly resolved in future updates.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4141,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4140,
+      "timestamp": "2009-11-17 04:53:00",
+      "text": "eh, i don't know. but if you want, file one. why not.",
+      "meta": {
+        "time_elapsed": 21.0,
+        "gpt_explanation": "The user 'kostkon' is unsure whether a bug report should be filed regarding the issue with PulseAudio but suggests that 'foul_owl' can file a bug report if they want to. Filing a bug report is a way to inform the developers of PulseAudio about the issue, potentially leading to a fix in future updates.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4142,
+      "speaker": "foul_owl",
+      "conversation_id": "47.2",
+      "reply_to": 4141,
+      "timestamp": "2009-11-17 04:53:00",
+      "text": "thanks again!",
+      "meta": {
+        "time_elapsed": 21.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 4143,
+      "speaker": "kostkon",
+      "conversation_id": "47.2",
+      "reply_to": 4142,
+      "timestamp": "2009-11-17 04:53:00",
+      "text": ":)",
+      "meta": {
+        "time_elapsed": 21.0,
+        "gpt_explanation": "The turn contains a smiley face emoticon, which is used to convey friendliness, satisfaction, or a positive emotional state. It indicates that the user, kostkon, is pleased with the resolution of the issue or is simply being friendly in the conversation's closure.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    }
+  ]
+}

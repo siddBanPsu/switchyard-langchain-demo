@@ -1,0 +1,450 @@
+{
+  "id": "LUKS",
+  "conversation_id": "72.2",
+  "title": "Encrypted drive unlocks but folder access fails",
+  "summary": "i'm using the gnome disk editor to format a flash drive with LUKS encryption. i can unencrypt the partition fine on the machine i formatted the drive with, but on every other ubuntu machine (all running 16.04) i get \"this location could not be displayed. you do not have the permissions necessary...\" despite entering the correct passprase. what's going on?",
+  "evidence": {
+    "opening": [
+      {
+        "id": "LUKS-01",
+        "source_utterance_id": 2034,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:06:00",
+        "text": "i'm using the gnome disk editor to format a flash drive with LUKS encryption. i can unencrypt the partition fine on the machine i formatted the drive with, but on every other ubuntu machine (all running 16.04) i get \"this location could not be displayed. you do not have the permissions necessary...\" despite entering the correct passprase. what's going on?"
+      },
+      {
+        "id": "LUKS-02",
+        "source_utterance_id": 2035,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:06:00",
+        "text": "i created a LUKS partition on my laptop, unreadable on my desktop. and vice versa."
+      },
+      {
+        "id": "LUKS-03",
+        "source_utterance_id": 2036,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:07:00",
+        "text": "so it's not the machine that's the issue"
+      },
+      {
+        "id": "LUKS-04",
+        "source_utterance_id": 2037,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:07:00",
+        "text": "ecryptfs-utils cryptsetup are installed on the other machines ?"
+      },
+      {
+        "id": "LUKS-05",
+        "source_utterance_id": 2038,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:08:00",
+        "text": "ecryptfs-utils wasn't"
+      },
+      {
+        "id": "LUKS-06",
+        "source_utterance_id": 2039,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:08:00",
+        "text": "set"
+      },
+      {
+        "id": "LUKS-07",
+        "source_utterance_id": 2040,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:08:00",
+        "text": "sec*"
+      },
+      {
+        "id": "LUKS-08",
+        "source_utterance_id": 2041,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:09:00",
+        "text": "installed it, still not working"
+      },
+      {
+        "id": "LUKS-09",
+        "source_utterance_id": 2042,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:09:00",
+        "text": " try a reboot"
+      },
+      {
+        "id": "LUKS-10",
+        "source_utterance_id": 2043,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:10:00",
+        "text": "no dice"
+      },
+      {
+        "id": "LUKS-11",
+        "source_utterance_id": 2044,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:11:00",
+        "text": "just rebooted"
+      },
+      {
+        "id": "LUKS-12",
+        "source_utterance_id": 2045,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:11:00",
+        "text": " are we talking about a usb pen , right ?"
+      },
+      {
+        "id": "LUKS-13",
+        "source_utterance_id": 2046,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:12:00",
+        "text": "yep"
+      },
+      {
+        "id": "LUKS-14",
+        "source_utterance_id": 2047,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:12:00",
+        "text": "i formatted it with LUKS encryption on two different 16.04 machines. each one can decrypt it, but only if it formatted it."
+      },
+      {
+        "id": "LUKS-15",
+        "source_utterance_id": 2048,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:12:00",
+        "text": "if that makes sense"
+      },
+      {
+        "id": "LUKS-16",
+        "source_utterance_id": 2049,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:13:00",
+        "text": " and when you plug it, nautilus is giving you that message ?"
+      },
+      {
+        "id": "LUKS-17",
+        "source_utterance_id": 2050,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:13:00",
+        "text": "first it prompts for the passphrase"
+      },
+      {
+        "id": "LUKS-18",
+        "source_utterance_id": 2051,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:13:00",
+        "text": "but yeah, ioria. soon as i put the passphrase in."
+      },
+      {
+        "id": "LUKS-19",
+        "source_utterance_id": 2052,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:14:00",
+        "text": " dmesg | tail says nothing ?"
+      },
+      {
+        "id": "LUKS-20",
+        "source_utterance_id": 2053,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:15:00",
+        "text": "[   29.507375] EXT4-fs (dm-3): mounted filesystem with ordered data mode. Opts: (null)"
+      },
+      {
+        "id": "LUKS-21",
+        "source_utterance_id": 2054,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:16:00",
+        "text": "file explorer shows the \"unlocked\" icon next to the drive too"
+      },
+      {
+        "id": "LUKS-22",
+        "source_utterance_id": 2055,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:16:00",
+        "text": "but i just can't view the contents"
+      }
+    ],
+    "attempts": [
+      {
+        "id": "LUKS-23",
+        "source_utterance_id": 2056,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:16:00",
+        "text": "i googled and can't find anybody else with this problem really either."
+      },
+      {
+        "id": "LUKS-24",
+        "source_utterance_id": 2057,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:17:00",
+        "text": " i see.... what's on the flash drives ? generally, i mean"
+      },
+      {
+        "id": "LUKS-25",
+        "source_utterance_id": 2058,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:17:00",
+        "text": "pdf docs and such"
+      },
+      {
+        "id": "LUKS-26",
+        "source_utterance_id": 2059,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:17:00",
+        "text": "it's a 32GB drive, i'm only using 1GB of it"
+      },
+      {
+        "id": "LUKS-27",
+        "source_utterance_id": 2060,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:19:00",
+        "text": " ls /media/<user>/   ?"
+      },
+      {
+        "id": "LUKS-28",
+        "source_utterance_id": 2061,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:20:00",
+        "text": "huh?"
+      },
+      {
+        "id": "LUKS-29",
+        "source_utterance_id": 2062,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:20:00",
+        "text": "it's listed in there"
+      },
+      {
+        "id": "LUKS-30",
+        "source_utterance_id": 2063,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:20:00",
+        "text": " check in  /media/<user>/<device>  if mounted"
+      },
+      {
+        "id": "LUKS-31",
+        "source_utterance_id": 2064,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:20:00",
+        "text": "ya it is"
+      },
+      {
+        "id": "LUKS-32",
+        "source_utterance_id": 2065,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:20:00",
+        "text": "it's mounted in there"
+      },
+      {
+        "id": "LUKS-33",
+        "source_utterance_id": 2066,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:21:00",
+        "text": " can you cd in there ?"
+      },
+      {
+        "id": "LUKS-34",
+        "source_utterance_id": 2067,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:21:00",
+        "text": "Permission denied"
+      },
+      {
+        "id": "LUKS-35",
+        "source_utterance_id": 2068,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:21:00",
+        "text": "when i try to cd"
+      },
+      {
+        "id": "LUKS-36",
+        "source_utterance_id": 2069,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:21:00",
+        "text": "  ls -l /path/to/usb"
+      },
+      {
+        "id": "LUKS-37",
+        "source_utterance_id": 2070,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:22:00",
+        "text": "  check the owner"
+      },
+      {
+        "id": "LUKS-38",
+        "source_utterance_id": 2071,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:22:00",
+        "text": "ls: cannot open directory"
+      },
+      {
+        "id": "LUKS-39",
+        "source_utterance_id": 2072,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:22:00",
+        "text": "  ls -l /media/<user>"
+      },
+      {
+        "id": "LUKS-40",
+        "source_utterance_id": 2073,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:23:00",
+        "text": "  also   ls -ld  /media/<user>"
+      },
+      {
+        "id": "LUKS-41",
+        "source_utterance_id": 2074,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:23:00",
+        "text": "drwx------ 4 999 999 4096 Oct 18 13:01"
+      },
+      {
+        "id": "LUKS-42",
+        "source_utterance_id": 2075,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:23:00",
+        "text": "drwxr-x---+ 3 root root 4096 Oct 18 13:20"
+      }
+    ],
+    "diagnostics": [
+      {
+        "id": "LUKS-43",
+        "source_utterance_id": 2076,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:23:00",
+        "text": "it's owned by root?"
+      },
+      {
+        "id": "LUKS-44",
+        "source_utterance_id": 2077,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:23:00",
+        "text": "..."
+      },
+      {
+        "id": "LUKS-45",
+        "source_utterance_id": 2078,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:24:00",
+        "text": "is it somehow owned by root?"
+      },
+      {
+        "id": "LUKS-46",
+        "source_utterance_id": 2079,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:24:00",
+        "text": "  no"
+      },
+      {
+        "id": "LUKS-47",
+        "source_utterance_id": 2080,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:25:00",
+        "text": "i just put the wrong passphrase in to test it and when i do that it doesn't even mount"
+      },
+      {
+        "id": "LUKS-48",
+        "source_utterance_id": 2081,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:25:00",
+        "text": "so i'm def using the correct passphrase"
+      },
+      {
+        "id": "LUKS-49",
+        "source_utterance_id": 2082,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:25:00",
+        "text": "  that's normal"
+      },
+      {
+        "id": "LUKS-50",
+        "source_utterance_id": 2083,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:26:00",
+        "text": "i mean, this makes LUKS 100% unusable for me. encryption is useless if it results in data loss."
+      },
+      {
+        "id": "LUKS-51",
+        "source_utterance_id": 2084,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:26:00",
+        "text": "this is horrible =["
+      },
+      {
+        "id": "LUKS-52",
+        "source_utterance_id": 2085,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:26:00",
+        "text": "  i think you have to chown the folder ..."
+      },
+      {
+        "id": "LUKS-53",
+        "source_utterance_id": 2086,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:26:00",
+        "text": "  can you paste ls -Rld /home/<user>"
+      },
+      {
+        "id": "LUKS-54",
+        "source_utterance_id": 2087,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:27:00",
+        "text": "drwxr-xr-x 22 blake blake 4096 Oct 18 13:10 /home/blake"
+      },
+      {
+        "id": "LUKS-55",
+        "source_utterance_id": 2088,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:28:00",
+        "text": "  can you paste ls -Rld /home/<user> /<device>"
+      },
+      {
+        "id": "LUKS-56",
+        "source_utterance_id": 2089,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:28:00",
+        "text": "what is /<device>"
+      },
+      {
+        "id": "LUKS-57",
+        "source_utterance_id": 2090,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:28:00",
+        "text": "oh sec"
+      },
+      {
+        "id": "LUKS-58",
+        "source_utterance_id": 2091,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:28:00",
+        "text": "wait, what do you want for /<device>"
+      },
+      {
+        "id": "LUKS-59",
+        "source_utterance_id": 2092,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:29:00",
+        "text": "drwxr-xr-x 22 blake blake 4096 Oct 18 13:10 /home/blake"
+      },
+      {
+        "id": "LUKS-60",
+        "source_utterance_id": 2093,
+        "role": "helper",
+        "timestamp": "2016-10-18 17:29:00",
+        "text": "  sorry i meant   ls -Rld /media/<user>/<device>"
+      },
+      {
+        "id": "LUKS-61",
+        "source_utterance_id": 2094,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:30:00",
+        "text": "ls -Rld /media/blake/Blake's Flash Dr/"
+      },
+      {
+        "id": "LUKS-62",
+        "source_utterance_id": 2095,
+        "role": "customer",
+        "timestamp": "2016-10-18 17:30:00",
+        "text": "drwx------ 4 999 999 4096 Oct 18 13:01 /media/blake/Blake's Flash Dr/"
+      }
+    ]
+  },
+  "cutoff_index": 62,
+  "missing_evidence": "External paste, image and website contents are not included. No device or shell is connected; no further command output is available."
+}

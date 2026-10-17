@@ -1,0 +1,95 @@
+{
+  "required_evidence": [
+    "U11",
+    "U25",
+    "U26"
+  ],
+  "confirmation": "thanks for your help; it's working now",
+  "confirmation_source_id": 6549,
+  "hidden_utterances": [
+    {
+      "id": 6545,
+      "speaker": "alpha255",
+      "conversation_id": "33.37",
+      "reply_to": 6544,
+      "timestamp": "2010-12-22 05:28:00",
+      "text": "looks like it should work ... http://ubuntuforums.org/showthread.php?t=1567023&highlight=ASUS+P7P55D",
+      "meta": {
+        "time_elapsed": 16.0,
+        "gpt_explanation": "The user 'alpha255' is suggesting that the hardware configuration should be compatible with Ubuntu and is providing a link to a forum thread that might offer solutions or relevant discussions about similar hardware issues. The URL is likely from Ubuntu Forums, a community forum where users discuss problems and solutions related to Ubuntu.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 6546,
+      "speaker": "cooper|laptop",
+      "conversation_id": "33.37",
+      "reply_to": 6545,
+      "timestamp": "2010-12-22 05:29:00",
+      "text": "i just realized that the sata 6g has a separate option from the sata ii controller in the bios settings.. lemme look and see if this changes anything",
+      "meta": {
+        "time_elapsed": 17.0,
+        "gpt_explanation": "The user has discovered that in their computer's BIOS (Basic Input/Output System) settings, there are separate options for the SATA 6Gb/s controller and the SATA II controller. SATA 6G (SATA 6Gb/s) and SATA II (3Gb/s) are different generations of SATA interfaces that connect hard drives to the computer. Changing settings in the BIOS might help solve the issue with the computer not detecting the drive during the Ubuntu installation.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 6547,
+      "speaker": "alpha255",
+      "conversation_id": "33.37",
+      "reply_to": 6546,
+      "timestamp": "2010-12-22 05:29:00",
+      "text": "yes, the bios would be next to look at",
+      "meta": {
+        "time_elapsed": 17.0,
+        "gpt_explanation": "BIOS (Basic Input/Output System) is firmware that initializes hardware during the booting process. The conversation suggests checking the BIOS settings for potential issues or configurations that might be preventing the Ubuntu live CD from detecting the drive.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 6548,
+      "speaker": "cooper|laptop",
+      "conversation_id": "33.37",
+      "reply_to": 6547,
+      "timestamp": "2010-12-22 05:31:00",
+      "text": "it was set to IDE. I didn't see it before.. for some reason they decided to put it in the advanced settings/onboard devices/jmicron controller :p",
+      "meta": {
+        "time_elapsed": 19.0,
+        "gpt_explanation": "The user 'cooper|laptop' discovered that their BIOS settings had the SATA controller mode set to IDE, which could affect drive detection. IDE and AHCI are modes for interfacing SATA drives, with AHCI generally offering better performance and more features. The option was located under advanced settings in the BIOS, specifically in a section related to the JMicron controller, which handles certain input/output functions on the motherboard.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 6549,
+      "speaker": "cooper|laptop",
+      "conversation_id": "33.37",
+      "reply_to": 6548,
+      "timestamp": "2010-12-22 05:31:00",
+      "text": "thanks for your help; it's working now",
+      "meta": {
+        "time_elapsed": 19.0,
+        "gpt_explanation": "The user managed to resolve the issue they were having with installing Ubuntu on a SATA 6G drive after adjusting the BIOS settings. The initial issue was related to the SATA controller being set to IDE mode, which was changed in the BIOS settings to ensure compatibility with the drive. This likely allowed the live CD to properly recognize and interact with the hard disk, solving the problem.",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    },
+    {
+      "id": 6550,
+      "speaker": "alpha255",
+      "conversation_id": "33.37",
+      "reply_to": 6549,
+      "timestamp": "2010-12-22 05:31:00",
+      "text": "NICE :)",
+      "meta": {
+        "time_elapsed": 19.0,
+        "gpt_explanation": "None",
+        "conversational_friction": NaN,
+        "explanation": "None"
+      }
+    }
+  ]
+}

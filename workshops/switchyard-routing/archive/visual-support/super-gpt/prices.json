@@ -1,0 +1,18 @@
+{
+  "source_snapshot": "openrouter-prices-2026-10-17.json",
+  "rates": {
+    "nvidia/nvidia/nemotron-3.5-super-vl": {
+      "input_per_million": 0.09999999999999999,
+      "output_per_million": 0.39999999999999997,
+      "cached_input_per_million": 0.08,
+      "cache_write_per_million": 0.09999999999999999
+    },
+    "openai/openai/gpt-6.1-sol": {
+      "input_per_million": 2.0,
+      "output_per_million": 10.0,
+      "cached_input_per_million": 0.09999999999999999,
+      "cache_write_per_million": 2.5
+    }
+  },
+  "cache_write_assumption": "Ordinary input if no cache-write price published. Reference estimates, not gateway invoices."
+}

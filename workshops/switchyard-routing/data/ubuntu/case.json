@@ -1,0 +1,206 @@
+{
+  "id": "UBUNTU-32.70",
+  "conversation_id": "32.70",
+  "title": "Read-only storage: permissions, filesystem, or reader?",
+  "summary": "Can someone help me out with this? My USB drive is coming up as read only and I have no idea how to change it.",
+  "evidence": {
+    "symptoms": [
+      {
+        "id": "U01",
+        "source_utterance_id": 4028,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:21:00",
+        "text": "Can someone help me out with this? My USB drive is coming up as read only and I have no idea how to change it."
+      },
+      {
+        "id": "U02",
+        "source_utterance_id": 4029,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:21:00",
+        "text": "type \"mount | nc termbin.com 9999\""
+      },
+      {
+        "id": "U03",
+        "source_utterance_id": 4030,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:22:00",
+        "text": "http://termbin.com/i2y7"
+      },
+      {
+        "id": "U04",
+        "source_utterance_id": 4031,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:22:00",
+        "text": "try sudo mount -o remount,rw /media/lubuntu/5A0088742D1C775C"
+      },
+      {
+        "id": "U05",
+        "source_utterance_id": 4032,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:23:00",
+        "text": "\"mount: cannot remount /dev/sdb1 read-write, is write-protected\""
+      },
+      {
+        "id": "U06",
+        "source_utterance_id": 4033,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:24:00",
+        "text": "maybe the usb has a switch on the side or something?"
+      },
+      {
+        "id": "U07",
+        "source_utterance_id": 4034,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:24:00",
+        "text": "It does, I tried it both ends of the switch and I get the same problem."
+      },
+      {
+        "id": "U08",
+        "source_utterance_id": 4035,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:24:00",
+        "text": "It was working before I formatted it in GParted, perhaps that caused the problem?"
+      },
+      {
+        "id": "U09",
+        "source_utterance_id": 4036,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:25:00",
+        "text": "seems unlikely"
+      }
+    ],
+    "failed_attempts": [
+      {
+        "id": "U10",
+        "source_utterance_id": 4037,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:25:00",
+        "text": "try to zero it out and format again maybe"
+      },
+      {
+        "id": "U11",
+        "source_utterance_id": 4038,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:25:00",
+        "text": "Just unplugged, tried the switch again, still an error."
+      },
+      {
+        "id": "U12",
+        "source_utterance_id": 4039,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:25:00",
+        "text": "Zero it out? Not sure what you mean."
+      },
+      {
+        "id": "U13",
+        "source_utterance_id": 4040,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:26:00",
+        "text": "sudo dd if=/dev/zero of=/dev/sdb bs=4M"
+      },
+      {
+        "id": "U14",
+        "source_utterance_id": 4041,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:26:00",
+        "text": "make sure of the disk name first with lsblk"
+      },
+      {
+        "id": "U15",
+        "source_utterance_id": 4042,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:27:00",
+        "text": "It's sdb, like you said."
+      },
+      {
+        "id": "U16",
+        "source_utterance_id": 4043,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:27:00",
+        "text": "Command returned this error: \"dd: failed to open '/dev/sdb': Read-only file system\""
+      },
+      {
+        "id": "U17",
+        "source_utterance_id": 4044,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:28:00",
+        "text": "oh, right"
+      }
+    ],
+    "diagnostic_followup": [
+      {
+        "id": "U18",
+        "source_utterance_id": 4045,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:28:00",
+        "text": "does \"dmesg | tail\" show anything interesting?"
+      },
+      {
+        "id": "U19",
+        "source_utterance_id": 4046,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:28:00",
+        "text": "I'll check it out."
+      },
+      {
+        "id": "U20",
+        "source_utterance_id": 4047,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:30:00",
+        "text": "http://paste.ubuntu.com/23727324/ @EriC^^"
+      },
+      {
+        "id": "U21",
+        "source_utterance_id": 4048,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:32:00",
+        "text": "any ideas?"
+      },
+      {
+        "id": "U22",
+        "source_utterance_id": 4049,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:32:00",
+        "text": "nope, sorry"
+      },
+      {
+        "id": "U23",
+        "source_utterance_id": 4050,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:32:00",
+        "text": ":l"
+      },
+      {
+        "id": "U24",
+        "source_utterance_id": 4051,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:33:00",
+        "text": "It worked perfectly fine before I formatted it"
+      },
+      {
+        "id": "U25",
+        "source_utterance_id": 4052,
+        "role": "customer",
+        "timestamp": "2017-01-02 12:33:00",
+        "text": "Not really sure what happened"
+      },
+      {
+        "id": "U26",
+        "source_utterance_id": 4053,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:34:00",
+        "text": "if it can't dd to it, then maybe it's a hardware issue"
+      },
+      {
+        "id": "U27",
+        "source_utterance_id": 4054,
+        "role": "helper",
+        "timestamp": "2017-01-02 12:34:00",
+        "text": "cause dd doesn't care what's mounted and stuff"
+      }
+    ]
+  },
+  "missing_evidence": "Original mount and dmesg paste URLs are present, but their contents are not included in this corpus. Do not infer their contents or fetch them.",
+  "cutoff": "First 27 utterances only. Alternate-reader test and its successful result are held out.",
+  "source_url": "https://www.convokit.cornell.edu/documentation/chatlogs.html"
+}

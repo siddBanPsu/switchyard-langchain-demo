@@ -1,0 +1,22 @@
+{
+  "dataset": "Ubuntu Chat Logs Corpus",
+  "authors": "Rupak Sarkar, Neha Srikanth, Taylor Hudson, Rachel Rudinger, Claire Bonial, Philip Resnik (2025); ConvoKit format by Axel Bax",
+  "paper": "https://arxiv.org/abs/2503.12370",
+  "documentation": "https://www.convokit.cornell.edu/documentation/chatlogs.html",
+  "download": "https://zissou.infosci.cornell.edu/convokit/datasets/ubuntu-chat-logs/ubuntu-chat-logs.zip",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "retrieved": "2026-10-15",
+  "archive_sha256": "03fe5f7a8e8f3d8a7c4cca083a7fc85433ca163d0ba8672469eab37e9139e9a2",
+  "adaptation": "Three independent conversations with all message text retained. Only selected pre-resolution prefixes are agent-visible; later advice, actions and confirmations are held out. Speaker fields relabelled customer/helper. No missing paste contents reconstructed. Tools, reference paraphrases and evaluation are demo additions.",
+  "conversations": [
+    "77.2",
+    "72.2",
+    "83.1"
+  ],
+  "source_sha256": {
+    "luks/source.jsonl": "b0036185bfab2ba87addde4a48cd711b6845695462f673632061854970bffd97",
+    "exec/source.jsonl": "ae8647cbacda41f76a9a618bfb3245970d5b6bdfaf7c436f84127f81e4974597",
+    "copy/source.jsonl": "09fc9fdcaba782ddd05096fb2a9a1f83970740076f45012496383cccbd183ef7"
+  }
+}

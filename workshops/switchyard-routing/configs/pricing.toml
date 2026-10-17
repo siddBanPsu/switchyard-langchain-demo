@@ -1,0 +1,33 @@
+pricing_version = 1
+
+# Optional: one entry per (client, model_id), NOT per role.
+# Efficient and classifier share rates when they use the same model and client.
+# Fill in verified USD per million tokens. Unspecified rates stay unavailable.
+[[rates]]
+client = "nvidia"
+model_id = "nvidia/nvidia/nemotron-3.5-lightning"
+# input_per_million = ...
+# output_per_million = ...
+# cached_input_per_million = ...
+# cache_write_per_million = ...
+# source = "provider pricing URL"
+# date = "YYYY-MM-DD"
+
+[[rates]]
+client = "nvidia"
+model_id = "nvidia/nvidia/nemotron-3-ultra"
+# input_per_million = ...
+# output_per_million = ...
+
+[[rates]]
+client = "nvidia"
+model_id = "azure/anthropic/claude-opus-5-5"
+# input_per_million = ...
+# output_per_million = ...
+# cached_input_per_million = ...
+# cache_write_per_million = ...
+# source = "provider pricing URL"
+# date = "YYYY-MM-DD"
+
+# Entries must match the selected profile's client and model_id exactly.
+# Free API credits do not establish a production price; leave rates unknown instead.

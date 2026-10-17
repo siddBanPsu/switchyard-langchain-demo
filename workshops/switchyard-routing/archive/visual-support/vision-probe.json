@@ -1,0 +1,42 @@
+{
+  "preliminary_probe_not_comparison": true,
+  "calls": [
+    {
+      "kind": "vision_probe",
+      "model": "nvidia/nvidia/nemotron-3.5-super-vl",
+      "tier": "strong",
+      "has_image": true,
+      "policy": "image\u2192strong / text\u2192weak",
+      "request_sha256": "ace93f5805732b054065e98c55a8bfba3cb76432a63ff7b9fa839bdaba0786ca",
+      "status": "ok",
+      "cost_usd": 0.00016954999999999997,
+      "usage": {
+        "input_tokens": 897,
+        "output_tokens": 70,
+        "input_token_details": {
+          "cache_read": 0,
+          "cache_creation": 0
+        }
+      },
+      "raw_usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 897,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 967
+      },
+      "provider_reported_model": "nvidia/nvidia/nemotron-3.5-super-vl",
+      "finish_reason": "stop",
+      "message": {
+        "content": "{\n  \"order_id\": \"QF-1042\",\n  \"amount_cents\": 11870,\n  \"ui_status\": \"failed\",\n  \"ui_claim_no_charge\": true,\n  \"button_label\": \"Pay again\",\n  \"error_reference\": \"UI-504\"\n}",
+        "provider_specific_fields": {
+          "refusal": null
+        },
+        "role": "assistant"
+      },
+      "seconds": 2.489318290958181
+    }
+  ],
+  "blocked": []
+}

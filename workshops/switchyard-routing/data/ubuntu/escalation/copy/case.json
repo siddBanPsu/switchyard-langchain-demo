@@ -1,0 +1,562 @@
+{
+  "id": "COPY",
+  "conversation_id": "83.1",
+  "title": "GUI says read-only despite terminal write tests",
+  "summary": "hello, even though I change permissions with \"chmod -R 777\" I still get \"read-only\" error...how can I make the folder readable?",
+  "evidence": {
+    "opening": [
+      {
+        "id": "COPY-01",
+        "source_utterance_id": 4550,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:40:00",
+        "text": "hello, even though I change permissions with \"chmod -R 777\" I still get \"read-only\" error...how can I make the folder readable?"
+      },
+      {
+        "id": "COPY-02",
+        "source_utterance_id": 4551,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:41:00",
+        "text": "probably a read only file system"
+      },
+      {
+        "id": "COPY-03",
+        "source_utterance_id": 4552,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:41:00",
+        "text": "what is the file system you have mounted"
+      },
+      {
+        "id": "COPY-04",
+        "source_utterance_id": 4553,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:42:00",
+        "text": "ext4"
+      },
+      {
+        "id": "COPY-05",
+        "source_utterance_id": 4554,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:42:00",
+        "text": "unmount it, fsck it, re-mount it"
+      },
+      {
+        "id": "COPY-06",
+        "source_utterance_id": 4555,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:42:00",
+        "text": "but FAT didnt help either"
+      },
+      {
+        "id": "COPY-07",
+        "source_utterance_id": 4556,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:42:00",
+        "text": "where is it mounted ?"
+      },
+      {
+        "id": "COPY-08",
+        "source_utterance_id": 4557,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:43:00",
+        "text": "under /media/live/"
+      },
+      {
+        "id": "COPY-09",
+        "source_utterance_id": 4558,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:43:00",
+        "text": "media/live"
+      },
+      {
+        "id": "COPY-10",
+        "source_utterance_id": 4559,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:43:00",
+        "text": "will try fsck"
+      },
+      {
+        "id": "COPY-11",
+        "source_utterance_id": 4560,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:43:00",
+        "text": "is it a live media ? eg: like a cd"
+      },
+      {
+        "id": "COPY-12",
+        "source_utterance_id": 4561,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:45:00",
+        "text": "the OS runs on live cd, but the file system in question is an susb"
+      },
+      {
+        "id": "COPY-13",
+        "source_utterance_id": 4562,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:45:00",
+        "text": "usb*"
+      },
+      {
+        "id": "COPY-14",
+        "source_utterance_id": 4563,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:45:00",
+        "text": "..... that seems odd to be mounted at /media/live"
+      },
+      {
+        "id": "COPY-15",
+        "source_utterance_id": 4564,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:45:00",
+        "text": "what version of ubuntu is this ?"
+      },
+      {
+        "id": "COPY-16",
+        "source_utterance_id": 4565,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:45:00",
+        "text": "it is an old ubuntu"
+      },
+      {
+        "id": "COPY-17",
+        "source_utterance_id": 4566,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:45:00",
+        "text": "what version exactly"
+      },
+      {
+        "id": "COPY-18",
+        "source_utterance_id": 4567,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:45:00",
+        "text": "14.x"
+      },
+      {
+        "id": "COPY-19",
+        "source_utterance_id": 4568,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:45:00",
+        "text": ".x is not exactly"
+      },
+      {
+        "id": "COPY-20",
+        "source_utterance_id": 4569,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:46:00",
+        "text": "one sec"
+      },
+      {
+        "id": "COPY-21",
+        "source_utterance_id": 4570,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:46:00",
+        "text": "14.04"
+      },
+      {
+        "id": "COPY-22",
+        "source_utterance_id": 4571,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:46:00",
+        "text": "and what is the usb - is that a live image or just a flat file system"
+      },
+      {
+        "id": "COPY-23",
+        "source_utterance_id": 4572,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:47:00",
+        "text": "it is not iso"
+      },
+      {
+        "id": "COPY-24",
+        "source_utterance_id": 4573,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:47:00",
+        "text": "just fs"
+      },
+      {
+        "id": "COPY-25",
+        "source_utterance_id": 4574,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:47:00",
+        "text": "and how does it get mounted ?"
+      },
+      {
+        "id": "COPY-26",
+        "source_utterance_id": 4575,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:47:00",
+        "text": "how do you mean?"
+      },
+      {
+        "id": "COPY-27",
+        "source_utterance_id": 4576,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:48:00",
+        "text": "how does the usb get mounted, do you do it, is it automounted etc"
+      },
+      {
+        "id": "COPY-28",
+        "source_utterance_id": 4577,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:48:00",
+        "text": "it gets automounted"
+      },
+      {
+        "id": "COPY-29",
+        "source_utterance_id": 4578,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:48:00",
+        "text": "so a usb will not get mounted on /media/live by default"
+      },
+      {
+        "id": "COPY-30",
+        "source_utterance_id": 4579,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:48:00",
+        "text": "well it does"
+      },
+      {
+        "id": "COPY-31",
+        "source_utterance_id": 4580,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:48:00",
+        "text": "so why do you thin it's mounted there and why is it being mounted as a live media"
+      },
+      {
+        "id": "COPY-32",
+        "source_utterance_id": 4581,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:49:00",
+        "text": "I see the path media/live"
+      },
+      {
+        "id": "COPY-33",
+        "source_utterance_id": 4582,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:49:00",
+        "text": "what is the device file for it, eg: /dev/sda1"
+      },
+      {
+        "id": "COPY-34",
+        "source_utterance_id": 4583,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:49:00",
+        "text": "(for the usb)"
+      },
+      {
+        "id": "COPY-35",
+        "source_utterance_id": 4584,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:49:00",
+        "text": "yes, that's sda1"
+      }
+    ],
+    "attempts": [
+      {
+        "id": "COPY-36",
+        "source_utterance_id": 4585,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:50:00",
+        "text": "ok, so in a command line \"sudo mount /dev/sda1 /mnt\""
+      },
+      {
+        "id": "COPY-37",
+        "source_utterance_id": 4586,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:50:00",
+        "text": "done"
+      },
+      {
+        "id": "COPY-38",
+        "source_utterance_id": 4587,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:50:00",
+        "text": "\"sudo touch /mnt/test\""
+      },
+      {
+        "id": "COPY-39",
+        "source_utterance_id": 4588,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:50:00",
+        "text": "(on the command line)"
+      },
+      {
+        "id": "COPY-40",
+        "source_utterance_id": 4589,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:50:00",
+        "text": "done"
+      },
+      {
+        "id": "COPY-41",
+        "source_utterance_id": 4590,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:51:00",
+        "text": "no error ?"
+      },
+      {
+        "id": "COPY-42",
+        "source_utterance_id": 4591,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:51:00",
+        "text": "no"
+      },
+      {
+        "id": "COPY-43",
+        "source_utterance_id": 4592,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:51:00",
+        "text": "oh"
+      },
+      {
+        "id": "COPY-44",
+        "source_utterance_id": 4593,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:51:00",
+        "text": "then it mounted read/write sucessfully"
+      },
+      {
+        "id": "COPY-45",
+        "source_utterance_id": 4594,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:51:00",
+        "text": "a file named test was created in the formerly unwritable folder"
+      },
+      {
+        "id": "COPY-46",
+        "source_utterance_id": 4595,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:51:00",
+        "text": "you can now access it on /mnt"
+      },
+      {
+        "id": "COPY-47",
+        "source_utterance_id": 4596,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:52:00",
+        "text": "the folder is still not writable"
+      },
+      {
+        "id": "COPY-48",
+        "source_utterance_id": 4597,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:52:00",
+        "text": "in /mnt"
+      },
+      {
+        "id": "COPY-49",
+        "source_utterance_id": 4598,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:52:00",
+        "text": "I was able to access all along, but I need to write to it"
+      },
+      {
+        "id": "COPY-50",
+        "source_utterance_id": 4599,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:52:00",
+        "text": "you can't write to it from /mnt ?"
+      },
+      {
+        "id": "COPY-51",
+        "source_utterance_id": 4600,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:52:00",
+        "text": "it doesn't let write in /mnt, either"
+      },
+      {
+        "id": "COPY-52",
+        "source_utterance_id": 4601,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:53:00",
+        "text": "please show me the output from the command ls -la /mnt"
+      },
+      {
+        "id": "COPY-53",
+        "source_utterance_id": 4602,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:53:00",
+        "text": "even after I tried changing perms"
+      },
+      {
+        "id": "COPY-54",
+        "source_utterance_id": 4603,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:53:00",
+        "text": "(in a terminal)"
+      },
+      {
+        "id": "COPY-55",
+        "source_utterance_id": 4604,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:55:00",
+        "text": "https://paste.debian.net/plain/1053208"
+      },
+      {
+        "id": "COPY-56",
+        "source_utterance_id": 4605,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:55:00",
+        "text": "you're permissions are wrong"
+      },
+      {
+        "id": "COPY-57",
+        "source_utterance_id": 4606,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:55:00",
+        "text": "what is your username"
+      },
+      {
+        "id": "COPY-58",
+        "source_utterance_id": 4607,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:55:00",
+        "text": "\"live\""
+      },
+      {
+        "id": "COPY-59",
+        "source_utterance_id": 4608,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:56:00",
+        "text": "then why is the test file we created as root the user \"live\""
+      },
+      {
+        "id": "COPY-60",
+        "source_utterance_id": 4609,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:56:00",
+        "text": "I dont know. I ran the commands as you gave me"
+      }
+    ],
+    "diagnostics": [
+      {
+        "id": "COPY-61",
+        "source_utterance_id": 4610,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:56:00",
+        "text": "please run the command \"touch /mnt/live-user\""
+      },
+      {
+        "id": "COPY-62",
+        "source_utterance_id": 4611,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:57:00",
+        "text": "no output (I ran it as you typed, without sudo)"
+      },
+      {
+        "id": "COPY-63",
+        "source_utterance_id": 4612,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:57:00",
+        "text": "ls -la /mnt/"
+      },
+      {
+        "id": "COPY-64",
+        "source_utterance_id": 4613,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:57:00",
+        "text": "is the file there ?"
+      },
+      {
+        "id": "COPY-65",
+        "source_utterance_id": 4614,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:58:00",
+        "text": "in the output I see both \"live-user\" and \"test\""
+      },
+      {
+        "id": "COPY-66",
+        "source_utterance_id": 4615,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:58:00",
+        "text": "so you can write to it just fine"
+      },
+      {
+        "id": "COPY-67",
+        "source_utterance_id": 4616,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:58:00",
+        "text": "and you can write to it as the user \"live\""
+      },
+      {
+        "id": "COPY-68",
+        "source_utterance_id": 4617,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:58:00",
+        "text": "I can not"
+      },
+      {
+        "id": "COPY-69",
+        "source_utterance_id": 4618,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:59:00",
+        "text": "I am trying to copy files to this usb, and still can not"
+      },
+      {
+        "id": "COPY-70",
+        "source_utterance_id": 4619,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:59:00",
+        "text": "read-only"
+      },
+      {
+        "id": "COPY-71",
+        "source_utterance_id": 4620,
+        "role": "helper",
+        "timestamp": "2018-11-25 20:59:00",
+        "text": "I've just proven you can write to the disk"
+      },
+      {
+        "id": "COPY-72",
+        "source_utterance_id": 4621,
+        "role": "customer",
+        "timestamp": "2018-11-25 20:59:00",
+        "text": "I can't. i.e. it is not allowed to create new folder in there, too"
+      },
+      {
+        "id": "COPY-73",
+        "source_utterance_id": 4622,
+        "role": "helper",
+        "timestamp": "2018-11-25 21:00:00",
+        "text": "\"mkdir /mnt/test-directory\" in a terminal please"
+      },
+      {
+        "id": "COPY-74",
+        "source_utterance_id": 4623,
+        "role": "customer",
+        "timestamp": "2018-11-25 21:00:00",
+        "text": "whereas there are two files named 'live-user' and 'test'"
+      },
+      {
+        "id": "COPY-75",
+        "source_utterance_id": 4624,
+        "role": "customer",
+        "timestamp": "2018-11-25 21:01:00",
+        "text": "that works, too..so apparently I should try copying the files from gui"
+      },
+      {
+        "id": "COPY-76",
+        "source_utterance_id": 4625,
+        "role": "customer",
+        "timestamp": "2018-11-25 21:01:00",
+        "text": "not from gui*"
+      },
+      {
+        "id": "COPY-77",
+        "source_utterance_id": 4626,
+        "role": "helper",
+        "timestamp": "2018-11-25 21:01:00",
+        "text": "what tool are you using to copy the files"
+      },
+      {
+        "id": "COPY-78",
+        "source_utterance_id": 4627,
+        "role": "customer",
+        "timestamp": "2018-11-25 21:01:00",
+        "text": "copying just from within nautilus"
+      }
+    ]
+  },
+  "cutoff_index": 78,
+  "missing_evidence": "External paste, image and website contents are not included. No device or shell is connected; no further command output is available."
+}

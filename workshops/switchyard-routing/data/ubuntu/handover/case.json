@@ -1,0 +1,570 @@
+{
+  "id": "UBUNTU-HANDOVER-79.2",
+  "conversation_id": "79.2",
+  "title": "Kernel upgrade support handover",
+  "summary": "i used do-release-upgrade to upgrade, but this didn't seem to upgrade my kernel",
+  "missing_evidence": "External paste contents are unavailable. No post-reboot uname output is present. Do not fetch links or fill these gaps.",
+  "evidence": {
+    "environment": [
+      {
+        "id": "U01",
+        "source_utterance_id": 2106,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:05:00",
+        "text": "i used do-release-upgrade to upgrade, but this didn't seem to upgrade my kernel"
+      },
+      {
+        "id": "U02",
+        "source_utterance_id": 2107,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:06:00",
+        "text": "what gives you \"lsb_release -d\"?"
+      },
+      {
+        "id": "U03",
+        "source_utterance_id": 2108,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:07:00",
+        "text": "Ubuntu 14.04.2 LTS"
+      },
+      {
+        "id": "U04",
+        "source_utterance_id": 2109,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:07:00",
+        "text": "you upgraded from 12.04?"
+      },
+      {
+        "id": "U05",
+        "source_utterance_id": 2110,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:07:00",
+        "text": "do i need to use do-release-upgrade -d?"
+      },
+      {
+        "id": "U06",
+        "source_utterance_id": 2111,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:07:00",
+        "text": "stop"
+      },
+      {
+        "id": "U07",
+        "source_utterance_id": 2112,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:07:00",
+        "text": "yes"
+      },
+      {
+        "id": "U08",
+        "source_utterance_id": 2113,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:08:00",
+        "text": "what gives \"uname -a\"?"
+      },
+      {
+        "id": "U09",
+        "source_utterance_id": 2114,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:08:00",
+        "text": "3.11.0-12-generic #19-Ubuntu SMP Wed oct 9 16:20:46 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux"
+      },
+      {
+        "id": "U10",
+        "source_utterance_id": 2115,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:10:00",
+        "text": "that is a 13.10 kernel. are you sure you got \"linux-image-generic\" installed?"
+      },
+      {
+        "id": "U11",
+        "source_utterance_id": 2116,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:10:00",
+        "text": "i did, then i reverted back to a state where I didn't (this is a VM) - do I need to?"
+      },
+      {
+        "id": "U12",
+        "source_utterance_id": 2117,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:11:00",
+        "text": "well, if you want that 3.11 kernel then where is the issue?"
+      },
+      {
+        "id": "U13",
+        "source_utterance_id": 2118,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:11:00",
+        "text": "i want the newest kernel"
+      },
+      {
+        "id": "U14",
+        "source_utterance_id": 2119,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:12:00",
+        "text": "\"dpkg -l | grep linux-image\" in a pastebin please"
+      },
+      {
+        "id": "U15",
+        "source_utterance_id": 2120,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:14:00",
+        "text": "http://pastebin.com/KQJKJmZE"
+      },
+      {
+        "id": "U16",
+        "source_utterance_id": 2121,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:14:00",
+        "text": "that is all? o_O"
+      },
+      {
+        "id": "U17",
+        "source_utterance_id": 2122,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:15:00",
+        "text": "yes"
+      },
+      {
+        "id": "U18",
+        "source_utterance_id": 2123,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:15:00",
+        "text": "i doubt"
+      },
+      {
+        "id": "U19",
+        "source_utterance_id": 2124,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:15:00",
+        "text": "i entered the command exactly as you requested adn double-checked"
+      },
+      {
+        "id": "U20",
+        "source_utterance_id": 2125,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:15:00",
+        "text": "i bet you sorted for \"ii\""
+      },
+      {
+        "id": "U21",
+        "source_utterance_id": 2126,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:16:00",
+        "text": "no i did *exactly* as you requested"
+      },
+      {
+        "id": "U22",
+        "source_utterance_id": 2127,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:16:00",
+        "text": "so that is a special setup?"
+      },
+      {
+        "id": "U23",
+        "source_utterance_id": 2128,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:17:00",
+        "text": "no - it was a VM that i got lazy updating - so i was instructed to do a do-release-upgrade and now here we are"
+      },
+      {
+        "id": "U24",
+        "source_utterance_id": 2129,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:17:00",
+        "text": "(it's xubuntu, but i don't know if that matters)"
+      },
+      {
+        "id": "U25",
+        "source_utterance_id": 2130,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:17:00",
+        "text": "what vm technic is used?"
+      },
+      {
+        "id": "U26",
+        "source_utterance_id": 2131,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:17:00",
+        "text": "vmware"
+      },
+      {
+        "id": "U27",
+        "source_utterance_id": 2132,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:19:00",
+        "text": "well, that command should show a lot more kernel packages"
+      },
+      {
+        "id": "U28",
+        "source_utterance_id": 2133,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:19:00",
+        "text": "what shows \"apt-cache policy linux-image\"?"
+      },
+      {
+        "id": "U29",
+        "source_utterance_id": 2134,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:20:00",
+        "text": "http://pastebin.com/rxNSXpK3"
+      }
+    ],
+    "upgrade_history": [
+      {
+        "id": "U30",
+        "source_utterance_id": 2135,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:21:00",
+        "text": "\"cat /etc/apt/sources.list\""
+      },
+      {
+        "id": "U31",
+        "source_utterance_id": 2136,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:22:00",
+        "text": "http://pastebin.com/wY9gqQPZ"
+      },
+      {
+        "id": "U32",
+        "source_utterance_id": 2137,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:23:00",
+        "text": "oh"
+      },
+      {
+        "id": "U33",
+        "source_utterance_id": 2138,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:23:00",
+        "text": "your sources.list points to 14.10 already"
+      },
+      {
+        "id": "U34",
+        "source_utterance_id": 2139,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:24:00",
+        "text": "that is bad news if you want to run 14.04"
+      },
+      {
+        "id": "U35",
+        "source_utterance_id": 2140,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:24:00",
+        "text": "why so?"
+      },
+      {
+        "id": "U36",
+        "source_utterance_id": 2141,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:24:00",
+        "text": "i dont know why that is set to utopic."
+      },
+      {
+        "id": "U37",
+        "source_utterance_id": 2142,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:25:00",
+        "text": "but that install media was 13.10. so you cant have been 12.04 on that machine anyways."
+      },
+      {
+        "id": "U38",
+        "source_utterance_id": 2143,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:25:00",
+        "text": "so i wonder what that messy system is at all"
+      },
+      {
+        "id": "U39",
+        "source_utterance_id": 2144,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:25:00",
+        "text": "i have a snapshot before the do-release-upgrade if that helps"
+      },
+      {
+        "id": "U40",
+        "source_utterance_id": 2145,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:26:00",
+        "text": "does \"lsb_release -d\" still say 14.04?"
+      },
+      {
+        "id": "U41",
+        "source_utterance_id": 2146,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:26:00",
+        "text": "14.04.2"
+      },
+      {
+        "id": "U42",
+        "source_utterance_id": 2147,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:26:00",
+        "text": "ok. so you want to stay at 14.04?"
+      },
+      {
+        "id": "U43",
+        "source_utterance_id": 2148,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:26:00",
+        "text": "no"
+      },
+      {
+        "id": "U44",
+        "source_utterance_id": 2149,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:26:00",
+        "text": "i'd like to update to current"
+      },
+      {
+        "id": "U45",
+        "source_utterance_id": 2150,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:27:00",
+        "text": "yo you changes that to utopic by hand?"
+      },
+      {
+        "id": "U46",
+        "source_utterance_id": 2151,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:27:00",
+        "text": "no, the only command i've issued is do-release-upgrade"
+      },
+      {
+        "id": "U47",
+        "source_utterance_id": 2152,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:27:00",
+        "text": "so is the upgrade runnin meanwhile?"
+      },
+      {
+        "id": "U48",
+        "source_utterance_id": 2153,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:28:00",
+        "text": "i wonder why your system doesnt find the kernel package, says it is 14.04 but the sources point to 14.10"
+      },
+      {
+        "id": "U49",
+        "source_utterance_id": 2154,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:28:00",
+        "text": "no, it finished - i was updating other software that required linux-headers and that's when i noticed a disconnect between the kernel of linux-headers-generic and the result of uname -r"
+      },
+      {
+        "id": "U50",
+        "source_utterance_id": 2155,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:28:00",
+        "text": "do-release-upgrade -d?"
+      },
+      {
+        "id": "U51",
+        "source_utterance_id": 2156,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:29:00",
+        "text": "in short: that doesnt make any sense. but to get a way out of that mess is to know what went wrong"
+      },
+      {
+        "id": "U52",
+        "source_utterance_id": 2157,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:29:00",
+        "text": "stop!"
+      },
+      {
+        "id": "U53",
+        "source_utterance_id": 2158,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:29:00",
+        "text": "never ever think of that command again if you dont want to go to the developers alpha builds"
+      },
+      {
+        "id": "U54",
+        "source_utterance_id": 2159,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:29:00",
+        "text": "not typing anything - and i have two snapshots - one before do-release-upgrade and one after"
+      }
+    ],
+    "remediation": [
+      {
+        "id": "U55",
+        "source_utterance_id": 2160,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:31:00",
+        "text": "ok, so first exchange all \"utopic\" with \"trusty\" in that /etc/apt/sources.list"
+      },
+      {
+        "id": "U56",
+        "source_utterance_id": 2161,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:31:00",
+        "text": "\"sudo nano /etc/apt/sources.list\""
+      },
+      {
+        "id": "U57",
+        "source_utterance_id": 2162,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:32:00",
+        "text": "i apologize, but i think i was providing you incorrect information"
+      },
+      {
+        "id": "U58",
+        "source_utterance_id": 2163,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:32:00",
+        "text": "when that is done run a \"sudo apt-get update&&sudo apt-get dist-uprade\" to get the latest packages from 14.04."
+      },
+      {
+        "id": "U59",
+        "source_utterance_id": 2164,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:33:00",
+        "text": "i did start do-release-upgrade -d before I ctrl-c'd it - i saw this as a suggested solution for my problem before i came here"
+      },
+      {
+        "id": "U60",
+        "source_utterance_id": 2165,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:34:00",
+        "text": "i am on trusty, but my kernel is 3.11"
+      },
+      {
+        "id": "U61",
+        "source_utterance_id": 2166,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:34:00",
+        "text": "your system is a mess. see my last advices to get that to a proper state again"
+      },
+      {
+        "id": "U62",
+        "source_utterance_id": 2167,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:35:00",
+        "text": "my sources.list is correct (no utopic, all trusty) and the rest of what i sent you is valid"
+      },
+      {
+        "id": "U63",
+        "source_utterance_id": 2168,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:36:00",
+        "text": "\"sudo apt-get update &&sudo apt-get dist-upgrade\""
+      },
+      {
+        "id": "U64",
+        "source_utterance_id": 2169,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:36:00",
+        "text": "correct, but that's not grabbing the new kernel"
+      },
+      {
+        "id": "U65",
+        "source_utterance_id": 2170,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:36:00",
+        "text": "let it run"
+      },
+      {
+        "id": "U66",
+        "source_utterance_id": 2171,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:37:00",
+        "text": " it's done - no new kernel"
+      },
+      {
+        "id": "U67",
+        "source_utterance_id": 2172,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:37:00",
+        "text": "its not grabbing anything because that system is a mess. when that command is done we go further"
+      },
+      {
+        "id": "U68",
+        "source_utterance_id": 2173,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:37:00",
+        "text": "it's done"
+      },
+      {
+        "id": "U69",
+        "source_utterance_id": 2174,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:38:00",
+        "text": "now again: \"apt-cache policy linux-image-generic\""
+      },
+      {
+        "id": "U70",
+        "source_utterance_id": 2175,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:39:00",
+        "text": "http://pastebin.com/dnksC1C0"
+      },
+      {
+        "id": "U71",
+        "source_utterance_id": 2176,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:39:00",
+        "text": "http://pastebin.com/dnkcS1C0"
+      },
+      {
+        "id": "U72",
+        "source_utterance_id": 2177,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:40:00",
+        "text": "\"sudo apt-get install linux-generic\""
+      },
+      {
+        "id": "U73",
+        "source_utterance_id": 2178,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:43:00",
+        "text": "ok, now what?"
+      },
+      {
+        "id": "U74",
+        "source_utterance_id": 2179,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:44:00",
+        "text": "\"dpkg -l | grep linux-image\""
+      },
+      {
+        "id": "U75",
+        "source_utterance_id": 2180,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:45:00",
+        "text": "http://pastebin.com/eRFukZic"
+      }
+    ],
+    "confirmation": [
+      {
+        "id": "U76",
+        "source_utterance_id": 2181,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:46:00",
+        "text": "i dont know why it doesnt list you all packages but only the installed ones. but after a reboot that should be on kernel 3.13 now"
+      },
+      {
+        "id": "U77",
+        "source_utterance_id": 2182,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:47:00",
+        "text": "thanks!"
+      },
+      {
+        "id": "U78",
+        "source_utterance_id": 2183,
+        "role": "customer",
+        "timestamp": "2015-02-23 20:48:00",
+        "text": "that did it!  thank you!!!"
+      },
+      {
+        "id": "U79",
+        "source_utterance_id": 2184,
+        "role": "helper",
+        "timestamp": "2015-02-23 20:49:00",
+        "text": "from now on be carefull with upgrade commands and the developer switches"
+      }
+    ]
+  }
+}

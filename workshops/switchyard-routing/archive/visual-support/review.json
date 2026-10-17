@@ -1,0 +1,56 @@
+[
+  {
+    "arm": "super_only",
+    "repeat": 1,
+    "passed": true,
+    "review": "Structured facts and support summary match supplied records; app-rendered cents and record-only boundary verified."
+  },
+  {
+    "arm": "lightning_only",
+    "repeat": 3,
+    "passed": false,
+    "review": "Backend extractor returned event names instead of source-record IDs twice; rejected without completing."
+  },
+  {
+    "arm": "lightning_only",
+    "repeat": 2,
+    "passed": false,
+    "review": "Blocked before image API call because Lightning metadata advertises text input only."
+  },
+  {
+    "arm": "routed",
+    "repeat": 1,
+    "passed": true,
+    "review": "Structured facts and support summary match supplied records; app-rendered cents and record-only boundary verified."
+  },
+  {
+    "arm": "super_only",
+    "repeat": 2,
+    "passed": true,
+    "review": "Structured facts and support summary match supplied records; app-rendered cents and record-only boundary verified."
+  },
+  {
+    "arm": "routed",
+    "repeat": 3,
+    "passed": true,
+    "review": "Structured facts and support summary match supplied records; app-rendered cents and record-only boundary verified."
+  },
+  {
+    "arm": "lightning_only",
+    "repeat": 1,
+    "passed": false,
+    "review": "Blocked before image API call because Lightning metadata advertises text input only."
+  },
+  {
+    "arm": "routed",
+    "repeat": 2,
+    "passed": true,
+    "review": "Structured facts and support summary match supplied records; app-rendered cents and record-only boundary verified."
+  },
+  {
+    "arm": "super_only",
+    "repeat": 3,
+    "passed": true,
+    "review": "Structured facts and support summary match supplied records; app-rendered cents and record-only boundary verified."
+  }
+]

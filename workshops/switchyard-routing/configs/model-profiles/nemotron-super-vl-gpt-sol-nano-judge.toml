@@ -1,0 +1,28 @@
+profile_version = 1
+name = "Nemotron 3.5 Super VL + GPT Sol 6.1; Nano routing judge"
+
+[clients.nvidia]
+format = "openai_chat"
+base_url_env = "NVIDIA_BASE_URL"
+api_key_env = "NVIDIA_API_KEY"
+
+[roles.efficient]
+display_name = "Nemotron 3.5 Super VL"
+client = "nvidia"
+model_id = "nvidia/nvidia/nemotron-3.5-super-vl"
+temperature = 0.0
+
+[roles.capable]
+display_name = "GPT Sol 6.1"
+client = "nvidia"
+model_id = "openai/openai/gpt-6.1-sol"
+
+# Keep the judge fixed to isolate the efficient-executor change.
+[roles.classifier]
+display_name = "Nemotron 3 Nano"
+client = "nvidia"
+model_id = "nvidia/nvidia/Nemotron-3-Nano-30B-A3B"
+temperature = 0.0
+
+[roles.classifier.extra_body.chat_template_kwargs]
+enable_thinking = false

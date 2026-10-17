@@ -1,0 +1,17 @@
+strategy_version = 1
+name = "Harder support review: unchanged classifier thresholds, larger task budget"
+
+[routing]
+type = "llm_classifier"
+mode = "capability"
+base_threshold = 0.6
+threshold_step = 0.1
+recent_window = 3
+
+[limits]
+# The same limits apply to every arm and model in this larger three-case task.
+max_output_tokens = 8000
+max_calls_per_task = 24
+task_timeout_seconds = 300
+request_timeout_seconds = 90
+max_suite_tasks = 90

@@ -1,0 +1,35 @@
+profile_version = 1
+name = "Nemotron 3 Nano + GPT Sol 6.1 via NVIDIA"
+
+# Both models use the configured NVIDIA OpenAI-compatible gateway and key.
+[clients.nvidia]
+format = "openai_chat"
+base_url_env = "NVIDIA_BASE_URL"
+api_key_env = "NVIDIA_API_KEY"
+
+[roles.efficient]
+display_name = "Nemotron 3 Nano"
+client = "nvidia"
+model_id = "nvidia/nvidia/Nemotron-3-Nano-30B-A3B"
+# model_id="nvidia/nvidia/nemotron-3.5-lightning"
+temperature = 0.0
+# Optional: seed = 41, only if the internal gateway supports model seeding.
+
+[roles.capable]
+display_name = "GPT Sol 6.1"
+client = "nvidia"
+model_id = "openai/openai/gpt-6.1-sol"
+
+[roles.classifier]
+display_name = "Nemotron 3 Nano"
+client = "nvidia"
+model_id = "nvidia/nvidia/Nemotron-3-Nano-30B-A3B"
+# model_id="nvidia/nvidia/nemotron-3.5-lightning"
+temperature = 0.0
+# Optional: seed = 41, only if the internal gateway supports model seeding.
+
+# Judge needs a short JSON verdict. NVIDIA documents this flag for Nano;
+# the internal gateway must forward it to a backend that supports it.
+# Executor calls retain their existing generation settings.
+[roles.classifier.extra_body.chat_template_kwargs]
+enable_thinking = false
